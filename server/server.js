@@ -1,2 +1,7 @@
-const app = require()
-app.use(express.static('public'));
+const app = require('./library/app');
+
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log('server app started on port', PORT);
+});
