@@ -52,13 +52,13 @@ export default {
       });
   },
 
-  getPets() {
-    return fetch('/api/pets', getOptions('GET'))
+  getGoals() {
+    return fetch('/api/goals', getOptions('GET'))
       .then(response => response.json());      
   },
 
-  addPet(pet) {
-    return fetch('/api/pets', getOptions('POST', pet))
+  addGoal(goal) {
+    return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
   }
 

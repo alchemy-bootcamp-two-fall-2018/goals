@@ -3,7 +3,7 @@ const client = require('../lib/db-client');
 const goals = [
   { name: 'Build fullstack app', type: 'coding' },
   { name: 'Get 8 hours of sleep', type: 'health' },
-  {name: 'Get a developer job', type: 'career'}
+  { name: 'Get a developer job', type: 'career' }
 ];
 
 client.query(`
