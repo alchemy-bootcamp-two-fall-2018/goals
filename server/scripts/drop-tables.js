@@ -1,17 +1,19 @@
 const client = require('../lib/db-client');
 
 client.query(`
-    DROP TABLE IF EXISTS profile;
     DROP TABLE IF EXISTS goals;
+    DROP TABLE IF EXISTS profile;
 
 `)
-  .then(
-    () => console.log('Drop table script ran'),
-    err => 
-      console.log(err)
+    .then(
+        () => {
+            return console.log('Drop table script ran');
+        },
+        err => 
+            console.log(err)
           
         
-  )
-  .then(() => {
-    client.end();
-  });
+    )
+    .then(() => {
+        client.end();
+    });

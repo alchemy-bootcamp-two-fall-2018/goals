@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgon');
+const morgan = require('morgan');
 const auth = require('./routes/auth');
 
 
-//morgon logging 
+//morgan logging 
 app.use(morgan('dev'));
 app.use(express.json());
 

@@ -14,10 +14,10 @@ client.query(`
         date VARCHAR(20) NOT NULL
     );
 `)
-  .then (
-    () => console.log('create tables script ran'), 
-    err => console.log(err)
-  )
-  .then(() => {
-    client.end();
-  });
+    .then (
+        () => console.log('create tables script ran'), 
+        err => console.log(err)
+    )
+    .then(() => {
+        client.end();
+    });
