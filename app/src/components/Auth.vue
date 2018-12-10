@@ -8,11 +8,23 @@
         <button @click="method = 'signup'">Sign Up</button>
       </p>
 
-      <form> 
-
+      <form @submit.prevent="handleSignInSubmit(proflie)>
+        <label>
+          Username:
+          <input v-model="profile.username" required>
+        </label>
+        <label>
+          Password:
+          <input type="password" v-model="profile.password" required>
+        </label>
+        <label>
+          <button>Sign In</button>
+        </label>
       </form>
+    </div>
+    <div v-else>
+      <h2>Sign Up</h2>
     
-
       <p>
         Already have an account?
         <button @click="method = 'signin'">Sign In</button>
@@ -20,7 +32,7 @@
       <form @submit.prevent="handleSignUpSubmit(profile)">
         <label>
           Username:
-          <input v-model="profile.username" requierd>
+          <input v-model="profile.username" required>
         </label>
         <label>
           Password:
