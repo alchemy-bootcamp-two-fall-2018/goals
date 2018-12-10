@@ -9,7 +9,7 @@
         <RouterLink to="/pets">Goals</RouterLink>
       </nav>
     </header>
-
+This is App
     <main>
       <RouterView v-if="user" :user="user"/>
       <Auth v-else
@@ -34,31 +34,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
-header {
-  height: 75px;
-  background: lightsteelblue;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-header img {
-  height: 100%;
-}
-
-nav a {
-  text-decoration: none;
-  color: black;
-  margin: 3px;
-  padding: 3px;
-  border: 1px solid black;
-}
-
-main {
-  padding: 8px;
-}
 
 
 </style>
