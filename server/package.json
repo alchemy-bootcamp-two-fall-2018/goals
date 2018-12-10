@@ -1,11 +1,13 @@
 {
-  "name": "app-server",
+  "name": "server",
   "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test:app": "cd app && npm i && npm test && cd ..",
-    "test:server": "cd server && npm i && npm test && cd ..",
-    "test": "npm run test:app && npm run test:server"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "eslint": "^5.10.0",
     "nodemon": "^1.18.8"
