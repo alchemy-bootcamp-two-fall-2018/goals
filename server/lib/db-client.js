@@ -2,7 +2,7 @@ const pg = require('pg');
 
 // As we move to into deployment, this value will not
 // be hard-coded, but instead come from environment configuration
-const DATABASE_URL = 'postgres://localhost:5432/mypets';
+const DATABASE_URL = 'postgres://localhost:5432/goals';
 
 
 const Client = pg.Client;
