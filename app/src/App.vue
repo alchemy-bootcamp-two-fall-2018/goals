@@ -6,10 +6,10 @@
         <RouterLink to="/goals">Goals</RouterLink>
       </nav>
     </header>
-
     <main>
       <RouterView></RouterView>
     </main>
+  </div>
 </template>
 
 <script>
