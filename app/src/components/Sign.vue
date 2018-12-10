@@ -1,15 +1,34 @@
 <template>
   <section>
-    <h2>SignIn/Up Page!</h2>
-
-    <form @submit.prevent="onSignIn(user)">
+    <h3>SignIn:</h3>
+    <form @submit.prevent="onSignIn(sIn)">
       <label>Username:
-        <input v-model="user.username">
+        <input v-model="sIn.username">
       </label>
       <label>Password:
-        <input v-model="user.password">
+        <input v-model="sIn.password">
       </label>
       <button>SignIn</button>
+    </form>
+
+    <h3>SignUp:</h3>
+    <form @submit.prevent="onSignUp(sUp)">
+      <label>Username:
+        <input v-model="sUp.username">
+      </label>
+      <label>First Name:
+        <input v-model="sUp.fname">
+      </label>
+      <label>Last Name:
+        <input v-model="sUp.lname">
+      </label>
+      <label>Email:
+        <input v-model="sUp.email">
+      </label>
+      <label>Password:
+        <input v-model="sUp.password">
+      </label>
+      <button>SignUn</button>
     </form>
   </section>
 </template>
@@ -18,11 +37,13 @@
 export default {
   data() {
     return {
-      user: {}
+      sIn: {},
+      sUp: {}
     };
   },
   props: {
     onSignIn: Function,
+    onSignUp: Function
   }
 };
 </script>

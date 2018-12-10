@@ -3,12 +3,15 @@
     <header>
       <span v-if="user">Hello {{user.username}}</span>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink v-if="user" to="/">Home</RouterLink>
         <RouterLink to="/sign">SignIn/Up</RouterLink>
       </nav>
 
       <main>
-        <RouterView :onSignIn="handleSignIn"></RouterView>
+        <Sign v-if="!user"
+        :onSignIn="handleSignIn"
+        :onSignUp="handleSignUp"/>
+        <RouterView v-if="user"></RouterView>
       </main>
     </header>
 
@@ -18,14 +21,23 @@
 
 <script>
 
+import Sign from './components/Sign';
+
 export default {
+
   data() {
     return {
       user: null
     };
   },
+  components: {
+    Sign
+  },
   methods: {
     handleSignIn(user) {
+      console.log(user);
+    },
+    handleSignUp(user) {
       console.log(user);
     }
   }
