@@ -1,3 +1,15 @@
-// const pg = require('pg');
+const pg = require('pg');
+const DATABASE_URL = 'postgres://localhost:5432/mygoals';
+const Client = pg.Client;
+const client = new Client(DATABASE_URL);
 
-// const DATABASE_URL = 'postgres://localhose:5432'
+
+client.connect()
+  .then(() => console.log('connected to db', DATABASE_URL))
+  .catch(err => console.err('connection error', err));
+
+client.on('error', err => {
+  console.error('\n**** DATABASE ERROR ****\n\n', err);
+});
+
+module.exports = client;
