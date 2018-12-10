@@ -1,5 +1,5 @@
 const pg = require('pg');
-const DATABASE_URL = 'postgres://localhost:5432/synthesizers';
+const DATABASE_URL = 'postgres://localhost:5432/goals';
 const Client = pg.Client;
 
 const client = new Client(DATABASE_URL);
