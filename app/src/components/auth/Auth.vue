@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div v-if="method === 'signin'">
+    <div class="sign" v-if="method === 'signin'">
       <h2>Sign In</h2>
       
       <p>
@@ -23,7 +23,7 @@
       </form>
     </div>
 
-    <div v-else>
+    <div class="sign" v-else>
       <h2>Sign Up</h2>
       <p>
         Already have an account?
@@ -104,6 +104,13 @@ label {
 
 pre {
   color: red;
+}
+
+.sign {
+    background: #f0e2a3;
+    width: 30%;
+    padding: 10px;
+    border: 1px solid black;
 }
 
 </style>
