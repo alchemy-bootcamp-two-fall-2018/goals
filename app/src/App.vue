@@ -22,6 +22,7 @@
 <script>
 
 import Sign from './components/Sign';
+import api from './services/api';
 
 export default {
 
@@ -38,7 +39,7 @@ export default {
       console.log(user);
     },
     handleSignUp(user) {
-      console.log(user);
+      api.addUser(user);
     }
   }
 };
