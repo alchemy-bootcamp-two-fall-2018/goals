@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div v-if="method === 'signin'">
+    <div v-if="method === 'signin'" class="wrapper">
       <h2>Sign In</h2>
       
       <p>
@@ -23,7 +23,7 @@
       </form>
     </div>
 
-    <div v-else>
+    <div v-else class="wrapper">
       <h2>Sign Up</h2>
       
       <p>
@@ -85,5 +85,14 @@ export default {
 </script>
 
 <style scoped>
-
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 60vh;
+    justify-content: space-evenly;
+}
+input {
+    margin: 10px;
+}
 </style>
