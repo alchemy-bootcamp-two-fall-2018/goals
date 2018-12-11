@@ -4,6 +4,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
+        <a href="#" @click="handleLogout">Logout</a>
       </nav>
     </header>
     <RouterView v-if="user" :user="user"></RouterView>
@@ -52,6 +53,10 @@ export default {
             else {
                 window.localStorage.removeItem('profile');
             }
+        },
+        handleLogout() {
+            this.setUser(null);
+            this.$router.push('/');
         }
     }
 };
