@@ -1,3 +1,5 @@
+let token = '';
+
 const getOptions = (method, data) => {
     const options = {
         method,
@@ -8,11 +10,19 @@ const getOptions = (method, data) => {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
+    
+    if(token) {
+        options.headers.Authorization = token;
+    }
 
     return options;
 };  
 
 export default {
+    setToken(t) {
+        token = t;
+    },
+
     signUp(profile) {
         return fetch('/api/auth/signup', getOptions('POST', profile))
             .then(response => {
@@ -25,6 +35,7 @@ export default {
                     });
             });
     },
+
     signIn(credentials) {
         return fetch('/api/auth/signin', getOptions('POST', credentials))
             .then(response => {
@@ -38,11 +49,13 @@ export default {
             });
 
     },
+
     getGoals() { 
         console.log('hello?');
         return fetch('/api/goals', getOptions('GET'))
             .then(response => response.json());
     },
+    
     addGoal(goal) {
         return fetch('/api/goals', getOptions('POST', goal))
             .then(response => response.json());
