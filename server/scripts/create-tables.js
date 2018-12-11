@@ -13,8 +13,8 @@ client.query(`
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
-    start_date VARCHAR(256) NOT NULL,
-    end_date VARCHAR(256),
+    start_date DATE NOT NULL,
+    end_date DATE,
     profile_id INTEGER NOT NULL REFERENCES profile(id)
   );
 `)

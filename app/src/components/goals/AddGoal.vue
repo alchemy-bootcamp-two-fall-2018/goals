@@ -7,7 +7,7 @@
     
     <p>
       <label>Start Date:</label>
-      <input v-model="goal.startDate">
+      <input type="date" v-model="goal.startDate">
     </p>
 
     <p>

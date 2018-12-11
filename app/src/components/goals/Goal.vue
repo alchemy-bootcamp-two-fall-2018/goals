@@ -1,11 +1,16 @@
 <template>
   <li>
     <p>{{goal.title}}</p>
-    <p>Start Date: {{goal.startDate}}</p>
+    <p>
+      <DateDisplay v-bind:date="goal.startDate"/>
+      Start Date: {{goal.startDate}}
+    </p>
     
     <div v-if="goal.endDate">
       Completed Date:
       {{goal.endDate}}
+      <DateDisplay v-bind:date="goal.endDate"/>
+
     </div>
     <div v-else>
       NOT COMPLETED
@@ -17,11 +22,16 @@
 </template>
 
 <script>
+import DateDisplay from '../shared/DateDisplay';
 
 export default {
   props: {
     goal: null,
     onEdit: Function
+  },
+
+  components: {
+    DateDisplay
   },
 
   methods: {
