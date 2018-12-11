@@ -2,7 +2,7 @@
 <template>
     <li>
       <strong>Goal: </strong>{{goal.name}} 
-      <strong>Type:</strong> {{goal.type}} {{new Date(goal.startDate).toLocaleDateString()}}{{new Date(goal.endDate).toLocaleDateString()}} {{goal.completed}}
+      <strong>Type:</strong> {{goal.type}} START: {{new Date(goal.startDate).toLocaleDateString()}} END: {{new Date(goal.endDate).toLocaleDateString()}} {{goal.completed}}
       <button @click="onUpdate">Complete</button>
     </li>
 </template>
@@ -25,6 +25,11 @@ export default {
 
 <style lang="postcss" scoped>
 li {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
   padding: 50px;
   width: 120px;
   background: rgba(71,99,114, 0.4);
