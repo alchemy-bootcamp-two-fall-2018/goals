@@ -1,11 +1,9 @@
 <template>
-  <ul ><!--v-if="goals"-->
-    <Goal />
-      <!--v-for="goal in goals" 
-        :key="goal.id"
-        :goal="goal"-->
+  <ul v-if="goals">
+    <Goal v-for="goal in goals" 
+      :key="goal.id"
+      :goal="goal"/>
   </ul>
-
 </template>
 
 <script>
@@ -25,5 +23,6 @@ export default {
 ul {
   list-style: none;
   padding-left: 0;
+  border: 1px solid cyan;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <li>Goal component TODO: 'goal.name' which is 'goal.type'</li>
+  <li>Name: {{goal.name}}, Type: {{goal.type}}</li>
 </template>
 
 <script>

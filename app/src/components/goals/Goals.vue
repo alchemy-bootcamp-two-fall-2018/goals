@@ -2,10 +2,8 @@
   <section class="goals">
     <h2>My Goals</h2>
     <h3>Add a New Goal</h3>
-    <p>Todo: AddGoals component here</p>
     <AddGoal :onAdd="handleAdd"/>
     <h3>Current Goals</h3>
-    <p>I am the GoalList component</p>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal to get started!</p>
   </section>
