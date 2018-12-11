@@ -39,7 +39,7 @@ export default {
       console.log(user);
     },
     handleSignUp(user) {
-      api.addUser(user);
+      api.signUp(user);
     }
   }
 };

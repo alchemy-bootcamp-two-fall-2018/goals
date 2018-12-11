@@ -4,7 +4,9 @@ const client = require('./db-client');
 
 app.use(express.json());
 
-
+app.post('/signup', (req, res) => {
+  console.log(req.body);
+});
 const PORT = 3000;
 
 app.listen(PORT, () => {
