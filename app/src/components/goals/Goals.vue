@@ -10,38 +10,38 @@
 </template>
 
 <script>
-// import api from '../../services.api';
+import api from '../../services/api.js';
 // import AddGoal from './AddGoal';
-// import GoalList from '/GoalList';
+import GoalList from './GoalList';
 
-// export default {
-//   data() {
-//     return {
-//       goals: null
-//     };
-//   },
-//   components: {
-//     AddGoal,
-//     GoalList
-//   },
-//   created() {
-//     api.getGoals()
-//       .then(goals => {
-//         this.goals = goals;
-//       })
-//       .catch(err => {
-//         this.error = err;
-//       });
-//   },
-//   methods: {
-//     handleAdd(goal) {
-//       return api.addGoal(goal)
-//         .then(saved => {
-//           this.goals.push(saved);
-//         });
-//     }
-//   }
-// };
+export default {
+  data() {
+    return {
+      goals: null
+    };
+  },
+  components: {
+    //AddGoal,
+    GoalList
+  },
+  created() {
+    api.getGoals()
+      .then(goals => {
+        this.goals = goals;
+      })
+      .catch(err => {
+        this.error = err;
+      });
+  },
+  methods: {
+    handleAdd(goal) {
+      return api.addGoal(goal)
+        .then(saved => {
+          this.goals.push(saved);
+        });
+    }
+  }
+};
 </script>
 
 <style>

@@ -1,14 +1,12 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <p>
-      <label>Goal Name:</label>
-      <input v-focus v-model="goal.name" require>
-    </p>
-    <p>
-      <label>Date:</label>
-      <input v-focus v-model="goal.date" require>
-    </p>
-
+    
+    <label>Goal Name:</label>
+    <input v-focus v-model="goal.name" require>
+  
+    <label>Date:</label>
+    <input v-focus v-model="goal.date" require>
+    
     <button>Set Goal!</button>
   </form>
 </template>

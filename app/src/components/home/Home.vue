@@ -1,7 +1,9 @@
 <template>
   <section>
     <h2>Let's get Crackin!</h2>
-    <RouterLink to="/goals">Revisit Goals</RouterLink>
+    <p>
+      <RouterLink to="/goals">View Goals</RouterLink>
+    </p>
   </section>
 </template>
 
