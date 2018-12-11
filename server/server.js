@@ -48,7 +48,9 @@ app.post('/signin', (req, res) => {
   }
 
   client.query(`
-    SELECT id, username, password FROM users WHERE username = $1;
+    SELECT id, username, password
+    FROM users
+    WHERE username = $1;
   `,
   [username])
     .then(result => {

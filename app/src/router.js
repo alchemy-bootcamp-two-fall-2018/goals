@@ -6,6 +6,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: Home },
     { path: '/sign', component: Sign },
+    // { path: '/goals', component: Goals },
     { path: '*', redirect: '/' }
   ]
 });

@@ -1,7 +1,7 @@
 const client = require('../db-client');
 
-// DROP TABLE IF EXISTS goals;
 client.query(`
+  DROP TABLE IF EXISTS goals;
   DROP TABLE IF EXISTS users;
 `)
   .then(
