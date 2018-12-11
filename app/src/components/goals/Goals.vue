@@ -3,8 +3,8 @@
     <h2>My Goals</h2>
     <h3>Add a New Goal</h3>
     <AddGoal :onAdd="handleAdd"/>
-    <h3>Current Pets</h3>
-    <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
+    <h3>Current Goals</h3>
+    <GoalList v-if="goals && goals.length > 0" :goals="goals" :onEdit="handleEdit"/>
     <p v-else>Add a goal to get started!</p>
   </section>
 </template>
@@ -37,6 +37,13 @@ export default {
       return api.addGoal(goal)
         .then(saved => {
           this.goals.push(saved);
+        });
+    },
+    handleEdit(goal) {
+      return api.updateGoal(goal)
+        .then(updated => {
+          const index = this.goal.findIndex((goal) => goal.id === updated.id);
+          this.goal.splice(index, 1, updated);
         });
     }
   }

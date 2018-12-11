@@ -1,7 +1,8 @@
 
 <template>
-    <li><strong>Goal: </strong>{{goal.name}} <strong>Type:</strong> {{goal.type}}
-    <button @click="handleUpdate">Complete</button>
+    <li>
+      <strong>Goal: </strong>{{goal.name}} <strong>Type:</strong> {{goal.type}} {{goal.end_date}}
+      <!-- <button @click="onUpdate">Complete</button> -->
     </li>
 </template>
 

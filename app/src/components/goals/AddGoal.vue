@@ -13,7 +13,10 @@
 function initGoal() {
   return {
     name: '',
-    type: ''
+    type: '',
+    startDate: '',
+    endDate: '',
+    completed: false
   };
 }
 

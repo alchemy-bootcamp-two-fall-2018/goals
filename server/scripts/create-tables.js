@@ -10,7 +10,10 @@ client.query(`
         id SERIAL PRIMARY KEY,
         name VARCHAR(256) NOT NULL,
         type VARCHAR(32) NOT NULL,
-        profile_id INTEGER NOT NULL REFERENCES profile(id)
+        profile_id INTEGER NOT NULL REFERENCES profile(id),
+        start_date DATE,
+        end_date DATE,
+        completed BOOLEAN
     );
     
 `)
