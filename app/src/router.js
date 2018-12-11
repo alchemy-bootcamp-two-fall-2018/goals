@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
 import Home from './components/Home';
-import Goals from './components/Goals';
+import Goals from './components/goals/Goals';
 
 export default new VueRouter({
     routes: [

@@ -6,12 +6,33 @@
         <RouterLink to="/goals">Goals</RouterLink>
       </nav>
     </header>
-    <RouterView></RouterView>
+    <RouterView v-if="user" :user="user"></RouterView>
+    <Auth v-else 
+      :onSignUp="handleSignUp"
+      :onSignIn="handleSignIn"/>
   </div>
 </template>
 
 <script>
-export default {};
+import Auth from './auth/Auth';
+export default {
+    components: {
+        Auth
+    },
+    data() {
+        return {
+            user:null
+        };
+    },
+    methods: {
+        handleSignUp() {
+
+        },
+        handleSignIn() {
+
+        }
+    }
+};
 </script>
 
 <style>

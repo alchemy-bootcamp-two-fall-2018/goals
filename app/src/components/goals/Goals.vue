@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import api from '../services/api.js';
+import api from '../../services/api';
 import GoalList from './GoalList.vue';
 import AddGoal from './AddGoal.vue';
 
