@@ -4,6 +4,14 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const APP_SECRET = 'YOURSECRETPASSWORD';
 
+function getProfileWithToken(profile) {
+  return {
+    id: profile.id,
+    username: profile.username,
+    token: jwt.sign({ id: profile.id }, APP_SECRET)
+  };
+}
+
 router
   .post('/signup', (req, res) => {
     const body = req.body;
@@ -38,9 +46,7 @@ router
         )
           .then(result => {
             const profile = result.rows[0];
-            profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
-
-            res.json(profile);
+            res.json(getProfileWithToken(profile));
           });
       });
   })
@@ -70,10 +76,7 @@ router
           return;
         }
 
-        res.json({
-          id: result.rows[0].id,
-          username: result.rows[0].username
-        });
+        res.json(getProfileWithToken(profile)); 
       });
   });
 
