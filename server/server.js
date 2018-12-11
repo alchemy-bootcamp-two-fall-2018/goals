@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const client = require('./db-client');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const APP_SECRET = 'CHANGEMENOW';
+const jwt = require('./jwt');
 
 app.use(express.json());
 
@@ -37,7 +36,7 @@ app.post('/signup', (req, res) => {
       [username, body.fName, body.lName, body.email, bcrypt.hashSync(password, 8)])
         .then(result => {
           const profile = result.rows[0];
-          profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
+          profile.token = jwt.sign({ id: profile.id });
           res.json(profile);
         });
     });
