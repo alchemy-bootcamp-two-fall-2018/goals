@@ -5,6 +5,7 @@ const getOptions = (method, data) => {
         method,
         headers: {}
         };
+        
     if(data) {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
@@ -15,7 +16,7 @@ const getOptions = (method, data) => {
 export default {
 
     signUp(user) {
-        return fetch('api/auth/signup', getOptions('POST', user))
+        return fetch('/api/auth/signup', getOptions('POST', user))
             .then(response => {
                 if(response.ok) {
                     return response.json();

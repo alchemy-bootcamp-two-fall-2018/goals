@@ -11,8 +11,8 @@ client.query(`
 );
   CREATE TABLE IF NOT EXISTS goal (
     title VARCHAR(256) NOT NULL,
-    start_date INTEGER NOT NULL,
-    end_date INTEGER NOT NULL,
+    start_date DATE(YYYY-MM-DD) NOT NULL,
+    end_date DATE(YYYY-MM-DD) NOT NULL,
     id SERIAL PRIMARY KEY,
     users_id INTEGER NOT NULL REFERENCES users(id)
   );

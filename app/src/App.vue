@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import api from './components/services/api';
 import Auth from './components/auth/Auth';
 
 export default {
@@ -32,10 +33,19 @@ export default {
   },
   methods: {
     handleSignUp(user) {
-      return user;
+      return api.signUp(user)
+        .then(user => {
+          this.setUser(user);
+        });
     },
     handleSignIn(credentials) {
-      console.log('sign in', credentials);
+      return api.signIn(credentials)
+      .then(user => {
+        this.setUser(user);
+      });
+    },
+    setUser(user) {
+      this.user = user;
     }
   }
 };
