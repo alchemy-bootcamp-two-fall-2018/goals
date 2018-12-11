@@ -23,14 +23,28 @@ function initGoal() {
     endDate: ''
   };
 }
+function copyGoal(goal) {
+  return {
+    id: goal.id,
+    title: goal.title,
+    type: goal.type,
+    startDate: goal.startDate,
+    endDate: goal.endDate,
+    profileId: goal.profileId
+  };
+}
 
 export default {
   props: {
-    onAdd: Function
+    onAdd: Function,
+    label: String,
+    goalToEdit: Object
   },
   data() {
     return {
-      goal: initGoal()
+      goal: this.goalToEdit
+        ? copyGoal(this.goalToEdit)
+        : initGoal()
     };
   },
   created() {
@@ -41,6 +55,7 @@ export default {
       this.onAdd(this.goal)
         .then(() => {
           this.goal = initGoal();
+          // this.$router.go();
         });
     }
   }

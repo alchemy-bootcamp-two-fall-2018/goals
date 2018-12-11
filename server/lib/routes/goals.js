@@ -37,8 +37,7 @@ router
       AND profile_id = $3
       RETURNING *;
     `,
-    [completed, req.params.id, req.userId]
-    )
+    [completed, req.params.id, req.userId])
       .then(result => {
         res.json(result.rows[0]);
       });
