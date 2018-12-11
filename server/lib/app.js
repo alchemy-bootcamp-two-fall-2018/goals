@@ -16,7 +16,7 @@ function checkAuth(req, res, next) {
 
     const userId = req.get('Authorization');
     if(!userId) {
-        res.status(401).json({ error: ' no authorization found' });
+        res.status(401).json({ error: 'no authorization found' });
         return;
     }
     req.userId = userId;
