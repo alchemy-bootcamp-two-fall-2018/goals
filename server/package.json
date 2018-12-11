@@ -9,18 +9,25 @@
     "load-seed-data": "node scripts/load-seed-data.js",
     "recreate-tables": "npm run drop-tables && npm run create-tables",
     "db-load-all": "npm run recreate-tables && npm run load-seed-data",
-    "lint": "eslint .",
+    "lint": "vue-cli-service lint",
     "pretest": "npm run lint",
     "test": "exit 0",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "copy": "rm -rf ../server/public && cp -R ./dist ../server/public",
+    "build:server": "npm run build && npm run copy"
   },
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.7",
     "pg": "^7.7.1",
-    "shortid": "^2.2.14"
+    "shortid": "^2.2.14",
+    "superagent": "^4.0.0",
+    "vue": "^2.5.20"
   },
   "devDependencies": {
     "eslint": "^5.9.0"

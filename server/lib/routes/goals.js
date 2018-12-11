@@ -21,7 +21,7 @@ router
 
     client.query(`
       INSERT INTO user (name, profile_id)
-      VALUES($1, $2, $3)
+      VALUES($1, $2)
       RETURNING *;
     `,
     [body.name, req.userId])

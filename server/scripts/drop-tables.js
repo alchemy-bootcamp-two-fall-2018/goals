@@ -1,3 +1,4 @@
+//const env = require('dotenv').config();  // keep as top line
 const client = require('../lib/db-client');
 
 client.query(`

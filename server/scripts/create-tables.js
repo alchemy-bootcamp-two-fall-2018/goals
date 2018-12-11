@@ -1,4 +1,8 @@
+// const env = require('dotenv').config();  // keep as top line
 const client = require('../lib/db-client');
+
+// const PORT = process.env.PORT;
+// const DATABASE_URL = process.env.DATABASE_URL;
 
 client.query(`
   CREATE TABLE IF NOT EXISTS profile (
@@ -9,8 +13,7 @@ client.query(`
 
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(256) NOT NULL,
-    type VARCHAR(32) NOT NULL,
+    title VARCHAR(256) NOT NULL,
     profile_id INTEGER NOT NULL REFERENCES profile(id)
   );
 
