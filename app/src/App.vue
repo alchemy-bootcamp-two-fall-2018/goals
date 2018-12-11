@@ -1,16 +1,32 @@
 <template>
   <div id="app">
+
     <header>
-      <RouterLink to="/"> HOME </RouterLink>
+      <span >
+       
+      </span>
+      <nav>
+        <RouterLink to="/"> HOME </RouterLink>
+      </nav>
     </header>
-    <RouterView></RouterView>
+
+    <main>
+      <RouterView></RouterView>
+      <Auth/>
+    </main>
+
   </div>
 </template>
 
 <script>
+// import api from '../services/api';
+import Auth from './components/auth/Auth';
 
 export default {
-  
+  components: {
+    Auth
+  }
+
 };
 </script>
 

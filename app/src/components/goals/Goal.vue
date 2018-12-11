@@ -1,5 +1,6 @@
 <template>
     <li> 
+        
         {{goal.title}}
     </li>
 </template>

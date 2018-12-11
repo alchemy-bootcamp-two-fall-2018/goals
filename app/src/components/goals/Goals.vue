@@ -11,7 +11,6 @@ import api from '../../services/api';
 import GoalList from './GoalList';
 
 export default {
-  
   data() {
     return {
       goals: null

@@ -1,7 +1,7 @@
 <template>
     <div>
         Goal List
-        <ul >
+        <ul>
             <Goal v-for="goal in goals"
             :key="goal.id"
             :goal="goal"/>
