@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS users (
       title VARCHAR(256) NOT NULL,
       start_date VARCHAR(256) NOT NULL,
       end_date VARCHAR(256) NOT NULL,
-      user_id INTEGER NOT NULL REFERENCES users(id)
+      user_id VARCHAR(256) NOT NULL
     );
 
 `)

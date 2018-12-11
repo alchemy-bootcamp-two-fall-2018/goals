@@ -5,10 +5,6 @@ export default {
     token = t;
   },
 
-  // getToken() {
-  //   return token;
-  // },
-
   signUp(user) {
     return fetch('/signup', {
       method: 'POST',
