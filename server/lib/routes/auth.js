@@ -78,7 +78,7 @@ router
 
         res.json(getProfileWithToken(profile));
       });
-});
+  });
 
 
 module.exports = router;
