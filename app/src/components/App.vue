@@ -108,6 +108,7 @@ export default {
   }
 
   .greet {
+    color:#f0e2a3;
     font-size: 1.4em;
     margin-top: 16px;
     margin-left: 40px;

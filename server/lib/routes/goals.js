@@ -5,9 +5,8 @@ const router = Router(); //eslint-disable-line new-cap
 
 router
   .get('/', (req, res) => {
-      console.log('\n\n\n\n Query is', req)
     client.query(`
-      SELECT id, title, startdate, enddate
+      SELECT id, title, startdate, enddate, completed
       FROM goals
       WHERE profile_id = $1;
     `,
@@ -21,11 +20,11 @@ router
     const body = req.body;
 
     client.query(`
-      INSERT INTO goals (title, startdate, enddate, profile_id)
-      VALUES($1, $2, $3, $4)
+      INSERT INTO goals (title, startdate, enddate, completed, profile_id)
+      VALUES($1, $2, $3, $4, $5)
       RETURNING *;
     `,
-    [body.title, body.startdate, body.enddate, req.userId])
+    [body.title, body.startdate, body.enddate, false, req.userId])
       .then(result => {
         res.json(result.rows[0]);
       });

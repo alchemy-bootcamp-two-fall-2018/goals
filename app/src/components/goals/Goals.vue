@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <h2 class="look">My Goals</h2>
+    <h2 class="look">Your Goals:</h2>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal!</p>
     <AddGoal :onAdd="handleAdd"/>

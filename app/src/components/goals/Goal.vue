@@ -1,5 +1,8 @@
 <template>
-    <li>{{goal.title}} starts {{goal.startdate}} and ends {{goal.enddate}}</li>
+    <li><span class="goal-title"> {{goal.title}} -- </span> 
+    Start Date: {{goal.startdate}} 
+    End Date: {{goal.enddate}}
+    Completed: {{goal.completed}}</li>
 </template>
 
 <script>
@@ -13,6 +16,11 @@ export default {
 <style>
 li {
   padding: 10px 0;
+}
+
+.goal-title {
+    font-size: 1.2em;
+    font-weight: 600;
 }
 </style>
 
