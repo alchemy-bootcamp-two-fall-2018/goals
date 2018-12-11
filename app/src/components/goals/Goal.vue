@@ -2,16 +2,15 @@
   <li>
     <p>{{goal.title}}</p>
     <p>
+      Start Date: 
       <DateDisplay v-bind:date="goal.startDate"/>
-      Start Date: {{goal.startDate}}
     </p>
     
     <div v-if="goal.endDate">
       Completed Date:
-      {{goal.endDate}}
       <DateDisplay v-bind:date="goal.endDate"/>
-
     </div>
+    
     <div v-else>
       NOT COMPLETED
     </div>
@@ -36,7 +35,7 @@ export default {
 
   methods: {
     handleUpdate() {
-      this.goal.endDate = new Date();
+      this.goal.endDate = new Date().toLocaleDateString();
       this.onEdit(this.goal);
     }
   }
