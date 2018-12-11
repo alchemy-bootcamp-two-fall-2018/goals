@@ -8,7 +8,7 @@ function getProfileWithToken(profile) {
   return {
     id: profile.id,
     username: profile.username,
-    token: jwt.sign({ id: profile.id }, APP_SECRET)
+    token: jwt.sign({ id: profile.id })
   };
 }
 
