@@ -1,22 +1,18 @@
 <template>
-  <li>
-    <RouterLInk :to="`/goals/${goal.id}`">
-      {{goal.name}}
-    </RouterLInk>
-
-    <DateDisplay :date="goal.startDate"/>
-  </li>
+  <div>
+    <h2>Your Goals goal.vue</h2>
+    <li>
+      {{goal.name}} due tbd
+    </li>
+  </div>
 </template>
 
 <script>
-import DateDisplay from '../dates/DateDisplay';
+// import DateDisplay from '../dates/DateDisplay';
 
 export default {
   props: {
     goal: null
-  },
-  components: {
-    DateDisplay
   }
 };
 </script>
