@@ -67,5 +67,17 @@ export default {
       body: JSON.stringify(goal)
     })
       .then(response => response.json());
+  },
+
+  updateGoal(goal) {
+    return fetch(`/api/goals/${goal.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify(goal)
+    })
+      .then(response => response.json());
   }
 };

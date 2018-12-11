@@ -27,9 +27,12 @@ router.post('/signup', (req, res) => {
       console.log('creating new user profile...');
 
       client.query(`
-        INSERT into profile (username, password)
+        INSERT into profile (
+          username, 
+          password
+        )
         VALUES ($1, $2)
-        RETURNING id, username;
+        RETURNING *;
       `,
       [username, password]
       )
@@ -50,7 +53,7 @@ router.post('/signin', (req, res) => {
   }
 
   client.query(`
-    SELECT id, username, password 
+    SELECT id, username, password
     FROM profile
     WHERE username = $1;
   `,

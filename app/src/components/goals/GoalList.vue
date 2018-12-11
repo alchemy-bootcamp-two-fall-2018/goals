@@ -19,6 +19,10 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>

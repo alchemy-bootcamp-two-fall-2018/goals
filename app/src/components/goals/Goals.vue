@@ -1,11 +1,14 @@
 <template>
   <section class="goals">
+    
     <h2>My Goals</h2>
     <h3>Add a New Goal</h3>
     <AddGoal v-bind:onAdd="handleAdd"/>
+
     <h3>Current Goals</h3>
     <GoalList v-if="goals && goals.length > 0" v-bind:goals="goals"/>
     <p v-else>Add a goal to get started!</p>
+
   </section>
 </template>
 
