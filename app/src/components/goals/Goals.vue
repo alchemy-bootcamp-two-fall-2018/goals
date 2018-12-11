@@ -1,11 +1,9 @@
 <template>
-  <section class="goals">
-    <h2>My Goals</h2>
-    <h3>Add a Goal</h3>
-    <AddGoal :onAdd="handleAdd"/>
-    <h3>Your Goals</h3>
+  <section class="home">
+    <h2 class="look">My Goals</h2>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal!</p>
+    <AddGoal :onAdd="handleAdd"/>
   </section>
 </template>
 
@@ -45,7 +43,8 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style>
+
 
 </style>
 

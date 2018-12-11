@@ -1,5 +1,5 @@
 <template>
-    <li>{{goal.name}} the {{goal.type}}</li>
+    <li>{{goal.title}} starts {{goal.startdate}} and ends {{goal.enddate}}</li>
 </template>
 
 <script>

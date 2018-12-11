@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form class="form" @submit.prevent="handleSubmit">
+    <h3>Add a Goal</h3>
     <label>Title:</label>
     <input v-focus v-model="goal.title" require>
     <label>Start Date:</label>
@@ -43,8 +44,11 @@ export default {
 <style lang="postcss" scoped>
 
 form {
+  background: #c1d37f;
   border: 1px solid #aaa;
-  padding: 10px;
+  padding: 10px 10px 20px 10px;
+  width: 40%;
+  margin: 0 20px;
 }
 
 input, button {

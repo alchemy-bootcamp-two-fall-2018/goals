@@ -1,14 +1,15 @@
 <template>
   <div class="app">
     <header>
+      <nav v-if="user">
+        <p class=menu-button><RouterLink to="/">Home</RouterLink></p>
+        <p class=menu-button><RouterLink to="/goals">Goals</RouterLink></p>
+        <p class=menu-button><a href="#" @click="handleLogout">Logout</a></p>
+       </nav>
       <span v-if="user">
-        Hello {{user.username}}!
+        <p class="greet">Hello {{user.username}}!</p>
       </span>
-      <!-- <nav v-if="user"> -->
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/goals">Goals</RouterLink>
-        <a href="#" @click="handleLogout">Logout</a>
-      <!-- </nav> -->
+
     </header>
     <main>
       <RouterView v-if="user" :user="user"/> 
@@ -74,8 +75,42 @@ export default {
 </script>
 
 <style>
+  header {
+    display: flex;
+    background: #664e4c;
+    color: #c1d37f;
+  }
+  header a {
+    color: #c1d37f;
+    text-decoration: none;
+  }
+  header a:hover {
+    color: #f0e2a3;
+  }
 
+  body {
+    margin: 0;
+    padding: 0;
+  }
 
+  nav {
+    display: flex;
+    align-content: center;
+  }
 
+  .app {
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-button {
+    margin: 20px;
+  }
+
+  .greet {
+    font-size: 1.4em;
+    margin-top: 16px;
+    margin-left: 40px;
+  }
 
 </style>
