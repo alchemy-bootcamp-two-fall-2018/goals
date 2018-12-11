@@ -1,5 +1,5 @@
 <template>
-    <li>{{goal.title}} from {{goal.type}}</li>
+    <li>{{goal.title}} at {{goal.type}}</li>
 </template>
 
 <script>
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style scoped>
-
+li {
+    list-style: none;
+    padding: 10px;
+}
 </style>

@@ -57,7 +57,7 @@ export default {
       .then(response => response.json());      
   },
 
-  addGoals(goal) {
+  addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
   }
