@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    
    <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/grapplers">grapplers</RouterLink>
+      <RouterLink to="/goals">Goals</RouterLink>
 
   </div>
 </template>

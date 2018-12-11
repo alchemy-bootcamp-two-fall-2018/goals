@@ -2,7 +2,7 @@
     <section>
         <h2> Welcome Home buddy (HomeFile)</h2>
         <p>
-            <RouterLink to="/grapplers">Grapplers </RouterLink>
+            <RouterLink to="/Goals">Goals </RouterLink>
         </p>
     </section>
 </template>
