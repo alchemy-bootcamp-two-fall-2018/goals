@@ -22,6 +22,6 @@ function checkAuth(req, res, next) {
 
 // register our routes
 app.use('/api/auth', auth);
-app.use('/api/pets', checkAuth, pets);
+app.use('/api/goals', checkAuth, goals);
 
 module.exports = app;
