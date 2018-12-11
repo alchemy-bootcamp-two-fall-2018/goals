@@ -8,6 +8,8 @@ const getOptions = (method, data) => {
         options.headers['Content-Type'] = 'application/json';
         options.body = JSON.stringify(data);
     }
+
+    return options;
 };  
 
 export default {

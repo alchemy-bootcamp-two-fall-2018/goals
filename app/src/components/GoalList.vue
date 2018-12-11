@@ -1,5 +1,5 @@
 <template>
-    <ul>
+    <ul v-if="goals">
         <Goal v-for="goal in goals"
             :key="goal.id"
             :goal="goal" />
@@ -11,7 +11,7 @@ import Goal from './Goal.vue';
 
 export default {
     props: {
-        goals: Array
+        goals: null
     },
     components: {
         Goal
