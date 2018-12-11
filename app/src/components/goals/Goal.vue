@@ -14,8 +14,9 @@
     <div v-else>
       NOT COMPLETED
     </div>
-
-    <button @click="handleUpdate">Update</button>
+    
+    <!--add condition for when button shouldn't show-->
+    <button @click="handleCompleted">Completed</button>
  
   </li>
 </template>
@@ -34,7 +35,7 @@ export default {
   },
 
   methods: {
-    handleUpdate() {
+    handleCompleted() {
       this.goal.endDate = new Date().toLocaleDateString();
       this.onEdit(this.goal);
     }

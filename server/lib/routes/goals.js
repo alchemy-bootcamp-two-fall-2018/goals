@@ -67,5 +67,20 @@ router.put('/:id', (req, res) => {
       res.json(result.rows[0]);
     });
 });
+
+router.get('/stats', (req, res) => {
+  client.query(`
+    SELECT 
+      profile_id as "profileId",
+      COUNT(goal.id) as count
+    FROM goal
+    GROUP BY profile_id;
+  `,
+  []
+  )
+    .then(result => {
+      res.json(result.rows);
+    });
+});
  
 module.exports = router;

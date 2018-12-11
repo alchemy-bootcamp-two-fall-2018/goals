@@ -70,7 +70,6 @@ export default {
   },
 
   updateGoal(goal) {
-    console.log('\n\n\n', goal);
     return fetch(`/api/goals/${goal.id}`, {
       method: 'PUT',
       headers: {
@@ -78,6 +77,17 @@ export default {
         'Authorization': token
       },
       body: JSON.stringify(goal)
+    })
+      .then(response => response.json());
+  },
+
+  getGoalStats() {
+    return fetch('/api/goals/stats', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
     })
       .then(response => response.json());
   }
