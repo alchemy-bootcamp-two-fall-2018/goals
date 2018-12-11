@@ -17,10 +17,10 @@
         <input v-model="sUp.username">
       </label>
       <label>First Name:
-        <input v-model="sUp.fname">
+        <input v-model="sUp.fName">
       </label>
       <label>Last Name:
-        <input v-model="sUp.lname">
+        <input v-model="sUp.lName">
       </label>
       <label>Email:
         <input v-model="sUp.email">

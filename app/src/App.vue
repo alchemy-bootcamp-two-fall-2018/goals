@@ -4,7 +4,7 @@
       <span v-if="user">Hello {{user.username}}</span>
       <nav>
         <RouterLink v-if="user" to="/">Home</RouterLink>
-        <RouterLink to="/sign">SignIn/Up</RouterLink>
+        <RouterLink v-if="!user" to="/sign">SignIn/Up</RouterLink>
       </nav>
 
       <main>
@@ -37,6 +37,10 @@ export default {
   methods: {
     handleSignIn(user) {
       console.log(user);
+      api.signIn(user)
+        .then(signedUser => {
+          this.user = signedUser;
+        });
     },
     handleSignUp(user) {
       api.signUp(user)
