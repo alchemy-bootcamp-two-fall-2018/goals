@@ -14,10 +14,10 @@ client.query(`
     );
     
 `)
-    .then(
-        () => console.log('created tables completed'),
-        err => console.log(err)
-    )
-    .then(() => {
-        client.end();
-    });
+  .then(
+    () => console.log('created tables completed'),
+    err => console.log(err)
+  )
+  .then(() => {
+    client.end();
+  });
