@@ -1,15 +1,15 @@
 <template>
   <li>
     <p>{{goal.title}}</p>
-    <p>{{goal.startDate}}</p>
-    <p>{{goal.endDate}}</p>
+    <p>Start Date: {{goal.startDate}}</p>
+    <p>Completed Date: {{goal.endDate}}</p>
   </li>
 </template>
 
 <script>
 export default {
   props: {
-    goal: null
+    goal: Object
   }
 };
 </script>

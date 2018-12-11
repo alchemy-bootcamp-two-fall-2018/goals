@@ -23,7 +23,12 @@ router.post('/', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO goal (title, start_date, end_date, profile_id)
+    INSERT INTO goal (
+      title, 
+      start_date as "startDate", 
+      end_date as "endDate", 
+      profile_id
+    )
     VALUES($1, $2, $3, $4)
     RETURNING *;
   `,

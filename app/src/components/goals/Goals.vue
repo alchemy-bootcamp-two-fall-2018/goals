@@ -37,6 +37,7 @@ export default {
     handleAdd(goal) {
       return api.addGoal(goal)
         .then(saved => {
+          console.log('this is saved', saved);
           this.goals.push(saved);
         });
     }

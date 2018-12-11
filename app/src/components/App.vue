@@ -34,7 +34,7 @@ export default {
   },
 
   created() {
-    const json = window.localStoraage.getItem('profile');
+    const json = window.localStorage.getItem('profile');
     if(json) {
       this.setUser(JSON.parse(json));
     }

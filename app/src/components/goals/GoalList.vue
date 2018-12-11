@@ -11,7 +11,7 @@ import Goal from './Goal';
 
 export default {
   props: {
-    goals: null
+    goals: Array
   },
   components: {
     Goal

@@ -2,18 +2,19 @@
   <form @submit.prevent="handleSubmit">
     <p>
       <label>Goal:</label>
-      <input v-model="goal.title" require>
+      <input v-model="goal.title">
     </p>
     
     <p>
       <label>Start Date:</label>
-      <input v-model="goal.startDate" require>
+      <input v-model="goal.startDate">
     </p>
 
     <p>
-      <label>End Date:</label>
-      <input v-model="goal.endDate" require>
+      <label>Completed Date: </label>
+      <input v-model="goal.endDate">
     </p>
+
     <button>Add</button>
   </form>
 </template>
