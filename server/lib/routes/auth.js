@@ -5,6 +5,14 @@ const jwt = require('jsonwebtoken');
 
 const APP_SECRET = 'CHANGEMENOW';
 
+function getProfileWithToken(profile) {
+  return {
+    id: profile.id,
+    username: profile.username,
+    token: jwt.sign({ id: profile.id }, APP_SECRET)
+  };
+}
+
 router
   .post('/signup', (req, res) => {
 
@@ -45,9 +53,7 @@ router
         )
           .then(result => {
             const profile = result.rows[0];
-            profile.token = jwt.sign({ id:profile.id }, APP_SECRET);
-            // return profile object that has id that will be used as a token
-            res.json(profile);
+            res.json(getProfileWithToken(profile));
           });
       });
   })
@@ -80,11 +86,7 @@ router
           return;
         }
 
-        res.json({
-          id: profile.id,
-          username: profile.username,
-          token: jwt.sign({ id: profile.id }, APP_SECRET)
-        });
+        res.json(getProfileWithToken(profile));
       });
   });
   
