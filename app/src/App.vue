@@ -39,7 +39,10 @@ export default {
       console.log(user);
     },
     handleSignUp(user) {
-      api.signUp(user);
+      api.signUp(user)
+        .then(addedUser => {
+          this.user = addedUser;
+        });
     }
   }
 };

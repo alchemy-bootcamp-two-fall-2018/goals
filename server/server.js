@@ -29,8 +29,12 @@ app.post('/signup', (req, res) => {
       client.query(`
         INSERT INTO users (username, first_name, last_name, email, password)
         VALUES ($1, $2, $3, $4, $5)
+        RETURNING id, username;
       `,
-      [username, body.fname, body.lname, body.email, password]);
+      [username, body.fname, body.lname, body.email, password])
+        .then(result => {
+          res.json(result.rows[0]);
+        });
     });
 });
 const PORT = 3000;
