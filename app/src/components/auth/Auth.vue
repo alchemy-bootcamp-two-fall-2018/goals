@@ -26,7 +26,7 @@
                 Already have an account?  
                 <button @click="method = 'signin'">Sign In</button>
             </p>
-            <form @submit.prevent="handleSignUpSubmit(credentials)">
+            <form @submit.prevent="handleSignUpSubmit(profile)">
                 <label>
                     Username:
                     <input v-model="profile.username" type="text" required>
