@@ -2,7 +2,16 @@
   <li>
     <p>Goal: {{goal.title}}</p>
     <p>Start Date: {{goal.startDate}}</p>
-    <p>End Date: {{goal.endDate}}</p>
+    
+    <div v-if="goal.endDate">
+      Completed Date:
+      {{goal.endDate}}
+    </div>
+    <div v-else>
+      NOT COMPLETED
+    </div>
+
+    <button @click="handleUpdate">Update</button>
 
   </li>
 </template>
@@ -10,7 +19,14 @@
 <script>
 export default {
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
+  },
+  methods: {
+    handleUpdate() {
+      this.goal.endDate = new Date();
+      this.onEdit(this.goal);
+    }
   }
 };
 </script>
@@ -18,6 +34,9 @@ export default {
 <style scoped>
   li{
     padding: 10px 0;
-    /* list-style: none; */
+    list-style-type: none;
+    border: 2px solid black;
+    margin: 10px 10px;
+    width: 350px;
   }
 </style>
