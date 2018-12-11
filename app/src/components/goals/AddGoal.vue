@@ -1,13 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <label>Name:</label>
+    <label>Goal:</label>
     <input v-focus v-model="goal.name" require>
-    <label>Type:</label>
-    <input v-focus v-model="goal.type" require>
     <label>Start Date:</label>
     <input v-focus v-model="goal.start"> 
     <label>End Date:</label>
-    <input v-focus v-model="goal.end">
+    <input v-focus v-model="goal.enddate">
     <button>Add</button>
   </form>
 </template>
@@ -16,23 +14,24 @@
 function initgoal() {
   return {
     name: '',
-    type: ''
+    startDate: '',
+    endDate: ''
   };
 }
 export default {
   props: {
-    onAdd: Function
+    onAdd: initGoal()
   },
   data() {
     return {
-      goal: initgoal()
+      goal: initGoal()
     };
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.goal)
         .then(() => {
-          this.goal = initgoal();
+          this.goal = initGoal();
         });
     }
   }

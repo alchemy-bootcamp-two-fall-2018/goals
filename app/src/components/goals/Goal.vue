@@ -1,5 +1,9 @@
 <template>
-  <li>{{goal.name}} the {{goal.type}}</li>
+  <li>
+    <p>Goal: {{goal.name}}</p>
+    <p>Start Date: {{goal.startDate}}</p>
+    <p>End Date: {{goal.endDate}}</p>
+  </li>
 </template>
 
 <script>

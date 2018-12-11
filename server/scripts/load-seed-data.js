@@ -2,9 +2,9 @@ require('dotenv').config()
 const client = require('../lib/db-client');
 
 const goals = [
-  { name: 'Eat', type: 'mandatory' },
-  { name: 'Finish BC2', type: 'short' },
-  { name: 'Move to Island', type: 'long' }
+  { name: 'Eat', startDate: '12/10/18', endDate: '12/10/18' },
+  { name: 'Finish BC2', startDate: '12/10/18', endDate: '4/3/18' },
+  { name: 'Move to Island', startDate: '8/22/20', endDate: '12/10/25' }
 ];
 
 client.query(`
@@ -12,6 +12,7 @@ client.query(`
   VALUES ($1, $2)
   RETURNING id;
 `,
+['jei', 'jeijei',]
 )
   .then(result => {
     const profile = result.rows[0];
@@ -19,10 +20,10 @@ client.query(`
     return Promise.all(
       goals.map(goal => {
         return client.query(`
-          INSERT INTO goal (name, type, profile_id)
-          VALUES ($1, $2, $3)
+          INSERT INTO goal (name, start_date, end_date, profile_id)
+          VALUES ($1, $2, $3, $4)
         `,
-        [goal.name, goal.type, profile.id]);
+        [goal.name, goal.startDate, goal.endDate, profile.id]);
       })
     );
   })

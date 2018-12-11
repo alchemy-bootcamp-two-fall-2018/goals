@@ -3,12 +3,10 @@ const client = require('../db-client');
 
 router
   .post('/signup', (req, res) => {
-
     const body = req.body;
     const username = body.username;
     const password = body.password;
-    
-    // username and password needs to exist
+  
     if(!username || !password) {
       res.status(400).json({ error: 'username and password required' });
       return;
@@ -28,7 +26,6 @@ router
 
         console.log('creating new user profile...');
 
-        // insert into profile the new user
         client.query(`
           INSERT into profile (username, password)
           VALUES ($1, $2)
@@ -37,7 +34,7 @@ router
         [username, password]
         )
           .then(result => {
-            // return profile object id, used as a token
+            // return profile object that will be used as a token
             res.json(result.rows[0]);
           });
       });

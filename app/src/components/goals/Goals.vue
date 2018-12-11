@@ -1,11 +1,11 @@
 <template>
   <section class="goals">
-    <h2></h2>
-    <h3></h3>
+    <h2>My Goals</h2>
+    <h3>Add a New Goal</h3>
     AddGoal :onAdd="handleAdd"/>
-    <h4>Current Goals</h4>
+    <h3>Current Goals</h3>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
-    <p v-else>Add a goal to start!</p>
+    <p v-else>Add a goal to get started!</p>
   </section>
 </template>
 
@@ -24,10 +24,13 @@ export default {
     AddGoal,
     GoalList
   },
-created() {
+  created() {
   api.getGoals()
     .then(goals => {
       this.goals = goals;
+    })
+    .catch(err => {
+      this.error = err;
     });
 },
 methods: {

@@ -1,6 +1,6 @@
 const pg = require('pg');
 
-const DATABASE_URL = 'postgres://localhost:5432/goals';
+const DATABASE_URL = 'postgres://postgres:jvamp@localhost:5432/goalsdb';
 
 const Client = pg.Client;
 

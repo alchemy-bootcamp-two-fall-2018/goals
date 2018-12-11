@@ -8,7 +8,7 @@
         <button @click="method = 'signup'">Sign Up</button>
       </p>
 
-      <form @submit.prevent="handleSignInSubmit(proflie)">
+      <form @submit.prevent="handleSignInSubmit(profile)">
         <label>
           Username:
           <input v-model="profile.username" required>
@@ -43,6 +43,7 @@
         </label>
       </form>
     </div>  
+      <pre v-if="error">{{error}}</pre>
   </section>
 </template>
         
@@ -81,7 +82,7 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 label {
   display: block;
   padding: 5px 0;

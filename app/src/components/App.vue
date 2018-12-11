@@ -51,7 +51,7 @@ export default {
         });
     },
     handleSignIn(credentials) {
-      return api.ignIn(credentials)
+      return api.signIn(credentials)
         .then(user => {
           this.setUser(user);
         });

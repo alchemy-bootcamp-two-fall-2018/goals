@@ -2,20 +2,28 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "http-server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "create-tables": "node scripts/create-tables.js",
+    "drop-tables": "node scripts/drop-tables.js",
+    "load-seed-data": "node scripts/load-seed-data.js",
+    "recreate-tables": "npm run drop-tables && npm run create-tables",
+    "db-load-all": "npm run recreate-tables && npm run load-seed-data",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0",
+    "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "Marty Nelson <marty@martypdx.com>",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^5.10.0",
-    "nodemon": "^1.18.8"
-  },
   "dependencies": {
-    "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "shortid": "^2.2.14",
-    "vue-router": "^3.0.2"
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.7",
+    "pg": "^7.7.1",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
   }
 }
