@@ -28,7 +28,7 @@
       <label>Password:
         <input v-model="sUp.password">
       </label>
-      <button>SignUn</button>
+      <button>SignUp</button>
     </form>
   </section>
 </template>
