@@ -1,12 +1,21 @@
 
 <template>
-    <li>{{goal.name}} the {{goal.type}}</li>
+    <li><strong>Goal: </strong>{{goal.name}} <strong>Type:</strong> {{goal.type}}
+    <button @click="handleUpdate">Complete</button>
+    </li>
 </template>
 
 <script>
 export default {
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
+  },
+  methods: {
+    handleUpdate() {
+      this.goal.endDate = new Date();
+      this.onEdit(this.goal);
+    }
   }
 };
 </script>

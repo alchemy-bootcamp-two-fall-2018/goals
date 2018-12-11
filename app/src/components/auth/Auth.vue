@@ -2,7 +2,6 @@
         <section>
             <div v-if="method === 'signin'">
                 <h2>Sign in</h2>
-
                 <p>
                     Need to register?
                     <button @click="method = 'signup'">Sign up</button>
@@ -27,7 +26,7 @@
                 <h2>Sign up</h2>
 
                 <p>Already have an account?
-                    <button @click="method = 'signIn'">Sign in</button>
+                    <button @click="method = 'signin'">Sign in</button>
                 </p>
                 <form @submit.prevent="handleSignUpSubmit(profile)">
                     <label>

@@ -1,9 +1,9 @@
 <template>
     <form @submit.prevent="handleSubmit">
         <label>Name:</label>
-        <input v-focus v-model="pet.name" require>
+        <input v-focus v-model="goal.name" require>
         <label>Type:</label>
-        <input v-focus v-model="pet.type" require>
+        <input v-focus v-model="goal.type" require>
         <button>Add</button>
   </form>
 </template>

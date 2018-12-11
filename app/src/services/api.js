@@ -6,7 +6,7 @@ const getOptions = (method, data) => {
     headers: {}
   };
   if(data) {
-    options.headers['Content-Type'] = 'applications/json';
+    options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
   }
   if(token) {
@@ -31,8 +31,8 @@ export default {
           });
       });
   },
-  signIn(credentitals) {
-    return fetch('/api/auth/signin', getOptions('POST', credentitals))
+  signIn(credentials) {
+    return fetch('/api/auth/signin', getOptions('POST', credentials))
       .then(response => {
         if(response.ok) {
           return response.json();
