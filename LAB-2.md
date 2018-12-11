@@ -27,11 +27,14 @@ You will need to add a new route to return the summary goal data:
 
 That route will use a SQL aggregation to retrieve the info for calling user:
 * implicit `WHERE user_id = $1` where `$1` is `req.userId`
+* **HINT:** You don't need to use a `GROUP BY` for this one
 * **HINT:** See `DATEDIFF` in `pqsql` docs!
 
 ## Bonus
 
 * Include another route that provides the same goal aggregations, but for a list of all users
+  * **HINT:** Same query as above, but you need to not apply the `WHERE` and instead group by user (profile_id)
+  * Include the user's name (see two techniques in classwork code)
 
 ## Rubric
 
