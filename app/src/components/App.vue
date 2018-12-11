@@ -12,8 +12,9 @@
     </nav>
   </header>
 
+
   <main>
-    <RouterView v-if="user :user="user"/>
+    <RouterView v-if="user" :user="user"/>
     <Auth v-else
       :onSignUp="handleSignUp"
       :onSignIn="handleSignIn"
