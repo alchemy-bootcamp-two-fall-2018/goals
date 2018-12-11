@@ -11,7 +11,7 @@
     "db-load-all": "npm run recreate-tables && npm run load-seed-data",
     "pretest": "npm run lint",
     "test": "exit 0",
-    "start": "nodemon server.js",
+    "start": "nodemon server.js"
   },
   "license": "ISC",
   "dependencies": {
