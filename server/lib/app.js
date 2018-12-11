@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const auth = require('./routes/auth');
-// const goals = require('./routes/goals');
+const goals = require('./routes/goals');
 
 
 //morgan logging 
@@ -24,5 +24,5 @@ function checkAuth(req, res, next) {
 }
 
 app.use('/api/auth', auth);
-// app.use('/api/goals', checkAuth, goals);
+app.use('/api/goals', checkAuth, goals);
 module.exports = app;
