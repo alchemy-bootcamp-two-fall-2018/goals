@@ -4,7 +4,7 @@ const morgan = require('morgan');
 // const goals = require('./routes/goals');
 // const profiles = require('./routes/profiles');
 
-// enhanced logging
+// enhanced logging using morgan
 app.use(morgan('dev'));
 
 // register the json "middleware" body parser
