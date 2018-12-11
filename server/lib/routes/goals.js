@@ -40,11 +40,13 @@ router
   .put('/:id/completed', (req, res) => {
 
     client.query(`
-      UPDATE goals
-      SET end_date as endDate = $1
-      WHERE id = $2
-      AND profile_id = $3
-      RETURNING *;
+        select profile_id as "profileId", 
+        min(profile.username) as "profileName",
+        count(goals.id)
+      from goals
+      join profile
+      on goals.profile_id = profile.id
+      group by profile_id;
     `,
     [null, req.params.id, req.userId]
     )
