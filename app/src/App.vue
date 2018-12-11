@@ -5,6 +5,7 @@
       <nav>
         <RouterLink v-if="user" to="/">Home</RouterLink>
         <RouterLink v-if="!user" to="/sign">SignIn/Up</RouterLink>
+        <button v-if="user" @click="() => this.user = null">Logout</button>
       </nav>
 
       <main>
@@ -36,7 +37,6 @@ export default {
   },
   methods: {
     handleSignIn(user) {
-      console.log(user);
       api.signIn(user)
         .then(signedUser => {
           this.user = signedUser;
