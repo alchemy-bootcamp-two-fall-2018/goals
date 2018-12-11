@@ -9,7 +9,7 @@ router
     const password = body.password;
 
     if(!username || !password) {
-      res.status(400).json({ error: 'username and password required'});
+      res.status(400).json({ error: 'username and password required' });
       return;
     }
 
@@ -34,7 +34,7 @@ router
         )
           .then(result => {
             res.json(result.rows[0]);
-        });
+          });
       });
   })
   
