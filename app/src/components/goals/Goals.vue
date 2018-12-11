@@ -2,7 +2,7 @@
   <section class="goals">
     <h2>My Goals</h2>
     <h3>Add a New Goal</h3>
-    <AddPet :onAdd="handleAdd"/>
+    <AddGoal :onAdd="handleAdd"/>
     <h3>Current Goals</h3>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a new goal to get started!</p>

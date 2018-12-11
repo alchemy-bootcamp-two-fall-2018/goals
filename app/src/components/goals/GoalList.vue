@@ -1,6 +1,6 @@
 <template>
   <ul v-if="goals">
-    <Pet v-for="goal in goals" 
+    <Goal v-for="goal in goals" 
       :key="goal.id"
       :goal="goal"/>
   </ul>
