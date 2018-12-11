@@ -11,7 +11,7 @@
 
 <script>
 import api from '../../services/api.js';
-// import AddGoal from './AddGoal';
+import AddGoal from './AddGoal';
 import GoalList from './GoalList';
 
 export default {
@@ -21,7 +21,7 @@ export default {
     };
   },
   components: {
-    //AddGoal,
+    AddGoal,
     GoalList
   },
   created() {
