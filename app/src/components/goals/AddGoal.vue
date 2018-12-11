@@ -5,9 +5,9 @@
     <label>Type:</label>
     <input v-focus v-model="goal.type" require>
     <label>Start Date:</label>
-    <input v-focus v-model="goal.startDate">
+    <input type="date" v-focus v-model="goal.startDate">
     <label>End Date:</label>
-    <input v-focus v-model="goal.endDate">
+    <input type="date" v-focus v-model="goal.endDate">
     <button>Add</button>
   </form>
 </template>

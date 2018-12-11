@@ -2,13 +2,25 @@
     <li
     @click="toggle"
     :class="{'strikethrough': strike === true }"
-    >{{goal.title}} at {{goal.type}}</li>
+    >{{goal.title}} at {{goal.type}} 
+    <p>
+    Start Date: <DateDisplay :date="goal.startDate"/>
+    </p>
+    <p>
+    End Date: <DateDisplay :date="goal.endDate"/>
+    </p>
+    </li>
 </template>
 
 <script>
+import DateDisplay from '../DateDisplay';
+
 export default {
   props: {
     goal: null
+  },
+  components: {
+    DateDisplay
   },
   data() {
       return {
