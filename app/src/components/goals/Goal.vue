@@ -2,7 +2,7 @@
 <template>
     <li>
       <strong>Goal: </strong>{{goal.name}} 
-      <strong>Type:</strong> {{goal.type}} {{goal.startDate}}{{goal.endDate}} {{goal.completed}}
+      <strong>Type:</strong> {{goal.type}} {{new Date(goal.startDate).toLocaleDateString()}}{{new Date(goal.endDate).toLocaleDateString()}} {{goal.completed}}
       <button @click="onUpdate">Complete</button>
     </li>
 </template>
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     onUpdate() {
-      this.goal.endDate = new Date();
+      this.goal.endDate = new Date().toLocaleDateString();
       this.goal.completed = true;
       this.onEdit(this.goal);
     }
