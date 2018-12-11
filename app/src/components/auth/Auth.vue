@@ -18,14 +18,6 @@
           <input type="password" v-model="profile.password" required>
         </label>
         <label>
-          First Name:
-          <input type="password" v-model="profile.first" required>
-        </label>
-        <label>
-          Last Name:
-          <input type="password" v-model="profile.last" required>
-        </label>
-        <label>
           <button>Sign In</button>
         </label>
       </form>
@@ -47,6 +39,14 @@
         <label>
           Password:
           <input type="password" v-model="profile.password" required>
+        </label>
+         <label>
+          First Name:
+          <input v-model="profile.first" required>
+        </label>
+        <label>
+          Last Name:
+          <input v-model="profile.last" required>
         </label>
         <label>
           <button>Sign Up</button>
