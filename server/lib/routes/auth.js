@@ -35,7 +35,6 @@ router
           .then(result => {
             const profile = result.rows[0];
             profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
-
             res.json(profile);
           });
       });
