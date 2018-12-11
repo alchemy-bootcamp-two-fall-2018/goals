@@ -66,6 +66,37 @@ app.post('/signin', (req, res) => {
     });
 });
 
+// app.get('/goals/:token', (req, res) => {
+//   client.query(`
+//     SELECT
+//       goals.title,
+//       goals.start_date,
+//       goals.end_date
+//     FROM goals
+//     JOIN users
+//     ON goals.user_id = users.id
+//     WHERE goals.user_id = $1;
+//   `,
+//   [req.param.token])
+//     .then(result => {
+//       res.json(result.rows[0]);
+//     });
+// });
+
+app.post('/goals/:token', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+    INSERT INTO goals (title, start_date, end_date, user_id)
+    VALUES($1, $2, $3, $4)
+    RETURNING title
+  `,
+  [body.title, body.stDate, body.enDate, body.userId])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {

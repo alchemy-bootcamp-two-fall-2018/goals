@@ -5,9 +5,9 @@ export default {
     token = t;
   },
 
-  getToken() {
-    return token;
-  },
+  // getToken() {
+  //   return token;
+  // },
 
   signUp(user) {
     return fetch('/signup', {
@@ -49,7 +49,20 @@ export default {
       });
   },
 
+  getGoals() {
+    return fetch(`/goals/${token}`)
+      .then(response => response.json());
+  },
+
   addGoal(goal) {
-    console.log(goal);
+    goal.userId = token;
+    return fetch(`/goals/${token}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(goal)
+    })
+      .then(response => response.json());
   }
 };

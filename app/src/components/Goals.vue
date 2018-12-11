@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2>Add a Goal:</h2>
-    <form @submit.prevent="onSubmit">
+    <form @submit.prevent="onAdd">
       <label>Title:
         <input v-model="goal.title">
       </label>
@@ -13,6 +13,10 @@
       </label>
       <button>Add</button>
     </form>
+
+    <!-- <ul v-if="goals">
+      <li v-for="g in goals" :key="g.id">{{g.title}}</li>
+    </ul> -->
   </section>
 
 </template>
@@ -24,13 +28,14 @@ import api from '../services/api';
 export default {
   data() {
     return {
-      goal: {}
+      goal: {},
+      // goals: api.getGoals(),
     };
   },
   methods: {
-    onSubmit() {
-      this.goal.userId = api.getToken();
-      api.addGoal(this.goal);
+    onAdd() {
+      api.addGoal(this.goal)
+        .then(r => console.log('Goals', r));
     }
   }
 };
