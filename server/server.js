@@ -5,7 +5,6 @@ const client = require('./db-client');
 app.use(express.json());
 
 app.post('/signup', (req, res) => {
-  console.log(req.body);
   const body = req.body;
   const username = body.username;
   const password = body.password;
@@ -15,15 +14,15 @@ app.post('/signup', (req, res) => {
     return;
   }
 
-  // client.query(`
-  //   SELECT id FROM users WHERE username = $1;
-  // `,
-  // [username])
-  //   .then(result => {
-  //     if(result.row.length > 0) {
-  //       res.status(400).json({ error: 'username already exists' });
-  //       return;
-  //     }
+  client.query(`
+    SELECT id FROM users WHERE username = $1;
+  `,
+  [username])
+    .then(result => {
+      if(result.rows.length > 0) {
+        res.status(400).json({ error: 'username already exists' });
+        return;
+      }
 
       console.log('creating new user profile...');
 
@@ -32,7 +31,7 @@ app.post('/signup', (req, res) => {
         VALUES ($1, $2, $3, $4, $5)
       `,
       [username, body.fname, body.lname, body.email, password]);
-    // });
+    });
 });
 const PORT = 3000;
 
