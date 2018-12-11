@@ -49,6 +49,7 @@ router
         const username = body.username; 
         const password = body.password;
 
+
         // logic to check username and password upon sign in 
         if(!username || !password) {
             res.status(400).json({ error: 'username and password required' });
@@ -71,7 +72,8 @@ router
                 }
                 res.json({
                     id: result.rows[0].id,
-                    username: result.rows[0].username
+                    username: result.rows[0].username,
+                    token: result.rows[0].id
 
                 });
             });

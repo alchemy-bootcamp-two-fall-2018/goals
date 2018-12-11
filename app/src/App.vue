@@ -11,7 +11,7 @@
 
       <main>
         <RouterView v-if="user" :user="user"/>
-        <Auth v-else:
+        <Auth v-else
         :onSignUp="handleSignUp"
         :onSignIn="handleSignIn"/>
       </main>
@@ -41,6 +41,10 @@ export default {
     methods: {
         handleSignUp(profile) {
             console.log('data to be added to profile table', profile);
+            return api.signUp(profile)
+                .then(user => {
+                    this.setUser(user);
+                });
         }, 
 
 
@@ -48,7 +52,7 @@ export default {
             console.log('would login with', credentials);
             return api.signIn(credentials)
                 .then(user => {
-                    this.user = user;
+                    this.setUser(user);
                 })
             ;
         }, 
@@ -60,7 +64,7 @@ export default {
                 window.localStorage.setItem('profile', JSON.stringify(user));
             }
             else {
-                api.setToekn();
+                api.setToken();
                 window.localStorage.removeItem('profile');
             }
         }, 

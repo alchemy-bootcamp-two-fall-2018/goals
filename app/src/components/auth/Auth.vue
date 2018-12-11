@@ -32,7 +32,7 @@
                 Already have an account?
                 <button @click="method = 'signin'"> Sign In</button>
             </p>
-            <form @submit.prevent="onSignup(profile)">
+            <form @submit.prevent="handleSignUpSubmit(profile)">
                  <label>
                     Username:
                     <input v-model="profile.username" required>
@@ -70,6 +70,13 @@ export default {
         handleSignInSubmit() {
             this.error = '';
             this.onSignIn(this.profile)
+                .catch(error => {
+                    this.error = error.error;
+                });
+        }, 
+        handleSignUpSubmit() {
+            this.error = '';
+            this.onSignUp(this.profile)
                 .catch(error => {
                     this.error = error.error;
                 });

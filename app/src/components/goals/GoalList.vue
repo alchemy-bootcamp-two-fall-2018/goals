@@ -12,7 +12,7 @@ import Goal from './Goal';
 export default {
 
     props: {
-        Goals: null
+        goals: null
     }, 
     components: {
         Goal
