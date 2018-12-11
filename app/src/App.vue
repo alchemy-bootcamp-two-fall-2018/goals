@@ -33,14 +33,14 @@ export default {};
 
 header {
   height: 75px;
-  background: yellowgreen;
+  background: lightsteelblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
  header img {
   height: 100%;
-  background: yellowgreen;
+  background: lightsteelblue;
 }
  nav a {
   text-decoration: none;

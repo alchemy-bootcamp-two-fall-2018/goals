@@ -1,15 +1,6 @@
 const pg = require('pg');
-
-// As we move to into deployment, this value will not
-// be hard-coded, but instead come from environment configuration
 const DATABASE_URL = 'postgres://localhost:5432/mygoals';
-// on windows, linux, or other systems where you need to 
-// specify username and password
-// const databaseUrl = 'postgres://<username>:<password>@localhost:5432/liveable_cities';
-
 const Client = pg.Client;
-
-// create our pg client object
 const client = new Client(DATABASE_URL);
 
 // call connect
