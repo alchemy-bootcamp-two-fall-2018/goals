@@ -6,7 +6,7 @@ const router = Router(); //eslint-disable-line new-cap
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, title, type
+      SELECT id, title, type, start, end
       FROM goals
       WHERE profile_id = $1;
     `,
@@ -20,11 +20,11 @@ router
     const body = req.body;
 
     client.query(`
-      INSERT INTO goals (title, type, profile_id)
-      VALUES($1, $2, $3)
+      INSERT INTO goals (title, type, profile_id, start, end)
+      VALUES($1, $2, $3, $4, $5)
       RETURNING *;
     `,
-    [body.title, body.type, req.userId])
+    [body.title, body.type, req.userId, body.start, body.end])
       .then(result => {
         res.json(result.rows[0]);
       });
