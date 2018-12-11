@@ -1,3 +1,4 @@
+require('dotenv').config()
 const client = require('../lib/db-client');
 
 const goals = [
