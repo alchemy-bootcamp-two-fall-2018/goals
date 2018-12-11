@@ -49,7 +49,11 @@
             <input v-model="profile.lastName" required>
           </label>
           <label>
+            Email:
+            <input type="email" v-model="profile.email" required>
+          </label>
             <br>
+          <label>
             <button>Sign Up</button>
           </label>
         </fieldset>

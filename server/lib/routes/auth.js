@@ -9,6 +9,7 @@ router
     const password = body.password;
     const firstName = body.firstName;
     const lastName = body.lastName;
+    const email = body.email;
 
     if(!username || !password) {
       res.status(400).json({ error: 'username and password required' });
@@ -28,11 +29,11 @@ router
         }
 
         client.query(`
-          INSERT into profile (username, password, first_name, last_name)
-          VALUES ($1, $2, $3, $4)
-          RETURNING id, username, first_name as "firstName", last_name as "lastName";
+          INSERT into profile (username, password, first_name, last_name, email)
+          VALUES ($1, $2, $3, $4, $5)
+          RETURNING id, username, first_name as "firstName", last_name as "lastName", email;
         `,
-        [username, password, firstName, lastName])
+        [username, password, firstName, lastName, email])
           .then(result => {
             res.json(result.rows[0]);
           });
