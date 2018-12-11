@@ -10,10 +10,10 @@ app.post('/signup', (req, res) => {
   const username = body.username;
   const password = body.password;
 
-  // if(!username || !password) {
-  //   res.status(400).json({ error: 'username and password required' });
-  //   return;
-  // }
+  if(!username || !password) {
+    res.status(400).json({ error: 'username and password required' });
+    return;
+  }
 
   // client.query(`
   //   SELECT id FROM users WHERE username = $1;
