@@ -4,6 +4,7 @@
       <span v-if="user">Hello {{user.username}}</span>
       <nav>
         <RouterLink v-if="user" to="/">Home</RouterLink>
+        <RouterLink v-if="user" to="/goals">Goals</RouterLink>
         <RouterLink v-if="!user" to="/sign">SignIn/Up</RouterLink>
         <button v-if="user" @click="() => this.user = null">Logout</button>
       </nav>
