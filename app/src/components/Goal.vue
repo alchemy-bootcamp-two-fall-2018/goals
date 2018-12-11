@@ -1,5 +1,7 @@
 <template>
-    <li>{{goal.title}}</li>
+    <li>
+        <p>{{goal.title}}</p>
+    </li>
 </template>
 
 <script>
@@ -11,5 +13,9 @@ export default {
 </script>
 
 <style>
-
+li {
+    padding: 20px;
+    font-weight: bold;
+    
+}
 </style>

@@ -1,4 +1,6 @@
 <template>
+<section>
+    <h2>Add a New Goal!</h2>
     <form @submit.prevent="handleSubmit">
         <label>Goal:
             <input v-model="goal.title" type="text">
@@ -11,6 +13,7 @@
         </label>
         <button>Submit</button>
     </form>
+</section>
 </template>
 
 <script>
@@ -42,5 +45,16 @@ export default {
 </script>
 
 <style>
-
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}
+button {
+    width: 50px;
+    margin: auto;
+    margin-top: 5px;
+    padding: 2px;
+}
 </style>
