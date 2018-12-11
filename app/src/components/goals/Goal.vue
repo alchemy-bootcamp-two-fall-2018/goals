@@ -4,7 +4,7 @@
       {{goal.name}}
     </RouterLInk>
 
-    <DateDisplay :date=goal.startDate:/>
+    <DateDisplay :date="goal.startDate"/>
   </li>
 </template>
 
