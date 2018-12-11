@@ -14,6 +14,32 @@
         </label>
 
         <label>
+          Password:
+          <input type="password" v-model="profile.password" required>
+        </label>
+
+        <label>
+          <button>Sign In</button>
+        </label>
+      </form>
+    </div>
+    
+    <div v-else>
+
+      <h2>Sign Up</h2>
+
+      <p>
+        Already have an account?
+        <button @click="method = 'signin'">Sign In</button>
+      </p>
+
+      <form @submit.prevent="handleSignUpSubmit(profile)">
+        <label>
+          Username:
+          <input v-model="profile.username" required>
+        </label>
+
+        <label>
           First Name:
           <input v-model="profile.firstName" required>
         </label>
@@ -35,7 +61,7 @@
         </label>
 
         <label>
-          <button>Sign In</button>
+          <button>Sign Up</button>
         </label>
       </form>
     </div>
@@ -47,7 +73,8 @@
 
 export default {
   props: {
-    onSignIn: Function
+    onSignIn: Function,
+    onSignUp: Function
   },
 
   data() {
@@ -69,6 +96,14 @@ export default {
       this.error = '';
 
       this.onSignIn(this.profile)
+        .catch(error => {
+          this.error = error.error;
+        });
+    },
+    handleSignUpSubmit() {
+      this.error = '';
+
+      this.onSignUp(this.profile)
         .catch(error => {
           this.error = error.error;
         });

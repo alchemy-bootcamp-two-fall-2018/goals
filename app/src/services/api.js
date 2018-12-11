@@ -7,7 +7,7 @@ export default {
   },
 
   signUp(profile) {
-    return fetch('api/auth/signup', {
+    return fetch('/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
