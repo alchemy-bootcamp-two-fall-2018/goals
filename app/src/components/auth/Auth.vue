@@ -8,17 +8,19 @@
         <button @click="method = 'signup'">Sign Up</button>
       </p>
       <form @submit.prevent="handleSignInSubmit(profile)">
-        <label>
-          Username:
-          <input v-model="profile.username" required>
-        </label>
-        <label>
-          Password:
-          <input type="password" v-model="profile.password" required>
-        </label>
-        <label>
-          <button>Sign In</button>
-        </label>
+        <fieldset>
+          <label>
+            Username:
+            <input v-focus v-model="profile.username" required>
+          </label>
+          <label>
+            Password:
+            <input type="password" v-model="profile.password" required>
+          </label>
+          <label>
+            <button>Sign In</button>
+          </label>
+        </fieldset>
       </form>
     </div>
     <div v-else>
@@ -28,17 +30,29 @@
         <button @click="method = 'signin'">Sign In</button>
       </p>
       <form @submit.prevent="handleSignUpSubmit(profile)">
-        <label>
-          Username:
-          <input v-model="profile.username" required>
-        </label>
-        <label>
-          Password:
-          <input type="password" v-model="profile.password" required>
-        </label>
-        <label>
-          <button>Sign Up</button>
-        </label>
+        <fieldset>
+          <label>
+            Username:
+            <input v-model="profile.username" required>
+          </label>
+          <label>
+            Password:
+            <input type="password" v-model="profile.password" required>
+          </label>
+          <br>
+          <label>
+            First name:
+            <input v-model="profile.firstName" required>
+          </label>
+          <label>
+            Last name:
+            <input v-model="profile.lastName" required>
+          </label>
+          <label>
+            <br>
+            <button>Sign Up</button>
+          </label>
+        </fieldset>
       </form>
     </div>
     <pre v-if="error">{{error}}</pre>
@@ -64,7 +78,6 @@ export default {
   methods: {
     handleSignInSubmit() {
       this.error = '';
-
       this.onSignIn(this.profile)
         .catch(error => {
           this.error = error.error;
@@ -72,7 +85,6 @@ export default {
     },
     handleSignUpSubmit() {
       this.error = '';
-
       this.onSignUp(this.profile)
         .catch(error => {
           this.error = error.error;

@@ -28,8 +28,6 @@ router
       });
   })
 
-  // pseudo example for goals
-  // okay to have "virtual" sub-resource
   .put('/:id/completed', (req, res) => {
     const completed = req.body.completed;
 

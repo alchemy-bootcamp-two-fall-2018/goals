@@ -5,7 +5,7 @@
     <AddGoal :onAdd="handleAdd"/>
     <h3>Current Goals</h3>
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
-    <p v-else>Add a goal to get started!</p>
+    <p v-else>(no goals added yet)</p>
   </section>
 </template>
 

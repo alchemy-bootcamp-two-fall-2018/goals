@@ -1,7 +1,7 @@
 <template>
   <li>
     Name: {{goal.name}}, Type: {{goal.type}}
-    <button @click="handleDelete">Mark Complete</button>
+    <button @click="handleDelete">Delete</button>
   </li>
 </template>
 
@@ -17,6 +17,7 @@ export default {
     handleDelete() {
       api.deleteGoal(this.goal.id)
         .then(() => {
+          // this.$router.push('/goals');
           this.$router.go();
         });
     }

@@ -6,12 +6,11 @@ const goals = [
 ];
 
 client.query(`
-  INSERT INTO profile (username, password)
-  VALUES ($1, $2)
+  INSERT INTO profile (username, password, first_name, last_name)
+  VALUES ($1, $2, $3, $4)
   RETURNING id;
 `,
-['user1', 'password1']
-)
+['user1', 'password1', 'first1', 'last1'])
   .then(result => {
     const profile = result.rows[0];
 

@@ -4,7 +4,9 @@ client.query(`
   CREATE TABLE IF NOT EXISTS profile (
     id SERIAL PRIMARY KEY,
     username VARCHAR(256) NOT NULL,
-    password VARCHAR(256) NOT NULL
+    password VARCHAR(256) NOT NULL,
+    first_name VARCHAR(256) NOT NULL,
+    last_name VARCHAR(256) NOT NULL
   );
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
