@@ -6,7 +6,7 @@
     <AddGoal v-bind:onAdd="handleAdd"/>
 
     <h3>Current Goals</h3>
-    <GoalList v-if="goals && goals.length > 0" v-bind:goals="goals"/>
+    <GoalList v-if="goals && goals.length > 0" v-bind:goals="goals" v-bind:onEdit="handleEdit"/>
     <p v-else>Add a goal to get started!</p>
 
   </section>
@@ -42,6 +42,14 @@ export default {
         .then(saved => {
           console.log('this is saved', saved);
           this.goals.push(saved);
+        });
+    },
+
+    handleEdit(goal) {
+      return api.updateGoal(goal)
+        .then(updated => {
+          const index = this.goals.findIndex((goal) => goal.id === updated.id);
+          this.goals.splice(index, 1, updated);
         });
     }
   }

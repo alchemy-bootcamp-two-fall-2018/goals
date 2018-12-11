@@ -11,32 +11,25 @@
       NOT COMPLETED
     </div>
 
-    <button @click="handleEdit">Update</button>
+    <button @click="handleUpdate">Update</button>
  
   </li>
 </template>
 
 <script>
-// import api from '../../services/api';
 
 export default {
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
   },
-  // created() {
-  //   api.getGoals(this.$route.params.id)
-  //     .then(goal => {
-  //       this.goal = goal;
-  //     });
-  // },
-  // // methods: {
-  //   handleEdit(goal) {
-  //     return api.updateGoal(goal)
-  //       .then(updated => {
-  //         this.goal = updated;
-  //       });
-  //   }
-  // }
+
+  methods: {
+    handleUpdate() {
+      this.goal.endDate = new Date();
+      this.onEdit(this.goal);
+    }
+  }
 };
 </script>
 

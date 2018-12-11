@@ -25,12 +25,16 @@ router.post('/', (req, res) => {
   client.query(`
     INSERT INTO goal (
       title, 
-      start_date as "startDate", 
-      end_date as "endDate", 
+      start_date, 
+      end_date, 
       profile_id
     )
     VALUES($1, $2, $3, $4)
-    RETURNING *;
+    RETURNING 
+      title, 
+      start_date as "startDate", 
+      end_date as "endDate", 
+      profile_id;
   `,
   [body.title, body.startDate, body.endDate, req.userId])
     .then(result => {
@@ -38,7 +42,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/:id/completed', (req, res) => {
+router.put('/:id', (req, res) => {
   const body = req.body;
 
   client.query(`
@@ -49,7 +53,12 @@ router.put('/:id/completed', (req, res) => {
       end_date = $3
     WHERE id = $4
     AND profile_id = $5
-    RETURNING *;
+    RETURNING 
+      id,
+      title,
+      start_date as "startDate",
+      end_date as "endDate",
+      profile_id;
   `,
   [body.title, body.startDate, body.endDate, req.params.id, req.userId]
   )
