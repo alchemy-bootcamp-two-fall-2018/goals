@@ -14,9 +14,9 @@
       <button>Add</button>
     </form>
 
-    <!-- <ul v-if="goals">
+    <ul v-if="goals">
       <li v-for="g in goals" :key="g.id">{{g.title}}</li>
-    </ul> -->
+    </ul>
   </section>
 
 </template>
@@ -29,13 +29,19 @@ export default {
   data() {
     return {
       goal: {},
-      // goals: api.getGoals(),
+      goals: null,
     };
+  },
+  created() {
+    api.getGoals()
+      .then(goals => this.goals = goals);
   },
   methods: {
     onAdd() {
       api.addGoal(this.goal)
-        .then(r => console.log('Goals', r));
+        .then(newGoal => {
+          this.goals.push(newGoal);
+        });
     }
   }
 };
