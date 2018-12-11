@@ -3,7 +3,7 @@
 ### by Cari Palazzolo @caripizza
 
 ## Description
-This VueJS app...
+This fullstack app allows users to add and track their goals.
 
 ## Technologies Used
-Vue CLI, Express, JavaScript, HTML, CSS
+Vue CLI, PostgreSQL, Express, JavaScript, HTML, CSS
