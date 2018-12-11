@@ -73,5 +73,19 @@ export default {
 </script>
 
 <style scoped>
-
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+nav {
+  padding-right: 20px;
+}
+span {
+  padding-right: 20px;
+}
+a {
+  padding-right: 20px;
+  text-decoration: none;
+}
 </style>

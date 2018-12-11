@@ -13,9 +13,9 @@ client.query(`
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
     type VARCHAR(32) NOT NULL,
-    profile_id INTEGER NOT NULL REFERENCES profile(id),
-    start VARCHAR(256),
-    stop VARCHAR(256)
+    start_date VARCHAR(256) NOT NULL,
+    end_date VARCHAR(256),
+    profile_id INTEGER NOT NULL REFERENCES profile(id)
   );
 `)
   .then(

@@ -45,4 +45,11 @@ export default {
 </script>
 
 <style scoped>
+.goals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 70vh;
+}
 </style>

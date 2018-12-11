@@ -8,5 +8,7 @@
 </template>
 
 <style>
-
+section {
+  text-align: center;
+}
 </style>
