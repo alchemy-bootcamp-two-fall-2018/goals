@@ -1,4 +1,4 @@
-const client = require('../db-client');
+const client = require('../lib/db-client');
 
 client.query(`
   CREATE TABLE IF NOT EXISTS user (
@@ -10,7 +10,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
-    user_id INTERGER REFERENCES user(id)
+    user_id INTEGER NOT NULL REFERENCES profile(id)
   );
 
 `)
