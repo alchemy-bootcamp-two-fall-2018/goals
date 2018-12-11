@@ -10,22 +10,22 @@ router
       FROM goal;
     `)
       .then(result => {
-          res.json(result.rows);
+        res.json(result.rows);
       });
   })
 
   .post('/', (req, res) => {
-      const body = req.body;
+    const body = req.body;
 
-      client.query(`
-        INSERT INTO goal (name)
-        VALUES($1)
-        RETURNING *;
-      `,
-      [body.name])
-        .then(result => {
-          res.json(result.rows[0]);
-        });
+    client.query(`
+      INSERT INTO goal (name)
+      VALUES($1)
+      RETURNING *;
+    `,
+    [body.name])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
   });
 
-  module.exports = router;
+module.exports = router;

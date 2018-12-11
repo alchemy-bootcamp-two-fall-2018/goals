@@ -1,4 +1,4 @@
-const app = requrire ('.lib/app');
+const app = require ('.lib/app');
 
 const PORT = 3000;
 
