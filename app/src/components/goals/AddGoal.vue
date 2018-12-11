@@ -10,10 +10,10 @@
       <input type="date" v-model="goal.startDate">
     </p>
 
-    <p>
+    <!-- <p>
       <label>Completed Date: </label>
       <input v-model="goal.endDate">
-    </p>
+    </p> -->
 
     <button>Add</button>
   </form>
@@ -23,8 +23,7 @@
 function initGoal() {
   return {
     title: '',
-    startDate: '',
-    endDate: ''
+    startDate: ''
   };
 }
 export default {

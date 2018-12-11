@@ -31,6 +31,7 @@ router.post('/', (req, res) => {
     )
     VALUES($1, $2, $3, $4)
     RETURNING 
+      id,
       title, 
       start_date as "startDate", 
       end_date as "endDate", 
