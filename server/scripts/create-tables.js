@@ -19,6 +19,11 @@ client.query(`
     profile_id INTEGER NOT NULL REFERENCES profile(id)
   );
 
+  CREATE TABLE IF NOT EXISTS game (
+    id SERIAL PRIMARY KEY,
+    score INTEGER NOT NULL,
+    profile_id INTEGER NOT NULL REFERENCES profile(id)
+  );
 `)
 
   .then(
