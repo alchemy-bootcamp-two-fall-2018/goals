@@ -1,4 +1,4 @@
-const pg = require('pg');
+const pg = require('pg'); 
 const DATABASE_URL = 'postgres://localhost:5432/mygoals';
 const Client = pg.Client;
 
