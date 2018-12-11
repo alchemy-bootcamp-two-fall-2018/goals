@@ -11,7 +11,7 @@
         <Sign v-if="!user"
         :onSignIn="handleSignIn"
         :onSignUp="handleSignUp"/>
-        <RouterView v-if="user"></RouterView>
+        <RouterView v-else></RouterView>
       </main>
     </header>
 
