@@ -1,8 +1,8 @@
 <template>
   <li>
-    <p>{{goal.title}}</p>
-    <p>{{goal.startDate}}</p>
-    <p>{{goal.endDate}}</p>
+    <p>Goal: {{goal.title}}</p>
+    <p>Start Date: {{goal.startDate}}</p>
+    <p>End Date: {{goal.endDate}}</p>
 
   </li>
 </template>
@@ -18,5 +18,6 @@ export default {
 <style scoped>
   li{
     padding: 10px 0;
+    /* list-style: none; */
   }
 </style>
