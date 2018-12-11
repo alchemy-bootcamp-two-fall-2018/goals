@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const client = require('./db-client');
+const bcrypt = require('bcryptjs');
 
 app.use(express.json());
 
@@ -27,11 +28,11 @@ app.post('/signup', (req, res) => {
       console.log('creating new user profile...');
 
       client.query(`
-        INSERT INTO users (username, first_name, last_name, email, password)
+        INSERT INTO users (username, first_name, last_name, email, hash)
         VALUES ($1, $2, $3, $4, $5)
         RETURNING id, username;
       `,
-      [username, body.fName, body.lName, body.email, password])
+      [username, body.fName, body.lName, body.email, bcrypt.hashSync(password, 8)])
         .then(result => {
           res.json(result.rows[0]);
         });
