@@ -2,7 +2,8 @@
   <ul v-if="goals">
     <Goal v-for="goal in goals"
     :key="goal.id"
-    :goal="goal"/>
+    :goal="goal"
+    :onEdit="onEdit"/>
   </ul>
 </template>
 
@@ -11,7 +12,8 @@ import Goal from './Goal.vue';
 
 export default {
   props: {
-    goals: null
+    goals: null,
+    onEdit: Function
   },
   components: {
     Goal
@@ -20,5 +22,9 @@ export default {
 </script>
 
 <style scoped>
-
+    ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>

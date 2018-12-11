@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <label>Goal:</label>
-    <input v-focus v-model="goal.name" require>
+    <input v-model="goal.name">
     <label>Start Date:</label>
-    <input v-focus v-model="goal.startDate"> 
+    <input v-model="goal.startDate"> 
     <label>End Date:</label>
-    <input v-focus v-model="goal.endDate">
+    <input v-model="goal.endDate">
     <button>Add</button>
   </form>
 </template>
