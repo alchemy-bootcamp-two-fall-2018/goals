@@ -1,9 +1,19 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <label>Goal:</label>
-    <input v-focus v-model="goal.name" require>
-    <label>Category (i.e. health):</label>
-    <input v-focus v-model="goal.type" require>
+    <p>
+      <label>Goal:</label>
+      <input v-model="goal.title" require>
+    </p>
+    <p>
+      <label>Start Date:</label>
+      <input v-model="goal.startDate" require>
+    </p>
+
+    <p>
+      <label>End Date:</label>
+      <input v-model="goal.endDate" require>
+    </p>
+
     <button>Add</button>
   </form>
 </template>
@@ -12,8 +22,9 @@
 
 function initGoal() {
   return {
-    name: '',
-    type: ''
+    title: '',
+    startDate: '',
+    endDate: ''
   };
 }
 
