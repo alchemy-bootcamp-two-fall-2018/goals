@@ -6,7 +6,7 @@
                 Need to register?  
                 <button @click="method = 'signup'">Sign Up</button>
             </p>
-            <form @submit.prevent="this.onSignIn(profile)">
+            <form @submit.prevent="handleSignInSubmit(profile)">
                 <label>
                     Username:
                     <input v-model="profile.username" type="text" required>
@@ -26,7 +26,7 @@
                 Already have an account?  
                 <button @click="method = 'signin'">Sign In</button>
             </p>
-            <form @submit.prevent="this.onSignUp(credentials)">
+            <form @submit.prevent="handleSignUpSubmit(credentials)">
                 <label>
                     Username:
                     <input v-model="profile.username" type="text" required>
@@ -57,6 +57,22 @@ export default {
                 password: ''
             }
         };
+    },
+    methods: {
+        handleSignInSubmit() {
+            this.error = '';
+            this.onSignIn(this.profile)
+                .catch(error => {
+                    this.error = error.error;
+                });
+        },
+        handleSignUpSubmit() {
+            this.error = '';
+            this.onSignUp(this.profile)
+                .catch(error => {
+                    this.error = error.error;
+                });
+        }
     }
 };
 </script>

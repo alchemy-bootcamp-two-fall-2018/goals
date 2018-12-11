@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import api from '../services/api';
 import Auth from './auth/Auth';
 export default {
     components: {
@@ -24,12 +25,33 @@ export default {
             user:null
         };
     },
+    created() {
+        const json = window.localStorage.getItem('profile');
+        if(json){
+            this.setUser(JSON.parse(json));
+        }
+    },
     methods: {
-        handleSignUp() {
-
+        handleSignUp(profile) {
+            return api.signUp(profile)
+                .then(user => {
+                    this.setUser(user);
+                });
         },
-        handleSignIn() {
-
+        handleSignIn(credentials) {
+            return api.signIn(credentials)
+                .then(user => {
+                    this.setUser(user);
+                });
+        },
+        setUser(user) {
+            this.user = user;
+            if(user) {
+                window.localStorage.setItem('profile', JSON.stringify(user));
+            }
+            else {
+                window.localStorage.removeItem('profile');
+            }
         }
     }
 };
