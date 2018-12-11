@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header v-if="user">
+    <headser v-if="user">
       <span>
         Hello {{user.username}}
       </span>
@@ -8,7 +8,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
       </nav>
-    </header>
+    </headser>
 
     <main>
       <RouterView v-if="user" :user="user"></RouterView>
@@ -45,5 +45,23 @@ export default {
 </script>
 
 <style>
+header {
+  height: 100px;
+  background: rgb(144, 153, 118);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+nav a {
+  text-decoration: none;
+  color: black;
+  margin: 5px;
+  padding: 5px;
+  border: 1px dashed black;
+}
+
+main {
+  padding: 10px;
+}
 </style>
