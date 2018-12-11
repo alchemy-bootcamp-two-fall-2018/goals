@@ -41,12 +41,15 @@ export default {
       api.signIn(user)
         .then(signedUser => {
           this.user = signedUser;
+          api.setToken(signedUser.id);
         });
     },
     handleSignUp(user) {
       api.signUp(user)
         .then(addedUser => {
           this.user = addedUser;
+          api.setToken(addedUser.id);
+          console.log(api.getToken());
         });
     }
   }
