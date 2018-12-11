@@ -1,8 +1,9 @@
 
 <template>
     <li>
-      <strong>Goal: </strong>{{goal.name}} <strong>Type:</strong> {{goal.type}} {{goal.end_date}}
-      <!-- <button @click="onUpdate">Complete</button> -->
+      <strong>Goal: </strong>{{goal.name}} 
+      <strong>Type:</strong> {{goal.type}} {{goal.startDate}}{{goal.endDate}} {{goal.completed}}
+      <button @click="onUpdate">Complete</button>
     </li>
 </template>
 
@@ -13,8 +14,9 @@ export default {
     onEdit: Function
   },
   methods: {
-    handleUpdate() {
+    onUpdate() {
       this.goal.endDate = new Date();
+      this.goal.completed = true;
       this.onEdit(this.goal);
     }
   }
@@ -23,6 +25,9 @@ export default {
 
 <style lang="postcss" scoped>
 li {
-  padding: 10px 0;
+  padding: 50px;
+  width: 120px;
+  background: rgba(71,99,114, 0.4);
+  margin: 8px;
 }
 </style>
