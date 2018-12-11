@@ -45,6 +45,16 @@ router
       .then(result => {
         res.json(result.rows[0]);
       });
+  })
+
+  .delete('/:id', (req, res) => {
+    client.query(`
+      DELETE FROM goal WHERE id = $1;
+  `,
+    [req.params.id])
+      .then(result => {
+        res.json({ removed: result.rowCount === 1 });
+      });
   });
 
 module.exports = router;

@@ -54,11 +54,22 @@ export default {
 
   getGoals() {
     return fetch('/api/goals', getOptions('GET'))
-      .then(response => response.json());      
+      .then(response => response.json());
   },
 
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
+      .then(response => response.json());
+  },
+  deleteGoal(id) {
+    console.log(id);
+    return fetch(`/api/goals/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'application/json',
+      },
+    })
       .then(response => response.json());
   }
 

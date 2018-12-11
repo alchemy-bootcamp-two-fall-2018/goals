@@ -1,12 +1,25 @@
 <template>
-  <li>Name: {{goal.name}}, Type: {{goal.type}}</li>
+  <li>
+    Name: {{goal.name}}, Type: {{goal.type}}
+    <button @click="handleDelete">Mark Complete</button>
+  </li>
 </template>
 
 <script>
+import api from '../../services/api';
+
 export default {
   name: 'goal',
   props: {
     goal: null
+  },
+  methods: {
+    handleDelete() {
+      api.deleteGoal(this.goal.id)
+        .then(() => {
+          this.$router.go();
+        });
+    }
   }
 };
 </script>

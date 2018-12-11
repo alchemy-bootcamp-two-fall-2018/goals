@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2>Welcome to the Goals app!</h2>
+    <h2>Home</h2>
     <p>
       <RouterLink to="/goals">View Goals</RouterLink>
     </p>

@@ -2,11 +2,11 @@
   <div id="app">
     <RouterLink to="/"><img alt="Goals logo" class="logo" src="../assets/logo.png"></RouterLink>
     <header>
-      <span v-if="user">Hello, user.username!</span>
+      <span v-if="user">Hello, {{user.username}}!</span>
       <nav v-if="user">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
-        <a href="#">Logout</a>
+        <a href="#" @click="handleLogout">Logout</a>
       </nav>
     </header>
     <main>
@@ -86,5 +86,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background-color: cyan;
 }
 </style>

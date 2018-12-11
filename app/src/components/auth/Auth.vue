@@ -1,5 +1,6 @@
 <template>
   <section>
+    <h2>Welcome to the Goals app!</h2>
     <div v-if="method === 'signin'">
       <h2>Sign In</h2>
       <p>
