@@ -17,5 +17,9 @@ export default {
         console.log('hello?');
         return fetch('/api/goals', getOptions('GET'))
             .then(response => response.json());
+    },
+    addGoal(goal) {
+        return fetch('/api/goals', getOptions('POST', goal))
+            .then(response => response.json());
     }
 };

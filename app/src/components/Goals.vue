@@ -1,6 +1,7 @@
 <template>
     <div>
         <h1>My Goals</h1>
+        <AddGoal :onAdd="handleAdd" />
         <GoalList :goals="goals"/>
     </div>
 </template>
@@ -8,6 +9,8 @@
 <script>
 import api from '../services/api.js';
 import GoalList from './GoalList.vue';
+import AddGoal from './AddGoal.vue';
+
 export default {
     data() {
         return {
@@ -15,7 +18,8 @@ export default {
         };
     },
     components: {
-        GoalList
+        GoalList,
+        AddGoal
     },
     created() {
         api.getGoals()
@@ -25,6 +29,15 @@ export default {
             .catch(err => {
                 this.error = err;
             });
+    },
+    methods: {
+        handleAdd(goal) {
+            console.log('handleAdd');
+            return api.addGoal(goal)
+                .then(saved => {
+                    this.goals.push(saved);
+                });
+        }
     }
 };
 </script>
