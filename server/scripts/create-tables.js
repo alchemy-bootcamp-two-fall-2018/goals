@@ -12,8 +12,8 @@ client.query(`
   CREATE TABLE IF NOT EXISTS goals (
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
-    startdate VARCHAR(256) NOT NULL,
-    enddate VARCHAR(256) NOT NULL,
+    startdate DATE NOT NULL,
+    enddate DATE NOT NULL,
     completed BOOLEAN,
     profile_id INTEGER NOT NULL REFERENCES profiles(id) 
   );
