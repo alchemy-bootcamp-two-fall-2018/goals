@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const APP_SECRET = 'CHANGEMENOW';
 
 router
   .post('/signup', (req, res) => {
@@ -41,8 +44,10 @@ router
         [username, bcrypt.hashSync(password, 8), firstname, lastname]
         )
           .then(result => {
+            const profile = result.rows[0];
+            profile.token = jwt.sign({ id:profile.id }, APP_SECRET);
             // return profile object that has id that will be used as a token
-            res.json(result.rows[0]);
+            res.json(profile);
           });
       });
   })
