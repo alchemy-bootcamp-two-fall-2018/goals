@@ -1,8 +1,8 @@
 const client = require('../library/db-client');
 
 client.query(`
-    DROP TABLE IF EXISTS profile;
     DROP TABLE IF EXISTS goal;
+    DROP TABLE IF EXISTS profile;
 `)
   .then(
     () => console.log('drop tables complete'),
