@@ -8,7 +8,7 @@
         <button @click="method = 'signup'">Sign Up</button>
       </p>
 
-      <form @submit.prevent="handleSignInSubmit(proflie)>
+      <form @submit.prevent="handleSignInSubmit(proflie)">
         <label>
           Username:
           <input v-model="profile.username" required>
