@@ -2,17 +2,17 @@
   <section class="goals">
     <h2>My Goals</h2>
     <h3>Add a Goal</h3>
-    <AddPet :onAdd="handleAdd"/>
+    <AddGoal :onAdd="handleAdd"/>
     <h3>Your Goals</h3>
-    <PetList v-if="goals && goals.length > 0" :goals="goals"/>
+    <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal!</p>
   </section>
 </template>
 
 <script>
 import api from '../../services/api';
-// import AddGoal from './AddGoal';
-// import GoalsList from './GoalList';
+import AddGoal from './AddGoal';
+import GoalList from './GoalList';
 
 export default {
   data() {
@@ -21,8 +21,8 @@ export default {
     };
   },
   components: {
-    // AddGoal,
-    // GoalList
+    AddGoal,
+    GoalList
   },
   created() {
     api.getGoals()
