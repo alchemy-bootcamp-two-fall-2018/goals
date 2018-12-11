@@ -49,13 +49,14 @@ app.post('/signin', (req, res) => {
   }
 
   client.query(`
-    SELECT id, username, password
+    SELECT id, username, hash
     FROM users
     WHERE username = $1;
   `,
   [username])
     .then(result => {
-      if(result.rows.length === 0 || result.rows[0].password !== password) {
+      const profile = result.rows[0];
+      if(!profile || !bcrypt.compareSync(password, profile.hash)) {
         res.status(400).json({ error: 'username or password incorrect' });
         return;
       }
