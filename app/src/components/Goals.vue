@@ -18,6 +18,9 @@
 </template>
 
 <script>
+
+import api from '../services/api';
+
 export default {
   data() {
     return {
@@ -26,7 +29,8 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.goal);
+      this.goal.userId = api.getToken();
+      api.addGoal(this.goal);
     }
   }
 };

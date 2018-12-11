@@ -49,7 +49,6 @@ export default {
         .then(addedUser => {
           this.user = addedUser;
           api.setToken(addedUser.id);
-          console.log(api.getToken());
         });
     }
   }

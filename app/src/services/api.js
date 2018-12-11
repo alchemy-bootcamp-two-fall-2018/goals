@@ -47,5 +47,9 @@ export default {
             return Promise.reject(error);
           });
       });
+  },
+
+  addGoal(goal) {
+    console.log(goal);
   }
 };
