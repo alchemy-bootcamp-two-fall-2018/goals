@@ -1,17 +1,74 @@
 <template>
   <div id="app">
-    
-   <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/goals">Goals</RouterLink>
+      <header>
+          <span v-if="user">Hello{{user.username}}</span>
+          <nav v-if="user">
+            <RouterLink to="/">Home</RouterLink>
+            <RouterLink to="/goals">Goals</RouterLink>
+            <a href="#" @click="handleLogout"> logout</a>
+             </nav>
+        </header>
 
+      <main>
+        <RouterView v-if="user" :user="user"/>
+        <Auth v-else:
+        :onSignUp="handleSignUp"
+        :onSignIn="handleSignIn"/>
+      </main>
   </div>
 </template>
 
 <script>
+import Auth from './components/auth/Auth.vue';
+import api from './services/api';
 
 export default {
-    name: 'app',
+    data() {
+        return {
+            user: null
+        };
+    },
+
     components: {
+        Auth
+    }, 
+    created() {
+        const json = window.localStorage.getItem('profile');
+        if(json) {
+            this.setUser(JSON.parse(json));
+        }
+    },
+    methods: {
+        handleSignUp(profile) {
+            console.log('data to be added to profile table', profile);
+        }, 
+
+
+        handleSignIn(credentials) {
+            console.log('would login with', credentials);
+            return api.signIn(credentials)
+                .then(user => {
+                    this.user = user;
+                })
+            ;
+        }, 
+
+        setUser(user) {
+            this.user = user;
+            if(user) {
+                api.setToken(user.token); 
+                window.localStorage.setItem('profile', JSON.stringify(user));
+            }
+            else {
+                api.setToekn();
+                window.localStorage.removeItem('profile');
+            }
+        }, 
+        handleLogout() {
+            // reset api 
+            this.setUser(null);
+            this.$router.push('/');
+        }
     }
 };
 </script>
