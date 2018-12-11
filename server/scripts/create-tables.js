@@ -14,7 +14,7 @@ client.query(`
     title VARCHAR(256) NOT NULL,
     startdate VARCHAR(256) NOT NULL,
     enddate VARCHAR(256) NOT NULL,
-    profiles_id INTEGER NOT NULL REFERENCES profiles(id)
+    profile_id INTEGER NOT NULL REFERENCES profiles(id)
   );
 
 `)

@@ -19,7 +19,7 @@ client.query(`
     return Promise.all(
       goals.map(goals => {
         return client.query(`
-          INSERT INTO goals (title, startdate, enddate, profiles_id)
+          INSERT INTO goals (title, startdate, enddate, profile_id)
           VALUES ($1, $2, $3, $4)
         `,
         [goals.title, goals.startdate, goals.enddate, profile.id]);
