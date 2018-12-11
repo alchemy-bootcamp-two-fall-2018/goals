@@ -4,6 +4,7 @@
     <p>
       <RouterLink to="/goals"></RouterLink>
     </p>
+  </section>
 </template>
 
 <script>

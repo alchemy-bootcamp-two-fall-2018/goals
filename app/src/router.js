@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router';
 import Home from './components/home/Home.vue';
-import Students from './components/students/Students.vue';
+import Goals from './components/goals/Goals.vue';
 
 export default new VueRouter({
   // mode: 'history',
   routes: [
     { path: '/', component: Home },
-    { path: '/students', component: Students },
+    { path: '/goals', component: Goals },
     { path: '*', redirect: '/' }
   ]
 });
