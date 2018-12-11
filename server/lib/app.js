@@ -7,7 +7,7 @@ const morgan = require('morgan');
 // enhanced logging using morgan
 app.use(morgan('dev'));
 
-// register the json "middleware" body parser
+// register the json "middleware" body parserers
 app.use(express.json());
 
 // register our routes
