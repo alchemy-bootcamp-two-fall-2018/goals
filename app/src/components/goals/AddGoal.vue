@@ -3,15 +3,15 @@
     <label>Goal:</label>
     <input v-focus v-model="goal.name" require>
     <label>Start Date:</label>
-    <input v-focus v-model="goal.start"> 
+    <input v-focus v-model="goal.startDate"> 
     <label>End Date:</label>
-    <input v-focus v-model="goal.enddate">
+    <input v-focus v-model="goal.endDate">
     <button>Add</button>
   </form>
 </template>
 
 <script>
-function initgoal() {
+function initGoal() {
   return {
     name: '',
     startDate: '',
