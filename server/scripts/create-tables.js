@@ -10,7 +10,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
-    duedate DATE NOT NULL
+    duedate DATE NOT NULL,
     profile_id INTEGER NOT NULL REFERENCES profile(id)
   );
 

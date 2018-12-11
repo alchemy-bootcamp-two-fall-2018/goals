@@ -1,9 +1,9 @@
 const client = require('../lib/db-client');
 
 const goals = [
-  { name: 'go to sleep', duedate: '12/10/2018' },
-  { name: 'wake up', duedate: '12/11/2018' },
-  { name: 'go to school', duedate: '12/11/2018' }
+  { name: 'go to sleep', duedate: '2018/12/10' },
+  { name: 'wake up', duedate: '2018/12/11' },
+  { name: 'go to school', duedate: '2018/12/11' }
 ];
 
 client.query(`

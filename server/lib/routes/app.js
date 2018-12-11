@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const auth = require('./routes/auth');
-const pets = require('./routes/pets');
+const goals = require('./routes/goals');
 
 // enhanced logging
 app.use(morgan('dev'));
