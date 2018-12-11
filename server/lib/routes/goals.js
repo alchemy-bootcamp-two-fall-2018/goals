@@ -6,8 +6,8 @@ const router = Router();
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, username
-      FROM users
+      SELECT id, title
+      FROM goals
       WHERE profile_id = $1;
     `,
     [req.userId])
