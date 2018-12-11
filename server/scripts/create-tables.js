@@ -1,4 +1,4 @@
-const client = require('../db-client');
+const client = require('../lib/db-client');
 
 client.query(`
   CREATE TABLE IF NOT EXISTS profile (
