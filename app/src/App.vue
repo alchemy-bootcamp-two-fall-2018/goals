@@ -40,9 +40,9 @@ export default {
     },
     handleSignIn(credentials) {
       return api.signIn(credentials)
-      .then(user => {
-        this.setUser(user);
-      });
+        .then(user => {
+          this.setUser(user);
+        });
     },
     setUser(user) {
       this.user = user;

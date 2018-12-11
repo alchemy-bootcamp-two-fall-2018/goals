@@ -43,7 +43,7 @@
     </div>
    </section>
 </template>
- <script>
+<script>
 export default {
   props: {
     onSignIn: Function,
