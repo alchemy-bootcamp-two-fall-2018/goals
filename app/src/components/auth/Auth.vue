@@ -26,7 +26,7 @@
             <h2>Sign Up</h2>
             <p>
                 Already have an account?
-                <button @click="method === 'signup'">Sign In</button>
+                <button @click="method = 'signin'">Sign In</button>
             </p>
 
             <form @submit.prevent="handleSignUpSubmit(profile)" id="signin">
