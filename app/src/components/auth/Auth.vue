@@ -110,6 +110,7 @@ pre {
     background: #f0e2a3;
     width: 30%;
     padding: 10px;
+    margin: 20px;
     border: 1px solid black;
 }
 

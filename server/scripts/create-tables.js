@@ -13,7 +13,7 @@ client.query(`
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
     startdate DATE NOT NULL,
-    enddate DATE NOT NULL,
+    enddate DATE,
     completed BOOLEAN,
     profile_id INTEGER NOT NULL REFERENCES profiles(id) 
   );

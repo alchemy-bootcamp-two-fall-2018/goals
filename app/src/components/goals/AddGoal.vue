@@ -2,7 +2,7 @@
   <form class="form" @submit.prevent="handleSubmit">
     <h3>Add a Goal</h3>
     <label>Title:</label>
-    <input v-focus v-model="goal.title" require>
+    <input autofocus v-focus v-model="goal.title"  require>
     <label>Start Date:</label>
     <input v-focus v-model="goal.startdate" require>
     <label>End Date:</label>

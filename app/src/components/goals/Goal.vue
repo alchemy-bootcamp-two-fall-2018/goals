@@ -2,7 +2,7 @@
     <li><span class="goal-title"> {{goal.title}} -- </span> 
     Start Date: {{goal.startdate}} 
     End Date: {{goal.enddate}}
-    Completed: {{goal.completed}}</li>
+    </li>
 </template>
 
 <script>

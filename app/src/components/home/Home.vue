@@ -16,11 +16,11 @@
 
     .welcome {
         padding: 20px;
-        height: 100px;
     }
 
     .look {
-        padding: 20px;
+        margin-top: 0px;
+        padding: 0 0 0 20px;
     }
 
 </style>

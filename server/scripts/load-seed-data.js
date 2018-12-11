@@ -1,9 +1,9 @@
 const client = require('../lib/db-client');
 
 const goals = [
-  { title: 'Finish Coding', startdate: '01/01/2018', enddate:'12/31/2018', completed: false },
-  { title: 'Xmas shopping done', startdate: '01/01/2018', enddate:'12/20/2018', completed: false },
-  { title: 'Halloween Costume', startdate: '01/01/2018', enddate:'10/20/2018', completed: false }
+  { title: 'Finish Coding', startdate: '2018-01-01', completed: false },
+  { title: 'Xmas shopping done', startdate: '2018-01-01', completed: false },
+  { title: 'Halloween Costume', startdate: '2018-01-01', completed: false }
 ];
 
 client.query(`
@@ -19,10 +19,10 @@ client.query(`
     return Promise.all(
       goals.map(goals => {
         return client.query(`
-          INSERT INTO goals (title, startdate, enddate, completed, profile_id)
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO goals (title, startdate, completed, profile_id)
+          VALUES ($1, $2, $3, $4)
         `,
-        [goals.title, goals.startdate, goals.enddate, goals.completed, profile.id]);
+        [goals.title, goals.startdate, goals.completed, profile.id]);
       })
     );
   })
