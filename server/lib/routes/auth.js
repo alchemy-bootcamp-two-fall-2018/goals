@@ -3,6 +3,7 @@ const client = require('../db-client');
 const bcrypt = require('bcryptjs');
 const jwt = require('./jwt');
 
+
 function getProfileWithToken(profile) {
   return {
     id: profile.id,
@@ -77,7 +78,7 @@ router
 
         res.json(getProfileWithToken(profile));
       });
-  });
+});
 
 
 module.exports = router;
