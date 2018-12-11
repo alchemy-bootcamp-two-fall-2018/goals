@@ -1,4 +1,4 @@
-require('dotenv').config()
+const bcrypt = require('bcryptjs');
 const client = require('../lib/db-client');
 
 const goals = [
@@ -12,7 +12,7 @@ client.query(`
   VALUES ($1, $2)
   RETURNING id;
 `,
-['jei', 'jeijei',]
+['jei', bcrypt.hashSync('jeijei', 8)]
 )
   .then(result => {
     const profile = result.rows[0];
