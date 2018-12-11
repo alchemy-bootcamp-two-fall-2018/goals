@@ -33,6 +33,12 @@ export default {
   components: {
     Auth
   },
+  created() {
+    const json = window.localStorage.getItem('profile');
+    if(json) {
+      this.setUser(JSON.parse(json));
+    }
+  },
   methods: {
     handleSignUp(profile) {
       return api.signUp(profile)

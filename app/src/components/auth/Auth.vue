@@ -18,14 +18,6 @@
           <input type="password" v-model="profile.password" required>
         </label>
         <label>
-          First Name:
-          <input v-model="profile.firstname" required>
-        </label>
-        <label>
-          Last Name:
-          <input v-model="profile.lastname" required>
-        </label>
-        <label>
           <button>Sign In</button>
         </label>
       </form>
@@ -33,7 +25,6 @@
 
     <div v-else>
       <h2>Sign Up</h2>
-      
       <p>
         Already have an account?
         <button @click="method = 'signin'">Sign In</button>

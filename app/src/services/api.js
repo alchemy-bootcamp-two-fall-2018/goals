@@ -1,3 +1,5 @@
+let token = '';
+
 const getOptions = (method, data) => {
   const options = {
     method,
@@ -9,13 +11,20 @@ const getOptions = (method, data) => {
     options.body = JSON.stringify(data);
   }
   
+  if(token) {
+    options.headers.Authorization = token;
+  }
   
   return options;
 };
 
 
 export default {
-
+    
+  setToken(t) {
+    token = t;
+  },
+    
   signUp(profile) {
     return fetch('/api/auth/signup', getOptions('POST', profile))
       .then(response => {
