@@ -51,7 +51,6 @@ export default {
     },
 
     getGoals() { 
-        console.log('hello?');
         return fetch('/api/goals', getOptions('GET'))
             .then(response => response.json());
     },

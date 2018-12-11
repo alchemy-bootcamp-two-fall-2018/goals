@@ -32,7 +32,6 @@ export default {
     },
     methods: {
         handleAdd(goal) {
-            console.log('handleAdd');
             return api.addGoal(goal)
                 .then(saved => {
                     this.goals.push(saved);
