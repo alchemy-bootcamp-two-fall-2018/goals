@@ -1,17 +1,73 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <header>
+      <span v-if="user">Hello {{user.username}}</span>
+      <nav v-if="user">
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/goals">Goals</RouterLink>
+        <a href="#" @click="handleLogout">Logout</a>
+      </nav>
+    </header>
+
+    <main>
+      <RouterView v-if="user" v-bind:user="user"/>
+      <Auth v-else
+        v-bind:onSignUp="handleSignUp"
+        v-bind:onSignIn="handleSignIn"
+      />
+    </main>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import api from '../services/api';
+import Auth from './auth/Auth';
 
 export default {
-  name: 'app',
+  data() {
+    return {
+      user: null
+    };
+  },
   components: {
-    HelloWorld
+    Auth
+  },
+
+  created() {
+    const json = window.localStoraage.getItem('profile');
+    if(json) {
+      this.setUser(JSON.parse(json));
+    }
+  },
+
+  methods: {
+    handleSignUp(profile) {
+      return api.signUp(profile)
+        .then(user => {
+          this.setUser(user);
+        });
+    },
+    handleSignIn(credentials) {
+      return api.signIn(credentials)
+        .then(user => {
+          this.setUser(user);
+        });
+    },
+    setUser(user) {
+      this.user = user;
+      if(user) {
+        api.setToken(user.id);
+        window.localStorage.setItem('profile', JSON.stringify(user));
+      }
+      else {
+        api.setToken();
+        window.localStorage.removeItem('profile');
+      }
+    },
+    handleLogout() {
+      this.setUser(null);
+      this.$router.push('/');
+    }
   }
 };
 </script>
