@@ -5,9 +5,9 @@
     <label>Type:</label>
     <input v-focus v-model="goal.type" require>
     <label>Start Date:</label>
-    <input v-focus v-model="goal.type">
+    <input v-focus v-model="goal.startDate">
     <label>End Date:</label>
-    <input v-focus v-model="goal.type">
+    <input v-focus v-model="goal.endDate">
     <button>Add</button>
   </form>
 </template>
@@ -46,11 +46,5 @@ label {
 button {
     margin-left: 20px;
 }
-.goals {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 70vh;
-}
+
 </style>

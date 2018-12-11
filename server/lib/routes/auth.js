@@ -28,11 +28,11 @@ router
         console.log('creating new user profile...');
 
         client.query(`
-          INSERT into profile (username, password)
+          INSERT into profile (username, password, first, last)
           VALUES ($1, $2)
           RETURNING id, username;
         `,
-        [username, password]
+        [username, password, first, last]
         )
           .then(result => {
             res.json(result.rows[0]);
