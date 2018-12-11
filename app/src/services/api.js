@@ -1,4 +1,21 @@
 let token = '';
+const getOptions = (method, data) => {
+  const options = {
+    method,
+    headers: {}
+  };
+
+  if(data) {
+    options.headers['Content-Type'] = 'application/json';
+    options.body = JSON.stringify(data);
+  }
+
+  if(token) {
+    options.headers.Authorization = token;
+  }
+
+  return options;
+};
 
 
 export default {
@@ -8,13 +25,7 @@ export default {
   },
 
   signUp(profile) {
-    return fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(profile)
-    })
+    return fetch('/api/auth/signup', getOptions('POST', profile))
       .then(response => {
         if(response.ok) {
           return response.json();
@@ -28,13 +39,7 @@ export default {
   },
 
   signIn(credentials) {
-    return fetch('/api/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
+    return fetch('/api/auth/signin', getOptions('POST', credentials))
       .then(response => {
         if(response.ok) {
           return response.json();
@@ -48,25 +53,12 @@ export default {
   },
 
   getGoals() {
-    return fetch('/api/goals', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      }
-    })
+    return fetch('/api/goals', getOptions('GET'))
       .then(response => response.json());      
   },
 
   addGoal(goal) {
-    return fetch('/api/goals', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify(goal)
-    })
+    return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
   },
 

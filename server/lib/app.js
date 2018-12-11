@@ -19,6 +19,7 @@ function checkAuth(req, res, next) {
   }
 
   let payload = null;
+  console.log('token\n\n', token);
   try {
     payload = jwt.verify(token);
   }
