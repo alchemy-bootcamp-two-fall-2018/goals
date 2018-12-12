@@ -109,12 +109,9 @@ app.put('/goals/:token', (req, res) => {
     WHERE id = $2
   `,
   [body.enDate, req.params.token]);
-  // .then(result => {
-    //   res.json(result.rows);
-    // });
     
   res.json();
-  });
+});
 
 app.get('/stats/:token', (req, res) => {
   client.query(`
