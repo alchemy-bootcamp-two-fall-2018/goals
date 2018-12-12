@@ -5,8 +5,9 @@
       <span >
        
       </span>
-      <nav>
-        <RouterLink to="/"> HOME </RouterLink>
+      <nav v-if="user">
+        HELLO USER!
+        <RouterLink to="/">HOME</RouterLink>
       </nav>
     </header>
 
@@ -30,7 +31,6 @@ export default {
       user: null
     };
   },
-
   components: {
     Auth
   },
@@ -52,6 +52,16 @@ export default {
         .then(user => {
           this.setUser(user);
         });
+    },
+    setUser(user) {
+      this.user = user;
+      if(user) {
+        window.localStorage.setItem('profile', JSON.stringify(user));
+      }
+      else {
+        api.setToken();
+        window.localStorage.removeItem('profile');
+      }
     }
   }
 

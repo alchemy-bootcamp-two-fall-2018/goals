@@ -6,7 +6,7 @@ const getOptions = (method, data) => {
     headers: {}
   };
   if(data) {
-    options.header['Content-Type'] = 'application/json';
+    options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
   }
 

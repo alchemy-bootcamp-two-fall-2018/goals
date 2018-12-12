@@ -72,6 +72,9 @@ export default {
       error: '',
       profile: {
         username: '',
+        firstName: '',
+        lastName: '',
+        email: '',
         password: ''
       }
     };
