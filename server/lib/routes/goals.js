@@ -30,9 +30,10 @@ router
       MAX(end_date - start_date) as maxdiff,
       CAST(AVG(end_date - start_date) as INT) as average
     from goals
+    WHERE profile_id = $1
     group by profile_id;
     `,
-    []
+    [req.userId]
     )
       .then(result => {
         res.json(result.rows);
@@ -45,7 +46,12 @@ router
     client.query(`
       INSERT INTO goals (title, type, profile_id, start_date, end_date)
       VALUES($1, $2, $3, $4, $5)
-      RETURNING *;
+      RETURNING 
+      title,
+      type,
+      profile_id,
+      start_date as "startDate",
+      end_date as "endDate";
     `,
     [body.title, body.type, req.userId, body.startDate, body.endDate])
       .then(result => {
