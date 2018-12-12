@@ -48,9 +48,8 @@ export default {
       const mm = today.getMonth() + 1;
       const yyyy = today.getFullYear();
       const date = `${yyyy}-${mm}-${dd}`;
-      
-      api.markComplete(id, date)
-        .then(goals => console.log('goals', goals));
+
+      api.markComplete(id, date);
     }
   }
 };

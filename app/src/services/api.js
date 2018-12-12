@@ -74,7 +74,6 @@ export default {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ enDate: compDate })
-    })
-      .then(response => response.json());
+    });
   }
 };
