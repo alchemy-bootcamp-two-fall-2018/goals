@@ -5,7 +5,7 @@ import Goals from './components/goals/Goals';
 export default new VueRouter({
   routes: [
     { path: '/', component: Home },
-    { path: '/', components: Goals },
+    { path: '/goals', component: Goals },
     { path: '*', redirect: '/' }
   ]
 });

@@ -2,7 +2,7 @@
   <section>
     <h2>Welcome to My Goals page!</h2>
     <p>
-      <RouterLink to="/goals">view pets</RouterLink>
+      <RouterLink to="/goals">view goals</RouterLink>
     </p>
   </section>
 </template>

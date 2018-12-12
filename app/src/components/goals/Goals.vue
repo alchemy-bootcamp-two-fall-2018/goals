@@ -1,13 +1,39 @@
 <template>
     <section>
         <h2>My Goals</h2>
+        <h1>Add a new goal</h1>
+        <!-- <AddGoal :onAdd="handleAdd"/> -->
+        <h3>Current Goals</h3>
+        <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
+        <p v-else> Add a goal to get started</p>
     </section>
 </template>
 
 <script>
-export default {
+import api from '../services/api';
+import GoalList from './GoalList';
 
+export default {
+  data() {
+    return {
+      goals: null
+    };
+  },
+  components: {
+    GoalList
+  },
+  created() {
+    api.getGoals()
+      .then(goals => {
+        this.goals = goals;
+      })
+      .catch(err => {
+        this.error = err;
+      });
+  },
+        
 };
+
 </script>
 
 <style>

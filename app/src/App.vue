@@ -2,9 +2,12 @@
   <div>
     <header>
       <h1>Goals!</h1>
-      <nav>
+      <nav v-if="user">
+      <span>
+        Hello {{user.username}}
+      </span>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/">Goals</RouterLink>
+        <RouterLink to="/goals">Goals</RouterLink>
       </nav>
     </header>
 
@@ -31,6 +34,12 @@ export default {
   components: {
     Auth
   },
+  created() {
+    const json = window.localStorage.getItem('profile');
+    if(json) {
+      this.setUser(JSON.parse(json));
+    }
+  },
   methods: {
     handleSignUp(user) {
       return api.signUp(user)
@@ -46,6 +55,14 @@ export default {
     },
     setUser(user) {
       this.user = user;
+      if(user) {
+        api.setToken(user.token);
+        window.localStorage.setItem('profile', JSON.stringify(user));
+      }
+      else {
+        api.setToken();
+        window.localStorage.removeItem('profile');
+      }
     }
   }
 };

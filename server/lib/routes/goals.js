@@ -7,12 +7,15 @@ router
   .get('/', (req, res) => {
     client.query(`
         SELECT title, start_date, end_date
-        FROM goal;
-    `)
+        FROM goal
+        WHERE profile_id = $1;
+    `,
+    [req.userId])
       .then(result => {
         res.json(result.rows);
       });
   })
+
   .post('/', (req, res) => {
     const body = req.body;
 
@@ -21,7 +24,24 @@ router
       VALUES($1, $2, $3)
       RETURNING *;
       `,
-    [body.title, body.start_date, body.end_date])
+    [body.title, body.start_date, req.userId])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+  })
+
+  .put('/:id/completed', (req, res) => {
+    const completed = req.body.completed;
+
+    client.query(`
+    UPDATE goal
+    SET completed = $1
+    WHERE id = $2
+    AND profile_id = $3
+    RETURNING *;
+    `,
+    [completed, req.params.id, req.userId]
+    )
       .then(result => {
         res.json(result.rows[0]);
       });
