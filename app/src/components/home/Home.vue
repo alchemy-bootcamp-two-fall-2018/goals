@@ -2,24 +2,25 @@
   <section class="home">
     <h2 class="welcome">Welcome to the amazing goal setter!</h2>
     <p class="look">
-      <RouterLink to="/goals">Take a look at your current goals</RouterLink>
+      <RouterLink to="/goals">Click here for goal details</RouterLink>
     </p>
-    <table v-if="summary">
+    <h3 class="summary-title">Goal Summary</h3>
+    <table class="summary" v-if="summary">
       <thead>
         <tr>
           <th>Count</th>
           <th>Average</th>
-          <th>Min</th>
-          <th>Max</th>
+          <th>Minimum</th>
+          <th>Maximum</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="sum in summary"
           :key="sum.profileId">
           <td>{{sum.count}}</td>
-          <td>{{sum.average}}</td>
-          <td>{{sum.min}}</td>
-          <td>{{sum.max}}</td>
+          <td>{{sum.average}} days</td>
+          <td>{{sum.min}} days</td>
+          <td>{{sum.max}} days</td>
         </tr>
       </tbody>
     </table>
@@ -46,6 +47,14 @@ export default {
 
 <style>
 
+    tbody {
+        text-align: center;
+    }
+
+    td {
+        border: 1px black solid;
+    }
+
     .home {
         margin-top: -20px;
         background: #f0e2a3;
@@ -53,11 +62,29 @@ export default {
 
     .welcome {
         padding: 20px;
+        margin-bottom: 0;
     }
 
     .look {
         margin-top: 0px;
         padding: 0 0 0 20px;
+    }
+
+    .summary{
+        margin: 20px;
+    }
+
+    .summary thead {
+        background: #664e4c;
+        color: #c1d37f;
+    }
+
+    .summary thead th {
+        width: 100px;
+    }
+
+    .summary-title {
+        margin: 80px 0 0 20px;
     }
 
 </style>

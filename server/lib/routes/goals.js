@@ -6,7 +6,12 @@ const router = Router(); //eslint-disable-line new-cap
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, title, startdate, enddate, completed
+      SELECT 
+      id, 
+      title, 
+      startdate, 
+      enddate, 
+      completed
       FROM goals
       WHERE profile_id = $1;
     `,

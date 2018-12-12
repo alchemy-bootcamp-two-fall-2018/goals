@@ -75,6 +75,8 @@ export default {
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css?family=Nunito');
+
   header {
     display: flex;
     background: #664e4c;
@@ -91,6 +93,7 @@ export default {
   body {
     margin: 0;
     padding: 0;
+    font-family: 'Nunito', sans-serif;
   }
 
   nav {

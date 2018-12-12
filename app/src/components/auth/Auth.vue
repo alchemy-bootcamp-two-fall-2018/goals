@@ -52,7 +52,7 @@
         </label>
       </form>
     </div>
-    <pre v-if="error">{{error}}</pre>
+    <pre v-if="error">{{error}}, please try again</pre>
   </section>
 </template>
 
@@ -104,6 +104,7 @@ label {
 
 pre {
   color: red;
+  margin: 20px;
 }
 
 .sign {

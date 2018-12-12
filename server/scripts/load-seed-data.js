@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 const goals = [
   { title: 'Finish Coding', startdate: 20180101, enddate: 20190101, completed: false },
-  { title: 'Xmas shopping done', startdate: 20180202, enddate: 20190101, completed: false },
-  { title: 'Halloween Costume', startdate: 20180303, enddate: 20190101, completed: false }
+  { title: 'Xmas shopping done', startdate: 20180101, enddate: 20180630, completed: false },
+  { title: 'Halloween Costume', startdate: 20180101, enddate: 20180201, completed: false }
 ];
 
 client.query(`
