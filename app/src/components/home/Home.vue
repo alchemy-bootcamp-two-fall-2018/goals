@@ -9,8 +9,8 @@
       <thead>
         <tr>
           <th>Count</th>
-          <th></th>
-          <th></th>
+          <th>Min Duration</th>
+          <th>Max Duration</th>
           <th></th>
         </tr>
       </thead>
@@ -18,6 +18,10 @@
         <tr v-for="stat in stats"
           v-bind:key="stat.profileId">
           <td>{{stat.count}}</td>
+          <td>{{stat.mindiff}}</td>
+          <td>{{stat.maxdiff}}</td>
+
+
         </tr>
       </tbody>
     </table>
