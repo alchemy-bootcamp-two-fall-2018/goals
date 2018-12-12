@@ -16,7 +16,8 @@
     </label>
   </form>
 </template>
- <script>
+
+<script>
 export default {
   props: {
     onSubmit: Function,
@@ -33,7 +34,8 @@ export default {
   }
 };
 </script>
- <style lang="postcss" scoped>
+
+<style lang="postcss" scoped>
  label {
   display: block;
   padding: 10px 0;
@@ -41,4 +43,4 @@ export default {
  pre {
   color: red;
 }
- </style>
+</style>

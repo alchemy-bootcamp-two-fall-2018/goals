@@ -1,7 +1,8 @@
-const jwt = require("jsonwebtoken");
-const APP_SECRET = 'YOURSECRETPASSWORD';
+const jwt = require('jsonwebtoken');
+const APP_SECRET = 'CHANGEMENOW';
  module.exports = {
   sign(profile) {
+    console.log('banananananananan', profile);
     return jwt.sign({ id: profile.id }, APP_SECRET);
   },
   verify(token) {

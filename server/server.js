@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const app = require('./lib/app');
 
 const PORT = 3000;

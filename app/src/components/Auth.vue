@@ -26,7 +26,7 @@
 </template>
         
 <script>
-import CredentialsForm from './CrudentialsForm';
+import CredentialsForm from './CredentialsForm.vue';
 export default {
   props: {
     onSignIn: Function,
@@ -37,8 +37,8 @@ export default {
       method: 'signin',
       error: '',
       
-      };
-    },
+    };
+  },
   components: {
     CredentialsForm
   },

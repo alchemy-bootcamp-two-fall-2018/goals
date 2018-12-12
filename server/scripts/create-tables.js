@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const client = require('../lib/db-client');
 
 client.query(`

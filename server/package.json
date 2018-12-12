@@ -14,9 +14,10 @@
     "test": "exit 0",
     "start": "nodemon server.js"
   },
-  "author": "Marty Nelson <marty@martypdx.com>",
+  "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",

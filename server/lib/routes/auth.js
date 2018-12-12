@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const APP_SECRET = 'YOURSECRETPASSWORD';
+const jwt = require('../jwt');
 
 function getProfileWithToken(profile) {
+  
+ 
   return {
     id: profile.id,
     username: profile.username,
@@ -75,8 +76,9 @@ router
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         }
-
+        
         res.json(getProfileWithToken(profile)); 
+        
       });
   });
 

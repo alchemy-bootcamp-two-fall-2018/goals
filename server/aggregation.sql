@@ -1,0 +1,12 @@
+-- select goal_id as "goalId",
+--   avg(time) as "averageTime",
+--   min(time) as "minimumTime",
+--   max(time) as "maximumTime"
+-- from time
+-- on time.goal_id = goal.id
+-- -- what to do here
+
+-- select
+--   goal.id,
+--   goal.name
+-- from goal
