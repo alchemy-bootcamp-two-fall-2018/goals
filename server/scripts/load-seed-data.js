@@ -1,8 +1,9 @@
 const client = require('../lib/db-client');
 
 const goals = [
-  { title: 'sisters trip to Europe', start_date: '2019-01-28T08:00:00.000Z', end_date:'2019-01-28T08:00:00.000Z' },
-  { title: 'finish coding school', start_date: '2019-01-28T08:00:00.000Z', end_date:'2019-01-28T08:00:00.000Z' },  
+  { title: 'Sisters trip to Europe', startDate: '2019-01-28T08:00:00.000Z', endDate:'2019-01-28T08:00:00.000Z' },
+  { title: 'Finish coding school', startDate: '2018-08-28T08:00:00.000Z', endDate:'2019-04-28T08:00:00.000Z' },
+  { title: 'Work Out more', startDate: '2019-12-28T08:00:00.000Z', endDate:'2019-01-28T08:00:00.000Z' },  
 ];
 
 client.query(`
@@ -13,7 +14,7 @@ client.query(`
 ['user123', 'Mary', 'Smith', 'mary@hello.com', 'abc123']
 )
   .then(result => {
-    const users = result.rows[0];
+    const profile = result.rows[0];
 
     return Promise.all(
       goals.map(goal => {
@@ -21,7 +22,7 @@ client.query(`
           INSERT INTO goal (title, start_date, end_date, profile_id)
           VALUES ($1, $2, $3, $4)
         `,
-        [goal.title, goal.start_date, goal.end_date, users.id]);
+        [goal.title, goal.startDate, goal.endDate, profile.id]);
       })
     );
   })

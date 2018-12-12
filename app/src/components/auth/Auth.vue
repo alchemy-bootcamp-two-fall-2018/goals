@@ -2,18 +2,17 @@
   <section>
     <div v-if="method === 'signin'">
       <h2>Sign In</h2>
-      
       <p>
         <button @click="method = 'signup'">Sign Up</button>
       </p>
-       <form @submit.prevent="onSignIn(user)">
+       <form @submit.prevent="onSignIn(profile)">
         <label>
           Username:
-          <input v-model="user.username" required>
+          <input v-model="profile.username" required>
         </label>
         <label>
           Password:
-          <input type="password" v-model="user.password" required>
+          <input type="password" v-model="profile.password" required>
         </label>
         <label>
           <button>Sign In</button>
@@ -27,14 +26,14 @@
         Already have an account?
         <button @click="method = 'signin'">Sign In</button>
       </p>
-       <form @submit.prevent="onSignUp(user)">
+       <form @submit.prevent="onSignUp(profile)">
         <label>
           Username:
-          <input v-model="user.username" required>
+          <input v-model="profile.username" required>
         </label>
         <label>
           Password:
-          <input type="password" v-model="user.password" required>
+          <input type="password" v-model="profile.password" required>
         </label>
         <label>
           <button>Sign Up</button>
@@ -52,7 +51,7 @@ export default {
   data() {
     return {
       method: 'signin',
-      user: {
+      profile: {
         username: '',
         password: ''
       }

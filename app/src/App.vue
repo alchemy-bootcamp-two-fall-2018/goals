@@ -41,8 +41,8 @@ export default {
     }
   },
   methods: {
-    handleSignUp(user) {
-      return api.signUp(user)
+    handleSignUp(profile) {
+      return api.signUp(profile)
         .then(user => {
           this.setUser(user);
         });

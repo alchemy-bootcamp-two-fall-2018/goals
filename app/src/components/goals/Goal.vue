@@ -1,5 +1,9 @@
 <template>
-    <li>{{goal.title}}</li>
+    <li>
+    {{goal.title}}
+    {{goal.start_date}}
+    {{goal.end_date}}
+    </li>
 </template>
 
 <script>
