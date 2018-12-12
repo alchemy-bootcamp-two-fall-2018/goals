@@ -1,8 +1,53 @@
 const router = require('express').Router();
 const client = require('../db-client');
+const bcrypt = require('bcryptjs');
 
 
 router
+
+  .post('/signup', (req, res) => {
+ 
+    const body = req.body;
+    const username = body.username;
+    const first_name = body.first_name;
+    const last_name = body.last_name;
+    const email = body.email;
+    const password = body.password;
+  
+    // username and password needs to exist
+    if(!username || !password) {
+      res.status(400).json({ error: 'username and password required' });
+      return;
+    }
+
+    // username needs to not exist already
+    client.query(`
+    SELECT id
+    FROM profile
+    WHERE username = $1;
+  `,
+    [username])  
+      .then(result => {
+        if(result.rows.length > 0) {
+          res.status(400).json({ error: 'username already exists' });
+          return;
+        }
+
+        console.log('creating new user profile...');
+        // insert into profile the new user
+        client.query(`
+       INSERT into profile (username, first_name, last_name, email, hash)
+       VALUES ($1, $2, $3, $4, $5)
+       RETURNING id, username;
+     `,
+        [username, last_name, first_name, email, bcrypt.hashSync(password, 8)]
+        )
+          .then(result => {
+            // return profile object that has id that will be used as a token
+            res.json(result.rows[0]);
+          });
+      });
+  })
 
   .post('/signin', (req, res) => {
     const body = req.body;
@@ -19,7 +64,7 @@ router
     // relative password should match
 
     client.query(`
-    SELECT id, username, last_name, first_name, email, password 
+    SELECT id, username, password 
     FROM profile
     WHERE username = $1;
   `,

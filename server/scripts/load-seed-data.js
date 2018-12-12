@@ -8,7 +8,7 @@ const goals = [
 ];
 
 client.query(`
-  INSERT INTO profile (username, first_name, last_name, email, password)
+  INSERT INTO profile (username, first_name, last_name, email, hash)
   VALUES ($1, $2, $3, $4, $5)
   RETURNING id;
 `,
