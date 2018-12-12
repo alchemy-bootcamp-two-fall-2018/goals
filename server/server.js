@@ -103,7 +103,10 @@ app.post('/goals/:token', (req, res) => {
 app.get('/stats/:token', (req, res) => {
   client.query(`
     SELECT
-      COUNT(id) as count
+      COUNT(id) as count,
+      MAX(end_date - start_date) as longest,
+      MIN(end_date - start_date) as shortest,
+      AVG(end_date - start_date) as average
     FROM goals
     WHERE user_id = $1
   `,
