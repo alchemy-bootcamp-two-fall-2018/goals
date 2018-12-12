@@ -4,6 +4,8 @@
   "scripts": {
     "test:app": "cd app && npm i && npm test && cd ..",
     "test:server": "cd server && npm i && npm test && cd ..",
-    "test": "npm run test:app && npm run test:server"
+    "test": "npm run test:app && npm run test:server",
+    "start": "nodemon server.js",
+    "lint": "eslint ."
   }
 }
