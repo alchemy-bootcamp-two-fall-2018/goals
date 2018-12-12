@@ -21,6 +21,20 @@ router
       });
   })
 
+  .get('/stats', (req, res) => {
+    client.query(`
+      select profile_id as "profileId", 
+      count(goals.id)
+    from goals
+    group by profile_id;
+    `,
+    []
+    )
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
+
   .post('/', (req, res) => {
     const body = req.body;
 
@@ -40,13 +54,11 @@ router
   .put('/:id/completed', (req, res) => {
 
     client.query(`
-        select profile_id as "profileId", 
-        min(profile.username) as "profileName",
-        count(goals.id)
-      from goals
-      join profile
-      on goals.profile_id = profile.id
-      group by profile_id;
+      UPDATE goals
+      SET end_date as endDate = $1
+      WHERE id = $2
+      AND profile_id = $3
+      RETURNING *;
     `,
     [null, req.params.id, req.userId]
     )
@@ -54,6 +66,8 @@ router
         res.json(result.rows[0]);
       });
   });
+
+  
   
 
 module.exports = router;

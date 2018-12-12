@@ -60,6 +60,11 @@ export default {
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
+  },
+
+  getStats() {
+    return fetch('/api/goals/stats', getOptions('GET'))
+      .then(response => response.json());     
   }
 
 };
