@@ -20,7 +20,8 @@ router
   .get('/summary', (req, res) => {
     client.query(`
     SELECT 
-    COUNT(id), AVG(end_date - start_date) as "averageTime"
+      COUNT(id), 
+      ROUND(AVG(end_date - start_date)) as "averageTime"
     FROM goal 
     WHERE profile_id = $1
     GROUP BY completed, profile_id
