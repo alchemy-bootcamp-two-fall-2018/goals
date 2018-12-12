@@ -2,13 +2,21 @@
     <li><span class="goal-title"> {{goal.title}} -- </span> 
     Start Date: {{goal.startdate}} 
     End Date: {{goal.enddate}}
+    <button @click="handleCompleted">Done</button>
     </li>
 </template>
 
 <script>
 export default {
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
+  },
+  methods: {
+    handleCompleted() {
+      this.goal.enddate = new Date().toLocaleDateString();
+      this.onEdit(this.goal);
+    }
   }
 };
 </script>

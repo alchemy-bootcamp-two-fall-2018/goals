@@ -18,8 +18,8 @@
           :key="sum.profileId">
           <td>{{sum.count}}</td>
           <td>{{sum.average}}</td>
-          <td>{{sum.minimum}}</td>
-          <td>{{sum.maximum}}</td>
+          <td>{{sum.min}}</td>
+          <td>{{sum.max}}</td>
         </tr>
       </tbody>
     </table>

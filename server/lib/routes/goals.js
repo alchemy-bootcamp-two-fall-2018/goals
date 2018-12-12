@@ -18,11 +18,15 @@ router
 
   .get('/summary', (req, res) => {
     client.query(`
-      SELECT profile_id,
-      COUNT(startdate) as count 
+    SELECT
+      profile_id,
+      MIN(enddate - startdate) as min,
+      MAX(enddate - startdate) as max,
+      CAST(AVG(enddate - startdate) as int) as average,
+      COUNT(profile_id) as count
       FROM goals
       WHERE profile_id = $1
-      GROUP BY profile_id;
+      GROUP by profile_id;
     `,
     [req.userId]
     )
@@ -47,17 +51,25 @@ router
   
   // pseudo example for goals
   // okay to have "virtual" sub-resource
-  .put('/:id/completed', (req, res) => {
-    const completed = req.body.completed;
+  .put('/:id', (req, res) => {
+    const body = req.body;
 
     client.query(`
       UPDATE goals
-      SET completed = $1
-      WHERE id = $2
-      AND profile_id = $3
-      RETURNING *;
+      SET
+        title = $1,
+        startdate = $2,
+        enddate = $3
+      WHERE id = $4
+      AND profile_id = $5
+      RETURNING 
+        id,
+        title,
+        startdate,
+        enddate,
+        profile_id;
     `,
-    [completed, req.params.id, req.userId]
+    [body.title, body.startdate, body.enddate, req.params.id, req.userId]
     )
       .then(result => {
         res.json(result.rows[0]);
