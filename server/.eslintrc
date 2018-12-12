@@ -21,7 +21,7 @@
         }
       ],
       "no-trailing-spaces": "off",
-      "new-cap": "error",
+      "new-cap": "warn",
       "no-redeclare": [
         "error",
         {
