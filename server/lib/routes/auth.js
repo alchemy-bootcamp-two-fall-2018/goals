@@ -72,8 +72,8 @@ router
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         } 
-        res.json(getProfileWithToken(profile);
-        });
+        res.json(getProfileWithToken(profile));
       });
+  });
 
 module.exports = router;
