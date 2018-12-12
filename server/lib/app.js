@@ -3,13 +3,9 @@ const app = express();
 const morgan = require('morgan');
 const auth = require('./routes/auth');
 const goals = require('./routes/goals');
-const jwt = require('jsonwebtoken');
-const APP_SECRET = 'CHANGEMENOW';
+const jwt = require('./jwt');
 
-// enhanced server logging in Terminal
 app.use(morgan('dev'));
-
-// register the json middleware body parser
 app.use(express.json());
 
 const checkAuth = (req, res, next) => {
@@ -20,7 +16,7 @@ const checkAuth = (req, res, next) => {
   }
   let payload = null;
   try {
-    payload = jwt.verify(token, APP_SECRET);
+    payload = jwt.verify(token);
   }
   catch (err) {
     res.status(401).json({ error: 'invalid token' });
