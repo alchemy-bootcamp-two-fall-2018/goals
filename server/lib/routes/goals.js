@@ -61,16 +61,25 @@ router
   
   // pseudo example for goals
   // okay to have "virtual" sub-resource
-  .put('/:id/completed', (req, res) => {
-
+  .put('/:id', (req, res) => {
+    const body = req.body;
+  
     client.query(`
-      UPDATE goals
-      SET end_date as endDate = $1
-      WHERE id = $2
-      AND profile_id = $3
-      RETURNING *;
+      UPDATE goal
+      SET 
+        title = $1,
+        start_date = $2,
+        end_date = $3
+      WHERE id = $4
+      AND profile_id = $5
+      RETURNING 
+        id,
+        title,
+        start_date as "startDate",
+        end_date as "endDate",
+        profile_id;
     `,
-    [null, req.params.id, req.userId]
+    [body.title, body.startDate, body.endDate, req.params.id, req.userId]
     )
       .then(result => {
         res.json(result.rows[0]);

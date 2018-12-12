@@ -1,7 +1,7 @@
 <template>
     <li
-    @click="toggle"
     :class="{'strikethrough': strike === true }"
+    @click="handleCompleted"
     >{{goal.title}} at {{goal.type}} 
     <p>
     Start Date: <DateDisplay :date="goal.startDate"/>
@@ -28,8 +28,10 @@ export default {
       }
   },
   methods: {
-    toggle() {
+    handleCompleted() {
       this.strike = this.strike === true ? false : true;
+      this.goal.endDate = new Date().toLocaleDateString();
+      this.onEdit(this.goal);
     }
   },
 };
