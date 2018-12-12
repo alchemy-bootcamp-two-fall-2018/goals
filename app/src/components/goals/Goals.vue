@@ -2,7 +2,9 @@
     <div>
         <h1>My Goals</h1>
         <AddGoal :onAdd="handleAdd" />
-        <GoalList :goals="goals"/>
+        <GoalList 
+            :goals="goals"
+            :onEdit="handleEdit"/>
     </div>
 </template>
 
@@ -35,6 +37,13 @@ export default {
             return api.addGoal(goal)
                 .then(saved => {
                     this.goals.push(saved);
+                });
+        },
+        handleEdit(goal) {
+            return api.updateGoal(goal)
+                .then(updated => {
+                    const index = this.goals.findIndex((goal) => goal.id === updated.id);
+                    this.goals.splice(index, 1, updated);
                 });
         }
     }

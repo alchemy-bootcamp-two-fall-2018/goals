@@ -6,7 +6,11 @@ const router = Router(); //eslint-disable-line new-cap
 router
   .get('/', (req, res) => {
     client.query(`
-        SELECT id, title, start_date
+        SELECT 
+          id, 
+          title, 
+          start_date as "startDate", 
+          completed
         FROM goal
         WHERE profile_id = $1;
         `, [req.userId])
@@ -24,9 +28,20 @@ router
         res.json(result.rows);
       });
   })
+  .get('/stats', (req, res) => {
+    client.query(`
+      SELECT 
+        DATE_PART('year', end_date::date) - 
+        DATE_PART('year', start_date::date)
+      FROM goal
+      WHERE id = $1;
+    `, [req.params.id])
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
   .post('/', (req, res) => {
     const body = req.body;
-
     client.query(`
         INSERT INTO goal(
           title, 

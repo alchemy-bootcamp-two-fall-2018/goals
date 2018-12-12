@@ -1,6 +1,8 @@
 <template>
     <li>
         <p>{{goal.title}}</p>
+        <p v-if="goal.completed === true">Completed? {{goal.completed}}</p>
+        <button @click.prevent="handleUpdate">Mark as completed!</button>
     </li>
 </template>
 
@@ -8,6 +10,13 @@
 export default {
     props: {
         goal: Object
+    },
+    methods: {
+        handleUpdate() {
+            console.log(this.goal);
+            console.log('true', this.goal); 
+            this.goal.completed = true;
+        }
     }
 };
 </script>
@@ -15,7 +24,9 @@ export default {
 <style>
 li {
     padding: 20px;
-    font-weight: bold;
-    
+    font-weight: bold;   
+}
+button {
+    width: 50px;
 }
 </style>

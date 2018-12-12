@@ -11,6 +11,7 @@ client.query(`
         title VARCHAR(256) NOT NULL,
         start_date DATE NOT NULL,
         end_date DATE,
+        completed BOOLEAN,
         profile_id INTEGER NOT NULL REFERENCES profile(id)
     );
 `).then(
