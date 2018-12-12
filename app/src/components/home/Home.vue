@@ -7,13 +7,19 @@
     <table v-if="stats">
       <thead>
         <tr>
-          <th>Count</th>
+          <th>Goal Count</th>
+          <th>Average Time</th>
+          <th>Shortest Time</th>
+          <th>Longest Time</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="stat in stats"
           :key="stat.profileId">
-          <td>{{stat.count}}</td>
+          <td>{{stat.count}} Goals!</td>
+          <td>{{stat.average}}</td>
+          <td>{{stat.shortest}}</td>
+          <td>{{stat.longest}}</td>
         </tr>
       </tbody>
     </table>
@@ -39,5 +45,11 @@ export default {
 <style>
 section {
   text-align: center;
+}
+th {
+  padding: 20px;
+}
+table {
+  width: 100vw;
 }
 </style>
