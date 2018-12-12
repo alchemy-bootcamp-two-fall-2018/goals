@@ -10,8 +10,9 @@
     </div>
     <div v-else>
       Incomplete
-    <button @click="handleUpdate">Completed</button> 
     </div>
+    
+    <button @click="handleUpdate">Completed</button> 
   </li>
 </template>
 

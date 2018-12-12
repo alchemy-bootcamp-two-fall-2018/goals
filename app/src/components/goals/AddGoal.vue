@@ -14,13 +14,12 @@
 function initGoal() {
   return {
     name: '',
-    startDate: '',
-    endDate: ''
+    startDate: ''
   };
 }
 export default {
   props: {
-    onAdd: initGoal()
+    onAdd: Function
   },
   data() {
     return {

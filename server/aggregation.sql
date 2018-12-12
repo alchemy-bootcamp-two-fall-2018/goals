@@ -1,12 +1,13 @@
--- select goal_id as "goalId",
---   avg(time) as "averageTime",
---   min(time) as "minimumTime",
---   max(time) as "maximumTime"
--- from time
--- on time.goal_id = goal.id
--- -- what to do here
+SELECT
+  profile_id, as "profile_id",
+  COUNT(goal.id) as count,
+FROM goal
+GROUP BY profile_id;
 
--- select
---   goal.id,
---   goal.name
--- from goal
+SELECT
+ goal_id as "goalId",
+  avg(time) as "averageTime",
+  min(start_date - end_date) as mindiff,
+  max(end_date - start_date) as maxdiff,
+FROM goal
+GROUP BY profile_id;

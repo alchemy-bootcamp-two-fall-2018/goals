@@ -79,5 +79,15 @@ export default {
       body: JSON.stringify(goal)
     })
       .then(response => response.json());
+  },
+  getGoalStats() {
+    return fetch('/api/goals/stats', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      }
+    })
+      .then(response => response.json());
   }
 };

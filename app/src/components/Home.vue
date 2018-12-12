@@ -43,9 +43,6 @@ import api from '../api.js';
   </section>
 </template>
 
-<style scoped>
-h1 {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
-}
+<style >
+
 </style>
