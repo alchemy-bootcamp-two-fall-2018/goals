@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <img alt="goals logo" src="./assets/goals.jpg">
+      <img alt="goals logo" src="../assets/goals.jpg">
       <span v-if="user">
         Hello, {{ user.username }}!
       </span>

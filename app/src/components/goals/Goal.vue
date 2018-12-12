@@ -1,5 +1,5 @@
 <template>
-    <li>{{goal.title}}</li>
+    <li>You plan to {{goal.title}}, starting {{goal.startdate}}</li>
 </template>
 
 <script>
