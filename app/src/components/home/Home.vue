@@ -8,6 +8,9 @@
     <table>
       <thead>
         <tr>
+          <th colspan="4">GOAL STATS</th>
+        </tr>
+        <tr>
           <th>Goal Count</th>
           <th>Min Duration</th>
           <th>Max Duration</th>
@@ -52,7 +55,7 @@ export default {
     border-collapse: collapse;
   }
   table {
-    margin: 0px auto;
+    margin: 30px auto;
   }
   td, th {
     margin: 20px;
@@ -67,5 +70,6 @@ export default {
     border: 2px solid red;
     border-radius: 5px;
     padding: 5px;
+    margin: 15px;
   }
 </style>

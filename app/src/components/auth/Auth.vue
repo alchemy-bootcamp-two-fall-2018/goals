@@ -112,3 +112,13 @@ export default {
 
 };
 </script>
+
+<style>
+  label {
+    margin: 5px 10px;
+    display: inline-block;
+  }
+  input {
+    width: 150px;
+  }
+</style>

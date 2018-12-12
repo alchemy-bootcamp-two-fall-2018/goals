@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <span v-if="user">Hello {{user.username}}</span>
+      <h1>GOALS</h1>
       <nav v-if="user">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
@@ -78,20 +78,33 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
-
 nav a {
   text-decoration: none;
   color: black;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid black;
-  
-  margin: 10px;
+  margin: 0px 10px;
   border-radius: 5px;
+  background: white;
 }
-
-nav {
-  margin-top: 20px;
+header {
+  background: black;
+  color: white;
+  height: 130px;
+  margin-top: 0px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+h1 {
+  margin: -20px 0px 10px 0px;
+  font-size: 3em;
+}
+body {
+  padding: 0px;
+  margin: 0px;
 }
 </style>

@@ -2,22 +2,19 @@
   <li>
     <p>{{goal.title}}</p>
     <p>
-      Start Date: 
+      Start Date:
       <DateDisplay v-bind:date="goal.startDate"/>
     </p>
-    
+
     <div v-if="goal.endDate">
       Completed Date:
       <DateDisplay v-bind:date="goal.endDate"/>
     </div>
-    
+
     <div v-else>
-      NOT COMPLETED
+      NOT COMPLETED<br/>
+      <button @click="handleCompleted">Completed</button>
     </div>
-    
-    <!--add condition for when button shouldn't show-->
-    <button @click="handleCompleted">Completed</button>
- 
   </li>
 </template>
 
@@ -47,5 +44,8 @@ export default {
     padding: 10px 0;
     margin: 10px 10px;
     width: 350px;
+  }
+  button {
+    margin-top: 15px;
   }
 </style>
