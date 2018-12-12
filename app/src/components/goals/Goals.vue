@@ -2,6 +2,7 @@
   <section>
         <h2>TODO</h2>
         <h3>add new goal</h3>
+        <AddGoal :onAdd="handleAdd"/>
         <GoalList v-if="goals && goals.length > 0"
             :goals="goals"/>
         <p v-else>ADD A NEW GOAL YOU LAZY SOAB</p>
@@ -10,7 +11,7 @@
 
 <script>
 import api from '../../services/api';
-// import AddGoal from './AddGoal';
+import AddGoal from './AddGoal';
 import GoalList from './GoalList';
 
 export default {
@@ -21,7 +22,7 @@ export default {
     }, 
 
     components: {
-        // AddGoal,
+        AddGoal,
         GoalList
     }, 
     created() {
@@ -38,6 +39,8 @@ export default {
             return api.addGoal(goal)
                 .then(saved => {
                     this.goals.push(saved);
+                    console.log(goal);
+
                 });
         }
     }
