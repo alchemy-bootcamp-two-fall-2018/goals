@@ -23,8 +23,12 @@ router
 
   .get('/stats', (req, res) => {
     client.query(`
-      select profile_id as "profileId", 
-      count(goals.id)
+      select 
+      profile_id, 
+      count(goals.id) as "count",
+      MIN(end_date - start_date) as mindiff,
+      MAX(end_date - start_date) as maxdiff,
+      CAST(AVG(end_date - start_date) as INT) as average
     from goals
     group by profile_id;
     `,

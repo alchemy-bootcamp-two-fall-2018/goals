@@ -2,9 +2,9 @@ const client = require('../lib/db-client');
 const bcrypt = require('bcryptjs');
 
 const goals = [
-  { title: 'Finish reports', type: 'Work', startDate: '11/5/18', endDate: '12/12/12' },
-  { title: 'Learn Apis', type: 'School', startDate: '10/7/18', endDate: '4/2/19' },
-  { title: 'Finish laundry', type: 'Home', startDate: '12/4/18', endDate: '5/4/19' }
+  { title: 'Finish reports', type: 'Work', startDate: 20181120, endDate: 20181231 },
+  { title: 'Learn Apis', type: 'School', startDate: 20181230, endDate: 20181215 },
+  { title: 'Finish laundry', type: 'Home', startDate: 20181129, endDate: 20190215 }
 ];
 
 client.query(`

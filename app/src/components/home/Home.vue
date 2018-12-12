@@ -17,9 +17,9 @@
         <tr v-for="stat in stats"
           :key="stat.profileId">
           <td>{{stat.count}} Goals!</td>
-          <td>{{stat.average}}</td>
-          <td>{{stat.shortest}}</td>
-          <td>{{stat.longest}}</td>
+          <td>{{stat.average}} days</td>
+          <td>{{stat.mindiff}} days</td>
+          <td>{{stat.maxdiff}} days</td>
         </tr>
       </tbody>
     </table>
