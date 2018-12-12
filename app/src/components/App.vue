@@ -85,7 +85,13 @@ nav a {
   text-decoration: none;
   color: black;
   padding: 10px;
-  border: 
+  border: 1px solid black;
+  
+  margin: 10px;
+  border-radius: 5px;
+}
 
+nav {
+  margin-top: 20px;
 }
 </style>
