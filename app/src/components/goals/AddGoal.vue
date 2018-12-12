@@ -8,6 +8,11 @@
       <input type="date" v-model="goal.startDate" required>
       <label>End date:</label>
       <input type="date" v-model="goal.endDate" required>
+      <label>
+        Completed?
+          Yes:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="true" required>
+          No:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="false">
+      </label>
      <button>Add</button>
   </form>
 </template>
@@ -20,7 +25,8 @@ function initGoal() {
     title: '',
     type: '',
     startDate: '',
-    endDate: ''
+    endDate: '',
+    completed: ''
   };
 }
 function copyGoal(goal) {
@@ -30,6 +36,7 @@ function copyGoal(goal) {
     type: goal.type,
     startDate: goal.startDate,
     endDate: goal.endDate,
+    completed: goal.completed,
     profileId: goal.profileId
   };
 }

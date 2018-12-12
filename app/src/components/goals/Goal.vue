@@ -6,25 +6,24 @@
     <p>
       <strong>Type:</strong> {{goal.type}}
     </p>
-    <span><strong>Start:</strong></span>
-    <DateDisplay :date="goal.startDate"/>
-    <br>
-    <span><strong>End:</strong></span>
-    <DateDisplay :date="goal.endDate"/>
-    <p v-if="goal.completed === true">Completed</p>
-    <p v-else>Overdue</p>
-
-    <!-- <p v-if="goal.endDate" class="overdue">Overdue</p>
-    <p v-else>Completed</p> -->
+    <div v-if="goal.completed === false">
+      <span><strong>Start:</strong></span>
+      <DateDisplay :date="goal.startDate"/>
+      <br>
+      <span><strong>End:</strong></span>
+      <DateDisplay :date="goal.endDate"/>
+    </div>
+    <p v-if="goal.completed === true" class="completed">Completed</p>
+    <p v-else class="overdue">Overdue</p>
+    <button @click="handleUpdate" v-if="goal.completed === false">Mark Complete</button>
 
     <!-- <EditGoal :onEdit="handleEdit" :goal="goal"/> -->
-    <button @click="handleUpdate">Mark Complete</button>
-    <button @click="handleDelete">Delete</button>
+    <!-- <button @click="handleDelete">Delete</button> -->
   </li>
 </template>
 
 <script>
-import api from '../../services/api';
+// import api from '../../services/api';
 import DateDisplay from '../shared/DateDisplay';
 // import EditGoal from './EditGoal';
 
@@ -39,12 +38,13 @@ export default {
     // EditGoal
   },
   methods: {
-    handleDelete() {
-      api.deleteGoal(this.goal.id)
-        .then(() => {
-          this.$router.go();
-        });
-    },
+    // handleDelete() {
+    //   api.deleteGoal(this.goal.id)
+    //     .then(() => {
+    //       console.log(this.goal.id);
+    //       this.$router.push('/goals');
+    //     });
+    // },
     // handleEdit(goal) {
     //   return api.updateGoal(goal)
     //     .then(updated => this.goal = updated);
@@ -67,5 +67,9 @@ p {
 }
 p.overdue {
   color: red;
+}
+p.completed {
+  font-style: italic;
+  color: green;
 }
 </style>
