@@ -11,7 +11,7 @@
           <th>Count</th>
           <th>Min Duration</th>
           <th>Max Duration</th>
-          <th></th>
+          <th>Average Duration Time</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +20,8 @@
           <td>{{stat.count}}</td>
           <td>{{stat.mindiff}}</td>
           <td>{{stat.maxdiff}}</td>
+          <td>{{stat.average}}</td>
+
 
 
         </tr>

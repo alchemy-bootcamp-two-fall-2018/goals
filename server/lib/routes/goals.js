@@ -74,6 +74,7 @@ router.get('/stats', (req, res) => {
     profile_id,
     MIN(end_date - start_date) as mindiff,
     MAX(end_date - start_date) as maxdiff,
+    CAST(AVG(end_date - start_date) as int) as average,
     COUNT(goal.id) as count
   FROM goal
   GROUP BY profile_id;
