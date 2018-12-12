@@ -1,5 +1,6 @@
 const router = require('express').Router(); //eslint-disable-line new-cap
 const client = require('../db-client');
+const bcrypt = require('bcryptjs');
 
 router
   .post('/signup', (req, res) => {
@@ -29,11 +30,11 @@ router
         }
 
         client.query(`
-          INSERT into profile (username, password, first_name, last_name, email)
+          INSERT into profile (username, hash, first_name, last_name, email)
           VALUES ($1, $2, $3, $4, $5)
           RETURNING id, username, first_name as "firstName", last_name as "lastName", email;
         `,
-        [username, password, firstName, lastName, email])
+        [username, bcrypt.hashSync(password, 8), firstName, lastName, email])
           .then(result => {
             res.json(result.rows[0]);
           });
@@ -51,14 +52,15 @@ router
     }
 
     client.query(`
-      SELECT id, username, password 
+      SELECT id, username, hash 
       FROM profile
       WHERE username = $1;
     `,
     [username]
     )
       .then(result => {
-        if(result.rows.length === 0 || result.rows[0].password !== password) {
+        const profile = result.rows[0];
+        if(!profile || !bcrypt.compareSync(password, profile.hash)) {
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         }
