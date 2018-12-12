@@ -32,8 +32,26 @@ client.query(`
         return client.query(`
           INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
           VALUES ($1, $2, $3, $4, $5, $6)
+          RETURNING id;
         `,
-        [goal.title, goal.type, profile.id, goal.startDate, goal.endDate, goal.completed]);
+        [goal.title, goal.type, profile.id, goal.startDate, goal.endDate, goal.completed])
+          .then(result => result.rows[0].id);
+      })
+    );
+  })
+  .then(goalIds => {
+    return Promise.all(
+      goalIds.map(id => {
+        const count = 6;
+        return Promise.all(
+          new Array(count).fill(null).map(() => {
+            return client.query(`
+              INSERT INTO complete (time, goal_id)
+              VALUES ($1, $2);
+            `, 
+            [5, id]);
+          })
+        );
       })
     );
   })
