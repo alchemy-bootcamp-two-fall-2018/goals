@@ -23,7 +23,8 @@ router
     COUNT(id), AVG(end_date - start_date) as "averageTime"
     FROM goal 
     WHERE profile_id = $1
-    GROUP BY profile_id;
+    GROUP BY completed, profile_id
+    HAVING completed;
     `,
     [req.userId])
       .then(result => {
