@@ -16,7 +16,6 @@
 import api from '../../services/api';
 import AddGoal from './AddGoal';
 import GoalList from './GoalList';
-
 export default {
   data() {
     return {
@@ -43,7 +42,6 @@ export default {
           this.goals.push(saved);
         });
     },
-
     handleEdit(goal) {
       return api.updateGoal(goal)
         .then(updated => {
@@ -53,5 +51,4 @@ export default {
     }
   }
 };
-
 </script>

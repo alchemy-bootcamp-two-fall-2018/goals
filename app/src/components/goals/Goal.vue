@@ -23,17 +23,14 @@
 
 <script>
 import DateDisplay from '../shared/DateDisplay';
-
 export default {
   props: {
     goal: null,
     onEdit: Function
   },
-
   components: {
     DateDisplay
   },
-
   methods: {
     handleCompleted() {
       this.goal.endDate = new Date().toLocaleDateString();
@@ -51,6 +48,4 @@ export default {
     margin: 10px 10px;
     width: 350px;
   }
-
-
 </style>
