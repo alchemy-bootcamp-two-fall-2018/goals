@@ -25,7 +25,7 @@ client.query(`
           VALUES ($1, $2, $3, $4)
           RETURNING id;
         `,
-        [goal.title, goal.startDate, goal.endDate, profile.id])
+        [goal.title, goal.startDate, goal.endDate, profile.id]);
         
       })
     );
