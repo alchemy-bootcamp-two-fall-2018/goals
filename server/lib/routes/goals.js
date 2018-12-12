@@ -6,8 +6,8 @@ const router = Router();
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, title
-      FROM goals
+      SELECT id, title, startdate, enddate
+      FROM goal
       WHERE profile_id = $1;
     `,
     [req.userId])
@@ -20,8 +20,8 @@ router
     const body = req.body;
 
     client.query(`
-      INSERT INTO user (name, profile_id)
-      VALUES($1, $2)
+      INSERT INTO goal (title, startdate, enddate, profile_id)
+      VALUES($1, $2, $3, $4)
       RETURNING *;
     `,
     [body.name, req.userId])
