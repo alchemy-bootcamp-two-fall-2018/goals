@@ -27,6 +27,7 @@ export default {
   created() {
     api.getStats()
       .then(stats => {
+        stats.average = Math.round(stats.average);
         this.stats = stats;
       });
   }
