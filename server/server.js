@@ -67,7 +67,7 @@ app.post('/signin', (req, res) => {
       res.json({
         id: profile.id,
         username: profile.username,
-        token: jwt.sign({ id: profile.id }, APP_SECRET)
+        token: jwt.sign({ id: profile.id })
       });
     });
 });

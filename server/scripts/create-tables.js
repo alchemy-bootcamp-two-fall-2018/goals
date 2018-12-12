@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       title VARCHAR(256) NOT NULL,
       start_date VARCHAR(256) NOT NULL,
-      end_date VARCHAR(256) NOT NULL,
+      end_date VARCHAR(256),
       user_id VARCHAR(256) NOT NULL
     );
 

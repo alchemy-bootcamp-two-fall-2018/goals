@@ -6,10 +6,10 @@
         <input v-model="goal.title">
       </label>
       <label>Start Date:
-        <input v-model="goal.stDate">
+        <input type="date" v-model="goal.stDate">
       </label>
       <label>End Date:
-        <input v-model="goal.enDate">
+        <input type="date" v-model="goal.enDate">
       </label>
       <button>Add</button>
     </form>
