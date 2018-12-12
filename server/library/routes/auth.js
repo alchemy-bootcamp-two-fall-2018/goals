@@ -57,7 +57,7 @@ router
     client.query(`
         SELECT id, username, password
         FROM profile
-        WHERE username =$1
+        WHERE username = $1
     `, 
     [username]
     )
@@ -68,7 +68,9 @@ router
         }
         res.json({ 
           id: result.rows[0].id,
-          username: result.rows[0].username
+          username: result.rows[0].username,
+          // password: result.rows[0].password,
+          // token: result.rows[0].id
         });
       });
   });

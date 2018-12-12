@@ -17,7 +17,7 @@
                   <input v-model="profile.password" required>
               </label>
               <label>
-                  <button @click="method = 'signin'" >Sign In</button>
+                  <button >Sign In</button>
               </label>
             </form>  
         </div>
