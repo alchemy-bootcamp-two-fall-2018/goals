@@ -1,8 +1,7 @@
 <template>
   <div>
-    <h2>Your Goals goal.vue</h2>
     <li>
-      {{goal.name}} due tbd
+      {{goal.name}} due {{goal.start_date}}
     </li>
   </div>
 </template>
@@ -18,5 +17,8 @@ export default {
 </script>
 
 <style>
-
+template {
+  display: block;
+  border: 1px solid purple;
+}
 </style>

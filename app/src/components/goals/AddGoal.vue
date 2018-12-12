@@ -2,10 +2,10 @@
   <form @submit.prevent="handleSubmit">
     
     <label>Goal Name:</label>
-    <input v-focus v-model="goal.name" require>
+    <input v-focus v-model="goal.name" required>
   
-    <label>Date:</label>
-    <input v-focus v-model="goal.date" require>
+    <label>Start Date:</label>
+    <input v-focus v-model="goal.start_date" required>
     
     <button>Set Goal!</button>
   </form>

@@ -34,5 +34,9 @@ export default {
 </script>
 
 <style>
-
+ul {
+  display: block;
+  border: 2px black solid;
+ 
+}
 </style>

@@ -3,7 +3,7 @@
     <h2>Your Goals!</h2>
     <h3>Add a new goal</h3>
     <AddGoal :onAdd="handleAdd"/>
-    <h3>Current Goals</h3>
+    
     <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal to get started</p>
   </section>
