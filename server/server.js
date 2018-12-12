@@ -92,7 +92,7 @@ app.post('/goals/:token', (req, res) => {
   client.query(`
     INSERT INTO goals (title, start_date, end_date, user_id)
     VALUES($1, $2, $3, $4)
-    RETURNING title
+    RETURNING title, id
   `,
   [body.title, body.stDate, body.enDate, body.userId])
     .then(result => {

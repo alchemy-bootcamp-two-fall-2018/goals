@@ -8,14 +8,21 @@
       <label>Start Date:
         <input type="date" v-model="goal.stDate">
       </label>
-      <label>End Date:
+      <!-- <label>End Date:
         <input type="date" v-model="goal.enDate">
-      </label>
+      </label> -->
       <button>Add</button>
     </form>
 
     <ul v-if="goals">
-      <li v-for="g in goals" :key="g.id">{{g.title}}</li>
+      <li v-for="g in goals" :key="g.id">{{g.title}}
+        <form @submit.prevent="onComplete(g.id)">
+          <label>End Date:
+            <input type="date" v-model="enDate">
+          </label>
+          <button>Mark Completed</button>
+        </form>
+      </li>
     </ul>
   </section>
 
@@ -30,6 +37,7 @@ export default {
     return {
       goal: {},
       goals: null,
+      enDate: ''
     };
   },
   created() {
@@ -42,6 +50,9 @@ export default {
         .then(newGoal => {
           this.goals.push(newGoal);
         });
+    },
+    onComplete(id) {
+      console.log(id);
     }
   }
 };
