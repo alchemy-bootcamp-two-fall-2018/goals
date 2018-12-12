@@ -1,13 +1,13 @@
 const express = require('express');
-const client = require('../../db-client');
+const client = require('../db-client');
 const Router = express.Router;
 const router = Router(); //eslint-disable-line new-cap
 
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, name
-      FROM goal;
+      SELECT id, name, start_date, end_date
+      FROM goals;
     `)
       .then(result => {
         res.json(result.rows);
@@ -18,11 +18,11 @@ router
     const body = req.body;
 
     client.query(`
-      INSERT INTO goal (name)
-      VALUES($1)
+      INSERT INTO goals (name, start_date, end_date)
+      VALUES ($1, $2, $3)
       RETURNING *;
     `,
-    [body.name])
+    [body.name, body.start_date, body.end_date])
       .then(result => {
         res.json(result.rows[0]);
       });

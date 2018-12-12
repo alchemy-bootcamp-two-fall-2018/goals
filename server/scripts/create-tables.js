@@ -1,16 +1,18 @@
 const client = require('../lib/db-client');
 
 client.query(`
-  CREATE TABLE IF NOT EXISTS user (
+  CREATE TABLE IF NOT EXISTS profile (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(256) NOT NULL,
-    password VARCHAR(56) NOT NULL
+    username VARCHAR(256),
+    password VARCHAR(56) 
   );
 
-  CREATE TABLE IF NOT EXISTS goal (
+  CREATE TABLE IF NOT EXISTS goals (
     id SERIAL PRIMARY KEY,
+    profile_id INTEGER REFERENCES profile(id),
     name VARCHAR(256) NOT NULL,
-    profile_id INTEGER NOT NULL REFERENCES profile(id)
+    start_date DATE,
+    end_date DATE
   );
 
 `)

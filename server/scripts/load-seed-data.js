@@ -1,15 +1,17 @@
 const client = require('../lib/db-client');
 
 const goals = [
-  { name: 'wash dog' },
-  { name: 'laundry' },
-  { name: 'vacuum' }
+  { name: 'wash dog', start_date: '12/1/18' },
+  { name: 'laundry', start_date: '11/5/17' },
+  { name: 'vacuum', start_date: '10/31/16' }
 ];
+
 
 client.query(`
   INSERT INTO profile (username, password)
   VALUES ($1, $2)
   RETURNING id;  
+  
 `,
 
 ['cherip', 'abc123']
@@ -20,10 +22,10 @@ client.query(`
     return Promise.all(
       goals.map(goal => {
         return client.query(`
-          INSERT INTO goal (name)
-          VALUES ($1)
+          INSERT INTO goals (name, start_date, profile_id)
+          VALUES ($1, $2, $3)
         `,
-        [goal.name, profile.id]);
+        [goal.name, goal.start_date, profile.id]);
       })
     );
   })

@@ -8,7 +8,8 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 
-app.use('./api/auth', auth);
-app.use('./api/goals', goals);
+
+app.use('/api/auth', auth);
+app.use('/api/goals', goals);
 
 module.exports = app;
