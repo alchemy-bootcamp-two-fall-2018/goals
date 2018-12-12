@@ -5,6 +5,14 @@ const jwt = require('jsonwebtoken');
 
 const APP_SECRET = 'CHANGEMENOW';
 
+const getProfileWithToken = profile => {
+  return {
+    id: profile.id,
+    username: profile.username,
+    token: jwt.sign({ id: profile.id }, APP_SECRET)
+  };
+};
+
 router
   .post('/signup', (req, res) => {
 
@@ -40,8 +48,7 @@ router
         [username, bcrypt.hashSync(password, 8), firstName, lastName, email])
           .then(result => {
             const profile = result.rows[0];
-            profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
-            res.json(profile);
+            res.json(getProfileWithToken(profile));
           });
       });
   })
@@ -69,11 +76,7 @@ router
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         }
-        res.json({
-          id: profile.id,
-          username: profile.username,
-          token: jwt.sign({ id: profile.id}, APP_SECRET)
-        });
+        res.json(getProfileWithToken(profile));
       });
   });
 
