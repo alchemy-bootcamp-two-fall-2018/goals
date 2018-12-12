@@ -2,6 +2,7 @@ const router = require('express').Router(); //eslint-disable-line new-cap
 const client = require('../db-client');
 
 router 
+
   .post('/signup', (req, res) => {
 
     const body = req.body;
@@ -53,7 +54,7 @@ router
     client.query(`
       SELECT id, username, password
       FROM profile
-      WHERE username -$1;
+      WHERE username = $1;
     `,
     [username]
     )

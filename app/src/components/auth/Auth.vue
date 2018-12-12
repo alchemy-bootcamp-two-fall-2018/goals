@@ -6,8 +6,8 @@
       <p>Need to register?
           <button @click="method = 'signup'">Sign Up</button>
       </p>
-
-      <form @submit.prevent="handleSignInSubmit(profile)">
+<!-- first form: returning user -->
+      <form @submit.prevent="onSignIn(profile)">  
         <label>
           Username:
           <input v-model="profile.username" required>
@@ -17,14 +17,14 @@
           <input type="password" v-model="profile.password" required>
         </label>
         <label>
-          <button>Sign In</button>
+          <button>Go!</button>
         </label>
       </form>
     </div>   
 
     <div v-else>
       <h2>Sign up</h2>
-
+<!-- for a new user -->
       <p>
         Already have an account?
         <button @click="method = 'signin'">Sign In</button>

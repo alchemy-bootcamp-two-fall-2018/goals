@@ -41,10 +41,16 @@ export default {
   },
   methods: {
     handleSignUp(profile) {
-      console.log('would sign up', profile);
+      return api.signUp(profile)
+        .then(user => {
+          this.user = user;
+        });
     },
     handleSignIn(credentials) {
-      console.log('would sign in', credentials);
+      return api.signIn(credentials)
+        .then(user => {
+          this.user = user;
+        });
     },
  
   }
