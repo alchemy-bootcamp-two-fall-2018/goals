@@ -56,6 +56,7 @@ router
 
   .post('/signin', (req, res) => {
     const body = req.body;
+    console.log('body', body);
     const username = body.username;
     const password = body.password;
 
@@ -73,12 +74,12 @@ router
     )
       .then(result => {
         const profile = result.rows[0];
-
+        
+        console.log('banana', profile);
         if(!profile || !bcrypt.compareSync(password, profile.hash)) {
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         }
-
         res.json(getProfileWithToken(profile));  
       });
   });

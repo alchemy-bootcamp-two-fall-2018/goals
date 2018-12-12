@@ -57,11 +57,12 @@ export default {
       .then(response => response.json());      
   },
 
+  
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
   },
-
+  
   updateGoal(goal) {
     return fetch(`/api/goals/${goal.id}`, {
       method: 'PUT',
@@ -72,6 +73,10 @@ export default {
       body: JSON.stringify(goal)
     })
       .then(response => response.json());
-  }
+  },
+  getGoalStats() {
+    return fetch('/api/goals/stats', getOptions('GET'))
+      .then(response => response.json());
+  },
 
 };

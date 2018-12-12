@@ -20,6 +20,29 @@ router
       });
   })
 
+  .get('/stats', (req, res) => {
+    client.query(`
+      SELECT goal_id as "goalId",
+      MIN(goal.name) as "goalName",
+      CAST(COUNT(goal.id as int) as count,
+      CAST(ROUND(AVG(time)) as int) as "averageTime",
+      MIN(time) as "minimumTime",
+      MAX(time) as "maximumTime"
+      FROM goals
+      JOIN profile
+      ON goals.profile_id = profile.id
+      WHERE profile.profile_id = $1
+      GROUP BY profile_id
+      ORDER BY "averageTime";
+    `,
+    [req.userId]
+    )
+      .then(result => {
+        res.json(result.rows);
+      });
+
+  })
+
   .post('/', (req, res) => {
     const body = req.body;
 

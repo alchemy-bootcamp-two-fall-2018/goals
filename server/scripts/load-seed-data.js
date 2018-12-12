@@ -7,13 +7,9 @@ const goals = [
   { title: 'Get a developer job', startDate: '4/01/2019', endDate: '8/01/2019' }
 ];
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.ceil(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+
 client.query(`
-  INSERT INTO profile(username, first_name, last_name, email, password)
+  INSERT INTO profile(username, first_name, last_name, email, hash)
   VALUES ($1, $2, $3, $4, $5)
   RETURNING id;
 `,
@@ -30,27 +26,10 @@ client.query(`
           RETURNING id;
         `,
         [goal.title, goal.startDate, goal.endDate, profile.id])
-          .then(result => result.rows[0].id);
+        
       })
     );
   }) 
-  .then(profileIds => {
-    return Promise.all(
-      profileIds.map(id => {
-        const count = getRandomInt(10, 100);
-        return Promise.all(
-          new Array(count).fill(null).map(() => {
-            return client.query(`
-              INSERT INTO game(score, profile_id)
-              VALUES($1, $2);
-            `,
-            [getRandomInt(50, 200), id]
-            );
-          })
-        );
-      })
-    );
-  })
   .then( 
     () => console.log('seed data load complete'),
     err => console.log(err)
