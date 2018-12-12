@@ -100,6 +100,20 @@ app.post('/goals/:token', (req, res) => {
     });
 });
 
+app.get('/stats/:token', (req, res) => {
+  client.query(`
+    SELECT
+      COUNT(id) as count
+    FROM goals
+    WHERE user_id = $1
+  `,
+  [req.params.token])
+    .then(result => {
+      result.rows;
+      res.json(result.rows[0]);
+    });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {

@@ -60,5 +60,10 @@ export default {
       body: JSON.stringify(goal)
     })
       .then(response => response.json());
+  },
+
+  getStats() {
+    return fetch(`stats/${token}`)
+      .then(response => response.json());
   }
 };
