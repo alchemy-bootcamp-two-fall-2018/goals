@@ -13,21 +13,37 @@ router
         res.json(result.rows);
       });
   })
+// TODO: add a new route to return the summary goal data
+// implicit WHERE user_id = $1 where $1 is req.userId
+// HINT: You don't need to use a GROUP BY for this one
+// HINT: See DATEDIFF in pqsql docs!
+  .get('/summary', (req, res) => {
+    client.query(`
+      SELECT id, time
+      FROM complete
+      WHERE goal_id = $1;
+    `,
+    [req.userId])
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
 
   .post('/', (req, res) => {
     const body = req.body;
 
     client.query(`
-      INSERT INTO goal (title, type, profile_id, start_date, end_date)
-      VALUES($1, $2, $3, $4, $5)
+      INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
+      VALUES($1, $2, $3, $4, $5, $6)
       RETURNING 
         title,
         type, 
         profile_id as "profileId", 
         start_date as "startDate", 
-        end_date as "endDate";
+        end_date as "endDate",
+        completed;
     `,
-    [body.title, body.type, req.userId, body.startDate, body.endDate])
+    [body.title, body.type, req.userId, body.startDate, body.endDate, body.completed])
       .then(result => {
         res.json(result.rows[0]);
       });
@@ -47,16 +63,16 @@ router
       .then(result => {
         res.json(result.rows[0]);
       });
-  })
-
-  .delete('/:id', (req, res) => {
-    client.query(`
-      DELETE FROM goal WHERE id = $1;
-  `,
-    [req.params.id])
-      .then(result => {
-        res.json({ removed: result.rowCount === 1 });
-      });
   });
+
+// .delete('/:id', (req, res) => {
+//   client.query(`
+//     DELETE FROM goal WHERE id = $1;
+// `,
+//   [req.params.id])
+//     .then(result => {
+//       res.json({ removed: result.rowCount === 1 });
+//     });
+// });
 
 module.exports = router;
