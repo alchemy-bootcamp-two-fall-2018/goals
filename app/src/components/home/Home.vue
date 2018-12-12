@@ -2,13 +2,13 @@
   <section>
     <h2>Welcome to Your Goals Page</h2>
     <p>
-      <RouterLink to="/goals">view goals</RouterLink>
+      <RouterLink to="/goals">View Goals</RouterLink>
     </p>
 
     <table>
       <thead>
         <tr>
-          <th>Count</th>
+          <th>Goal Count</th>
           <th>Min Duration</th>
           <th>Max Duration</th>
           <th>Average Duration Time</th>
@@ -18,12 +18,9 @@
         <tr v-for="stat in stats"
           v-bind:key="stat.profileId">
           <td>{{stat.count}}</td>
-          <td>{{stat.mindiff}}</td>
-          <td>{{stat.maxdiff}}</td>
-          <td>{{stat.average}}</td>
-
-
-
+          <td>{{stat.mindiff}} days</td>
+          <td>{{stat.maxdiff}} days</td>
+          <td>{{stat.average}} days</td>
         </tr>
       </tbody>
     </table>
@@ -49,5 +46,26 @@ export default {
 };
 
 </script>
-<style>
+<style scoped>
+  table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+  }
+  table {
+    margin: 0px auto;
+  }
+  td, th {
+    margin: 20px;
+    padding: 15px;
+  }
+  th {
+    font-size: 1.2em;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 5px;
+  }
 </style>

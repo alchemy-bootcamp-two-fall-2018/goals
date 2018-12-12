@@ -2,8 +2,10 @@ const client = require('../lib/db-client');
 const bcrypt = require('bcryptjs');
 
 const goals = [
-  { title: 'Go grocery shopping', startDate: 20181212 },
-  { title: 'Learn Python', startDate: 20181102 }
+  { title: 'Go grocery shopping', startDate: 20181208 },
+  { title: 'Learn Python', startDate: 20181102 },
+  { title: 'Go Christmas Shopping', startDate: 20181115 },
+  { title: 'Pet Roxy', startDate: 20181210 }
 
 ];
 
