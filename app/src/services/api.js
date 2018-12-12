@@ -52,9 +52,15 @@ export default {
           });
       });
   },
+
   getGoals() {
     return fetch('/api/goals', getOptions('GET'))
       .then(response => response.json());      
+  },
+
+  getGoalSummary() {
+    return fetch('/api/goals/summary', getOptions('GET'))
+      .then(response => response.json());     
   },
 
   addGoal(goal) {

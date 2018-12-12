@@ -16,6 +16,21 @@ router
       });
   })
 
+  .get('/summary', (req, res) => {
+    client.query(`
+      SELECT profile_id,
+      COUNT(startdate) as count 
+      FROM goals
+      WHERE profile_id = $1
+      GROUP BY profile_id;
+    `,
+    [req.userId]
+    )
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
+
   .post('/', (req, res) => {
     const body = req.body;
 

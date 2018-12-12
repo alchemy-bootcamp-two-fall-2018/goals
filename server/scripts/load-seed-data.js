@@ -2,9 +2,9 @@ const client = require('../lib/db-client');
 const bcrypt = require('bcryptjs');
 
 const goals = [
-  { title: 'Finish Coding', startdate: '2018-01-01', completed: false },
-  { title: 'Xmas shopping done', startdate: '2018-01-01', completed: false },
-  { title: 'Halloween Costume', startdate: '2018-01-01', completed: false }
+  { title: 'Finish Coding', startdate: 20180101, enddate: 20190101, completed: false },
+  { title: 'Xmas shopping done', startdate: 20180202, enddate: 20190101, completed: false },
+  { title: 'Halloween Costume', startdate: 20180303, enddate: 20190101, completed: false }
 ];
 
 client.query(`
@@ -20,10 +20,10 @@ client.query(`
     return Promise.all(
       goals.map(goals => {
         return client.query(`
-          INSERT INTO goals (title, startdate, completed, profile_id)
-          VALUES ($1, $2, $3, $4)
+          INSERT INTO goals (title, startdate, enddate, completed, profile_id)
+          VALUES ($1, $2, $3, $4, $5)
         `,
-        [goals.title, goals.startdate, goals.completed, profile.id]);
+        [goals.title, goals.startdate, goals.enddate, goals.completed, profile.id]);
       })
     );
   })
