@@ -1,37 +1,33 @@
 const client = require('../db-client'); 
-const goals = require('./goals.json');
-const profiles = require('./profiles'); 
-console.log('loading', goals);
 
-Promise.all(
-  profiles.map(profile => {
-    return client.query(`
-    INSERT INTO profile (username, short_name)
-      VALUES($1, $2);
-    `,
-    [profile.name, profile.shortName]);
-  })
+const goals = [
+
+  { name: 'Buy Cool Things', date:'121318', description:'You should buy all the cool things' },
+  { name: 'Sell Uncool Things', date:'121218', description:'You do not want them' },
+  { name: 'Fix Broken Things', date:'121118', description:'Download all user manuals first' }
+  
+];
+
+client.query(`
+  INSERT INTO profile (username, password)
+  VALUES ($1, $2)
+  RETURNING id;
+`,
+['mike', '33233323']
 )
-  .then(() => {
+  .then(result => {
+    const profile = result.rows[0];
+
     return Promise.all (
-      goals.map(goal =>{
+      goals.map(goal => {
         return client.query(`
-      INSERT INTO goal(name, url, year, description, profile_id, rating)
-      SELECT
-      $1 as name,
-      $2 as date,
-      $3 as description,
-      id as profile_id,
-      FROM profile
-      WHERE short_name = $4;
+          INSERT INTO goal (name, date, description, profile_id)
+          VALUES ($1, $2, $3, $4)
       `,
-        [goal.name, goal.url, goal.year, goal.description, goal.rating, goal.profile]);
+        [goal.name, goal.date, goal.description, profile.id]);
       }) 
     );
   })
-
-
-  
   .then(
     () => console.log('seed data load complete'),
     err =>console.log(err)

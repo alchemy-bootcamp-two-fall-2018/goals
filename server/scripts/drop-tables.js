@@ -1,4 +1,4 @@
-const client = require('../lib/db-client');
+const client = require('../db-client');
 
 client.query(`
   DROP TABLE IF EXISTS goal;
