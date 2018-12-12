@@ -41,7 +41,7 @@ export default {
         }
         return response.json()
           .then(error => {
-            return Promise.eject(error);
+            return Promise.reject(error);
           });
       });
   }

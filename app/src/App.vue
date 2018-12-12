@@ -2,18 +2,17 @@
   <div id="app">
 
     <header>
-      <span >
-       
+      <span v-if="user">
+         HELLO {{user.username}}
       </span>
       <nav v-if="user">
-        HELLO USER!
         <RouterLink to="/">HOME</RouterLink>
       </nav>
     </header>
 
     <main>
-      <RouterView></RouterView>
-      <Auth
+      <RouterView v-if="user" :user="user"></RouterView>
+      <Auth v-else
         :onSignUp="handleSignUp"
         :onSignIn="handleSignIn"/>
     </main>
