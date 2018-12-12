@@ -52,7 +52,8 @@ export default {
         });
     },
     onComplete(id) {
-      console.log(id);
+      api.markComplete(id, this.enDate)
+        .then(goals => console.log('goals', goals));
     }
   }
 };

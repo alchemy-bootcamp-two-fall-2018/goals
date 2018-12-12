@@ -100,6 +100,21 @@ app.post('/goals/:token', (req, res) => {
     });
 });
 
+app.put('/goals/:token', (req, res) => {
+  const body = req.body;
+  console.log(body, req.params.token);
+  client.query(`
+    UPDATE goals
+    SET end_date = $1
+    WHERE id = $2
+    RETURNING *
+  `,
+  [body.enDate, req.params.token])
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
 app.get('/stats/:token', (req, res) => {
   client.query(`
     SELECT

@@ -65,5 +65,16 @@ export default {
   getStats() {
     return fetch(`stats/${token}`)
       .then(response => response.json());
+  },
+
+  markComplete(id, compDate) {
+    return fetch(`goals/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ enDate: compDate })
+    })
+      .then(response => response.json());
   }
 };
