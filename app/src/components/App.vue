@@ -7,7 +7,7 @@
       </span>
       <nav v-if="user">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink t="/auth">Sign Up/Sign In</RouterLink>
+        <RouterLink to="/auth">Sign Up/Sign In</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
         <a href="#" @click="handleLogout">Logout</a>
       </nav>
