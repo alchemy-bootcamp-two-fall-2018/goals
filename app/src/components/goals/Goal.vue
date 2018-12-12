@@ -1,11 +1,11 @@
 <template>
   <li>
     <p>Goal: {{goal.title}}</p>
-    <p>Start Date: {{goal.startDate}}</p>
+    <DateDisplay v-bind:date="goal.startDate"/>
     
     <div v-if="goal.endDate">
       Completed Date:
-      {{goal.endDate}}
+      <DateDisplay v-bind:date="goal.endDate"/>
     </div>
     <div v-else>
       NOT COMPLETED
@@ -17,14 +17,18 @@
 </template>
 
 <script>
+import DateDisplay from '../shared/DateDisplay';
 export default {
   props: {
     goal: null,
     onEdit: Function
   },
+  components: {
+    DateDisplay
+  },
   methods: {
-    handleUpdate() {
-      this.goal.endDate = new Date();
+    handleCompleted() {
+      this.goal.endDate = new Date().toLocaleDateString();
       this.onEdit(this.goal);
     }
   }
