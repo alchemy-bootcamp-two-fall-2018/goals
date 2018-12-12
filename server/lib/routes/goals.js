@@ -22,10 +22,11 @@ router
     client.query(`
             INSERT INTO goal (name, type, profile_id)
             VALUES($1, $2, $3)
-            RETURNING *;
+            RETURNING name, type, profile_id, start_date as "startDate", end_date as "endDate";
         `,
     [body.name, body.type, req.userId])
       .then(result => {
+        console.log(result);
         res.json(result.rows[0]);
       });
   })
