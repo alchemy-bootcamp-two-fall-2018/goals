@@ -63,7 +63,7 @@ export default {
   },
 
   updateGoal(goal) {
-    return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal.id))
+    return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
       .then(response => response.json());
   },
 

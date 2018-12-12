@@ -4,7 +4,7 @@ const client = require('../db-client');
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, title, type, start_date as "startDate", end_date as "endDate"
+      SELECT id, title, type, start_date as "startDate", end_date as "endDate", completed
       FROM goal
       WHERE profile_id = $1;
     `,
@@ -20,7 +20,12 @@ router
     client.query(`
       INSERT INTO goal (title, type, profile_id, start_date, end_date)
       VALUES($1, $2, $3, $4, $5)
-      RETURNING *;
+      RETURNING 
+        title,
+        type, 
+        profile_id as "profileId", 
+        start_date as "startDate", 
+        end_date as "endDate";
     `,
     [body.title, body.type, req.userId, body.startDate, body.endDate])
       .then(result => {
@@ -28,8 +33,9 @@ router
       });
   })
 
-  .put('/:id/completed', (req, res) => {
+  .put('/:id', (req, res) => {
     const completed = req.body.completed;
+    console.log('\n\n\nthis is completed', completed);
     client.query(`
       UPDATE goal
       SET completed = $1

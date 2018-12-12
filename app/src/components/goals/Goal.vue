@@ -11,11 +11,14 @@
     <br>
     <span><strong>End:</strong></span>
     <DateDisplay :date="goal.endDate"/>
+    <p v-if="goal.completed === true">Completed</p>
+    <p v-else>Overdue</p>
 
-    <p v-if="goal.endDate" class="overdue">Overdue</p>
-    <p v-else>Completed</p>
+    <!-- <p v-if="goal.endDate" class="overdue">Overdue</p>
+    <p v-else>Completed</p> -->
 
-    <EditGoal :onEdit="handleEdit" :goal="goal"/>
+    <!-- <EditGoal :onEdit="handleEdit" :goal="goal"/> -->
+    <button @click="handleUpdate">Mark Complete</button>
     <button @click="handleDelete">Delete</button>
   </li>
 </template>
@@ -23,16 +26,17 @@
 <script>
 import api from '../../services/api';
 import DateDisplay from '../shared/DateDisplay';
-import EditGoal from './EditGoal';
+// import EditGoal from './EditGoal';
 
 export default {
   name: 'goal',
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
   },
   components: {
     DateDisplay,
-    EditGoal
+    // EditGoal
   },
   methods: {
     handleDelete() {
@@ -41,9 +45,13 @@ export default {
           this.$router.go();
         });
     },
-    handleEdit(goal) {
-      return api.updateGoal(goal)
-        .then(updated => this.goal = updated);
+    // handleEdit(goal) {
+    //   return api.updateGoal(goal)
+    //     .then(updated => this.goal = updated);
+    // },
+    handleUpdate() {
+      this.goal.completed = true;
+      this.onEdit(this.goal);
     }
   }
 };

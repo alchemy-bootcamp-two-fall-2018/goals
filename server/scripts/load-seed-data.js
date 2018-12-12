@@ -5,13 +5,15 @@ const goals = [
     title: 'Finish Goals Lab', 
     type: 'school', 
     startDate: '2019-01-12T08:00:00.000Z',
-    endDate: '2019-02-19T08:00:00.000Z'
+    endDate: '2019-02-19T08:00:00.000Z',
+    completed: false
   },
   { 
     title: 'Do Laundry',
     type: 'home',
     startDate: '2019-01-08T08:00:00.000Z',
-    endDate: null
+    endDate: '2019-02-10T08:00:00.000Z',
+    completed: false
   }
 ];
 
@@ -27,10 +29,10 @@ client.query(`
     return Promise.all(
       goals.map(goal => {
         return client.query(`
-          INSERT INTO goal (title, type, profile_id, start_date, end_date)
-          VALUES ($1, $2, $3, $4, $5)
+          INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
+          VALUES ($1, $2, $3, $4, $5, $6)
         `,
-        [goal.title, goal.type, profile.id, goal.startDate, goal.endDate]);
+        [goal.title, goal.type, profile.id, goal.startDate, goal.endDate, goal.completed]);
       })
     );
   })
