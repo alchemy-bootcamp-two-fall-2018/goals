@@ -1,5 +1,15 @@
 const router = require('express'). Router();
 const client = require('../db-client');
+const bcrypt = require('bcryptjs');
+const jwt = require('../jwt');
+
+function getProfileWithToken(profile) {
+  return {
+    id: profile.id,
+    username: profile.username,
+    token: jwt.sign({ id: profile.id })
+  };
+}
 
 router
   .post('/signup', (req, res) => {
@@ -26,14 +36,15 @@ router
         }
 
         client.query(`
-          INSERT into profile (username, first_name, last_name, email, password)
-          VALUES ($1, $2, $3, $4, $5)
-          RETURNING id, username, first_name as "firstName", last_name as "lastName", email, password;
+          INSERT into profile (username, hash)
+          VALUES ($1, $2)
+          RETURNING id, username;
         `,
-        [username, password]
+        [username, bcrypt.hashSync(password, 8)]
         )
           .then(result => {
-            res.json(result.rows[0]);
+            const profile = result.rows[0];
+            res.json(getProfileWithToken(profile));
           });
       });
   })
@@ -49,23 +60,20 @@ router
     }
 
     client.query(`
-    SELECT id, username, password
+    SELECT id, username, hash
     FROM profile
     WHERE username = $1;
     `,
     [username]
     )
       .then(result => {
-        if(result.rows.length === 0 || result.rows[0].password !== password) {
+        const profile = result.rows[0];
+        if(!profile || !bcrypt.compareSync(password, profile.hash)) {
           res.status(400).json({ error: 'username or password incorrect' });
           return;
         } 
-        res.json({
-          id: result.rows[0].id,
-          username: result.rows[0].username, 
-          token: result.rows[0].id
+        res.json(getProfileWithToken(profile);
         });
       });
-  });
 
 module.exports = router;
