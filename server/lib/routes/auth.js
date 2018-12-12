@@ -1,6 +1,9 @@
 const router = require('express').Router(); //eslint-disable-line new-cap
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const APP_SECRET = 'CHANGEMENOW';
 
 router
   .post('/signup', (req, res) => {
@@ -36,7 +39,9 @@ router
         `,
         [username, bcrypt.hashSync(password, 8), firstName, lastName, email])
           .then(result => {
-            res.json(result.rows[0]);
+            const profile = result.rows[0];
+            profile.token = jwt.sign({ id: profile.id }, APP_SECRET);
+            res.json(profile);
           });
       });
   })
@@ -65,8 +70,9 @@ router
           return;
         }
         res.json({
-          id: result.rows[0].id,
-          username: result.rows[0].username
+          id: profile.id,
+          username: profile.username,
+          token: jwt.sign({ id: profile.id}, APP_SECRET)
         });
       });
   });
