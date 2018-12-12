@@ -1,7 +1,8 @@
 <template>
     <section>
         Goals page
-        <GoalList :goals="goals"/>
+        <GoalList v-if="goals"
+        :goals="goals"/>
     </section>
 
 </template>

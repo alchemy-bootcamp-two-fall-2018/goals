@@ -1,6 +1,5 @@
 <template>
     <li> 
-        
         {{goal.title}}
     </li>
 </template>
@@ -8,11 +7,14 @@
 <script>
 export default {
   props: {
-    goal: Object
+    goal: null
   }
 };
 </script>
 
-<style>
+<style scoped>
+li {
+  border: 1px solid black;
+}
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div>
-        Goal List
-        <ul>
+      GOAL LIST RENDERING
+        <ul v-if="goals">
             <Goal v-for="goal in goals"
             :key="goal.id"
             :goal="goal"/>
@@ -22,6 +22,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+div {
+  border: 2px solid green;
+}
 </style>
