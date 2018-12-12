@@ -24,4 +24,4 @@ function checkAuth(req, res, next) {
 app.use('/api/auth', auth);
 app.use('/api/goals', checkAuth, goals);
 
-module.exports = app; I LIKE SLAYER : RAINING BLOOD
+module.exports = app; 
