@@ -26,5 +26,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    border: 2px orangered;
   }
 </style>

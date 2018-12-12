@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header>
+      <h1>Welcome to the Goals App!</h1>
       <img alt="Gold fish wish" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs6OgBYoZd34-L2GUxkNY0JmU6dc010OvmkYyFpCs0phbGNHDp">
       <span v-if="user">
         Hello {{user.username}}!
@@ -75,15 +76,17 @@ export default {
 };
 </script>
 
-<style>header {
+<style scoped>
+header {
   height: 75px;
   background: lightsteelblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-header img {
+img {
   height: 100%;
+  width: auto;
 }
 nav a {
   text-decoration: none;

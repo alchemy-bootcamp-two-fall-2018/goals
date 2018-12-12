@@ -70,7 +70,7 @@ export default {
   },
 
   updateGoal(goal) {
-    return fetch(`/api/goals/${goal.id}`, {
+    return fetch(`/api/goals/${goal.id}`,  {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

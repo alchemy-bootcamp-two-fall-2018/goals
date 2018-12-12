@@ -36,7 +36,10 @@ export default {
     return {
       method: 'signin',
       error: '',
-      
+      profile: {
+        username: '',
+        password: ''
+      }
     };
   },
   components: {

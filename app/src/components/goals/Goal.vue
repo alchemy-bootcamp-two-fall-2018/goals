@@ -1,28 +1,33 @@
 <template>
   <li>
     <p>Goal: {{goal.name}}</p>
-    <p>Start Date: {{goal.startDate}}</p>
+    <p>Start Date: 
+      <DateDisplay v-bind:date="goal.startDate"/>
+    </p>
     <div v-if="goal.endDate">
       Completed Date: 
       {{goal.endDate}}
     </div>
     <div v-else>
       Incomplete
+    <button @click="handleUpdate">Completed</button> 
     </div>
-    <button @click="handleUpdate">Update</button> 
-
   </li>
 </template>
 
 <script>
+import DateDisplay from '../DateDisplay.vue';
 export default {
   props: {
     goal: null,
     onEdit: Function
   },
+  components: {
+    DateDisplay
+  },
   methods: {
     handleUpdate() {
-      this.goal.endDate = new Date();
+      this.goal.endDate = new Date().toLocalDateString();
       this.onEdit(this.goal);
     }
   }
