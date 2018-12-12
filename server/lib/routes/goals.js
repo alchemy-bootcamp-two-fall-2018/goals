@@ -19,9 +19,11 @@ router
 // HINT: See DATEDIFF in pqsql docs!
   .get('/summary', (req, res) => {
     client.query(`
-      SELECT id, time
-      FROM complete
-      WHERE goal_id = $1;
+    SELECT 
+    COUNT(id), AVG(end_date - start_date) as "averageTime"
+    FROM goal 
+    WHERE profile_id = $1
+    GROUP BY profile_id;
     `,
     [req.userId])
       .then(result => {

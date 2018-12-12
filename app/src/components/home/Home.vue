@@ -9,7 +9,7 @@
       Count, Shortest time to completion, Longest time to completion,
       Average time to completion
     </p>
-    <table v-if="stats">
+    <table v-if="goals">
       <thead>
         <tr>
           <th>Count</th>
@@ -19,16 +19,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="stat in stats"
-          :key="stat.goalId">
-          <td>{{stat.time}}</td>
+        <tr v-for="goal in goals"
+          :key="goal.goalId">
+          <td>{{goal.count}}</td>
+          <td>{{goal.averageTime}}</td>
           <td>I'm a td in a tr</td>
           <td>I'm a td in a tr</td>
-          <td>I'm a td in a tr</td>
-      <!--<td>{{stat.count}}</td>
-          <td>{{stat.averageTime}}</td>
-          <td>{{stat.minimumTime}}</td>
-          <td>{{stat.maximumTime}}</td>-->
+          <!--<td>{{goal.minimumTime}}</td>
+          <td>{{goal.maximumTime}}</td>-->
         </tr>
       </tbody>
     </table>
@@ -42,12 +40,12 @@ export default {
   name: 'home',
   data() {
     return {
-      stats: null
+      goals: null
     };
   },
   created() {
     api.getGoalStats()
-      .then(stats => this.stats = stats);
+      .then(goals => this.goals = goals);
   }
 };
 </script>
