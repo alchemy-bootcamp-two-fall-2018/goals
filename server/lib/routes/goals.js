@@ -4,9 +4,35 @@ const Router = express.Router;
 const router = Router(); //eslint-disable new-cap
 
 router
+    .put('/:id', (req, res) => {
+        const body = req.body;
+
+        client.query(`
+        UPDATE goals 
+        SET
+            date_end  = $1, 
+            date_start = $2,
+            goal = $3 
+        WHERE id = $4
+        AND profile_id = $5
+
+        RETURNING 
+            id,
+            goal, 
+            date_start as "dateStart",
+            date_end as "dateEnd"
+        `, 
+        [body.dateEnd, body.dateStart, body.goal, body.id, req.userId])
+            .then(result => {
+                res.json(result.rows[0]);
+            });
+
+
+
+    })
     .get('/', (req, res) => {
         client.query(`
-    SELECT id, goal, date_start, date_end
+    SELECT id, goal, date_start as "dateStart", date_end as "dateEnd"
     FROM goals
     WHERE profile_id = $1;`, 
         [req.userId])
@@ -14,13 +40,26 @@ router
                 res.json(result.rows);
             });
     })
+
+
+
     .post('/', (req, res) => {
         const body = req.body;
 
         client.query(`
-        INSERT INTO goals (goal, date_start, date_end, profile_id)
+        INSERT INTO goals 
+        (
+            goal, 
+            date_start,
+            date_end,
+            profile_id
+        )
         VALUES($1, $2, $3, $4)
-        RETURNING *;
+        RETURNING
+            id,
+            goal, 
+            date_start as "dateStart",
+            date_end as "dateEnd";
     `, 
         [body.goal, body.dateStart, body.dateEnd, req.userId])
             .then(result => {

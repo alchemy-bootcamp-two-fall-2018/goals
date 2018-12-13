@@ -54,7 +54,23 @@ export default {
                     });
             });
 
-    }, 
+    },
+    updateGoal(goal) {
+        return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
+            .then(response => {   
+                console.log('something', response.json());  
+                if(response.ok) {
+                    return response.json();
+                }
+                // if it fails return an error in json format
+                return response.json()
+                    .then(error => {
+                        return Promise.reject(error);
+                    });
+
+            });
+    },
+
     getGoals() {
         return fetch('/api/goals', getOptions('GET')) 
             .then(response => response.json());
