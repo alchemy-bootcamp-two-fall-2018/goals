@@ -10,8 +10,8 @@ router
         SELECT 
             id, 
             title, 
-            start_date, 
-            end_date
+            start_date as "startDate", 
+            end_date as "endDate"
         FROM goal
         WHERE profile_id = $1;
       `, 
