@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('../jwt');
 
 function getProfileWithToken(profile) {
+  console.log('profile', profile);
   return {
     id: profile.id,
     username: profile.username,
@@ -51,6 +52,7 @@ router
 
   .post('/signin', (req, res) => {
     const body = req.body;
+    console.log('body', body);
     const username = body.username;
     const password = body.password;
 

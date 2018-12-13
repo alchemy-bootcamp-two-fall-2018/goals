@@ -3,11 +3,11 @@ const client = require('../lib/db-client');
 client.query(`
     CREATE TABLE IF NOT EXISTS profile (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(256) NOT NULL,
-    first_name VARCHAR(256) NOT NULL,
-    last_name VARCHAR(256) NOT NULL,
-    email VARCHAR(320) NOT NULL,
-    password VARCHAR(256) NOT NULL
+    username VARCHAR(256),
+    first_name VARCHAR(256),
+    last_name VARCHAR(256),
+    email VARCHAR(320),
+    hash VARCHAR(256)
 );
   CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY,
