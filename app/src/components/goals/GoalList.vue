@@ -26,4 +26,9 @@ export default {
 div {
   border: 2px solid green;
 }
+ul {
+  list-style: none;
+  display: grid;
+
+}
 </style>

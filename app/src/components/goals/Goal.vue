@@ -1,6 +1,8 @@
 <template>
     <li> 
-        {{goal.title}}
+        Goal: {{goal.title}}
+        Start Date: {{goal.startDate}}
+        End Date: {{goal.endDate}}
     </li>
 </template>
 

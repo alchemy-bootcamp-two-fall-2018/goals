@@ -1,6 +1,7 @@
 <template>
     <section>
         Goals page
+        <AddGoal/>
         <GoalList v-if="goals"
         :goals="goals"/>
     </section>
@@ -10,6 +11,7 @@
 <script>
 import api from '../../services/api';
 import GoalList from './GoalList';
+import AddGoal from './AddGoal';
 
 export default {
   data() {
@@ -18,7 +20,8 @@ export default {
     };
   },
   components: {
-    GoalList
+    GoalList,
+    AddGoal
   },
   created() {
     api.getGoals()

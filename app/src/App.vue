@@ -7,6 +7,7 @@
       </span>
       <nav v-if="user">
         <RouterLink to="/">HOME</RouterLink>
+        <button @click="logout()"> Logout </button>
       </nav>
     </header>
 
@@ -62,6 +63,10 @@ export default {
         api.setToken();
         window.localStorage.removeItem('profile');
       }
+    },
+    logout() {
+      window.localStorage.clear();
+      this.user = null;
     }
   }
 
