@@ -1,6 +1,6 @@
 <template>
     <li>
-        {{goal.goal}} By {{goal.date}}
+        {{goal.goal}} By {{goal.dateStart}} Finish by {{goal.dateEnd}}
     </li>
 </template>
 

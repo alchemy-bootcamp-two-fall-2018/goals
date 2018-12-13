@@ -2,8 +2,7 @@ const client = require('../lib/db-client');
 const bcrypt = require('bcryptjs');
 
 const goals = [
-    { goal: 'don`t die', date: '1/1/19' },
-    { goal: 'drink water', date: '9/9/19' },
+    { goal: 'don`t die', date_start: 20181120, date_end: 20181130 },
  
 ];
 
@@ -21,10 +20,10 @@ RETURNING id, username;
         return Promise.all(
             goals.map(goal => {
                 return client.query(`
-            INSERT INTO goals (goal, date, profile_id)
-            VALUES ($1, $2, $3)
+            INSERT INTO goals (goal, date_start, date_end, profile_id)
+            VALUES ($1, $2, $3, $4)
             `, 
-                [goal.goal, goal.date, profile.id]);
+                [goal.goal, goal.date_start, goal.date_end, profile.id]);
             })
         );
     })

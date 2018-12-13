@@ -2,9 +2,11 @@
     <div>
         <form @submit.prevent="handleSubmit">
             <label>Goal:</label>
-            <input v-model="goal.goal">
-             <label>Date:</label>
-            <input v-model="goal.date">
+                <input v-model="goal.goal">
+            <label>StartDate:</label>
+                <input v-model="goal.dateStart" type="date">
+             <label>EndDate:</label>
+                <input v-model="goal.dateEnd" type="date">
             <button>ADD</button>
         </form>
     </div>
@@ -13,8 +15,7 @@
 <script>
 function initGoal() {
     return {
-        goal: '', 
-        date: ''
+        goal: ''
     };
 }
 export default {

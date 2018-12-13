@@ -11,7 +11,8 @@ client.query(`
     CREATE TABLE IF NOT EXISTS goals (
         id SERIAL PRIMARY KEY,
         goal VARCHAR(256) NOT NULL,
-        date VARCHAR(20) NOT NULL, 
+        date_start DATE,
+        date_end DATE, 
         profile_id INTEGER NOT NULL REFERENCES profile(id)
     );
 `)

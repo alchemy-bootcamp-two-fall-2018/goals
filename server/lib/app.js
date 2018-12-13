@@ -22,7 +22,7 @@ function checkAuth(req, res, next) {
     }
     let payload = null;
     try {
-        payload = jwt.verify(token)
+        payload = jwt.verify(token);
     }
     catch (err) {
         res.status(401).json({ error: 'invalid token' });
