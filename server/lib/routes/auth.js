@@ -1,6 +1,15 @@
 const router = require('express').Router();
 const client = require('../db-client');
-const bcrypt = require('bcrypt');
+const jwt = require('../jwt');
+const bcrypt = require('bcryptjs');
+
+function getProfileWithToken(profile) {
+    return {
+        id: profile.id,
+        username: profile.username,
+        token: jwt.sign({ id: profile.id })
+    };
+}
 
 router 
     .post('/signup', (req, res) => {
@@ -38,10 +47,10 @@ router
                 [username, bcrypt.hashSync(password, 8)]
                 )
                     .then(result => {
-                        res.json(result.rows[0]);
+                        const profile = result.rows[0];
+                        res.json(getProfileWithToken(profile));
                     });
             });
-
     })
 
     .post('/signin', (req, res) => {
@@ -59,7 +68,7 @@ router
         // check to see if username matches one in DB
 
         client.query(`
-        SELECT id, username, password
+        SELECT id, username, hash
         FROM profile
         WHERE username = $1;
       `, 
@@ -71,12 +80,7 @@ router
                     res.status(400).json({ error: 'username or password incorrect' });
                     return;
                 }
-                res.json({
-                    id: result.rows[0].id,
-                    username: result.rows[0].username,
-                    token: result.rows[0].id
-
-                });
+                res.json(getProfileWithToken(profile));
             });
     });
 

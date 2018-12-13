@@ -1,5 +1,5 @@
 const client = require('../lib/db-client');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const goals = [
     { goal: 'don`t die', date: '1/1/19' },
