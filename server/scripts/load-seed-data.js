@@ -1,9 +1,9 @@
 const client = require('../library/db-client');
 
 const goals = [
-  { title: 'run 100 miles', startDate: '2019-01-01', endDate: '2019-09-23' },
-  { title: 'sign-up for ML', startDate: '2019-02-01', endDate: null },
-  { title: 'volunteer for Smith Rock', startDate: '2019-03-01', endDate: null },
+  { title: 'run 100 miles', startDate: 20190101, endDate: 20190923 },
+  { title: 'sign-up for ML', startDate: 20190201, endDate: null },
+  { title: 'volunteer for Smith Rock', startDate: 20190301, endDate: null },
 ];
 
 client.query(`

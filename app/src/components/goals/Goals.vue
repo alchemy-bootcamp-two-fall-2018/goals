@@ -1,8 +1,8 @@
 <template>
     <section>
         Goals page
-        <AddGoal/>
-        <GoalList v-if="goals"
+        <AddGoal :onAdd="handleAdd"/>
+        <GoalList v-if="goals && goals.length > 0"
         :goals="goals"/>
     </section>
 
@@ -31,6 +31,14 @@ export default {
       .catch(err => {
         this.error = err;
       });
+  }, 
+  methods: {
+    handleAdd(goal) {
+      return api.addGoal(goal)
+        .then(saved => {
+          this.goals.push(saved);
+        });
+    }
   }
 };
 </script>

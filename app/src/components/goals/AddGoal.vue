@@ -1,22 +1,47 @@
 <template>
     <section>
-        <form>
+        <form @submit.prevent="handleSubmit">
             <label> Goal: </label>
-            <input type="text" >
+            <input type="text" v-model="goal.title">
 
             <label>Start Date:</label>
-            <input type="date" >
+            <input type="date" v-model="goal.startDate">
 
             <label>Accomplished on:</label>
-            <input type="date" >
+            <input type="date" v-model="goal.endDate">
             <button>ADD</button>
         </form>
     </section>
 </template>
 
 <script>
-export default {
+//do I return a goal?
+function initGoal() {
+  return {
+    title: '',
+    startDate: '',
+    endDate: ''
+    
+  };
+}
 
+export default {
+  props: {
+    onAdd: Function
+  },
+  data() {
+    return {
+      goal: initGoal()
+    };
+  },
+  methods: {
+    handleSubmit() {
+      this.onAdd(this.goal)
+        .then(() => {
+          this.goal = initGoal();
+        });
+    }
+  }         
 };
 </script>
 
