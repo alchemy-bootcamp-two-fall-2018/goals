@@ -1,19 +1,26 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <fieldset>
       <label>Title:</label>
       <input v-focus v-model="goal.title" required>
       <label>Type:</label>
       <input v-model="goal.type" required>
+    </fieldset>
+    <fieldset>
       <label>Start date:</label>
       <input v-model="goal.startDate" required type="date">
       <label>End date:</label>
       <input v-model="goal.endDate" required type="date">
+    </fieldset>
+    <fieldset>
       <label>
         Completed?
           Yes:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="true" required>
           No:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="false">
       </label>
+      <br>
      <button>Add</button>
+    </fieldset>
   </form>
 </template>
 
@@ -67,3 +74,16 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss">
+label {
+  padding: 10px;
+}
+fieldset {
+  border: 2px solid transparent;
+}
+h3 {
+  margin-bottom: 0;
+}
+</style>
+

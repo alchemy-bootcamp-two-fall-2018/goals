@@ -53,3 +53,9 @@ export default {
   }
 };
 </script>
+
+<style lang="postcss">
+h3 {
+  font-style: italic;
+}
+</style>

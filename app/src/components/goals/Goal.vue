@@ -14,11 +14,10 @@
       <DateDisplay :date="goal.endDate"/>
     </div>
     <p v-if="goal.completed === true" class="completed">Completed</p>
-    <p v-else class="overdue">In Progress</p>
-    <button @click="handleUpdate" v-if="goal.completed === false">Mark Complete</button>
-
-    <!-- <EditGoal :onEdit="handleEdit" :goal="goal"/> -->
-    <button @click="handleDelete">Delete</button>
+    <p v-else class="in-progress">In Progress</p>
+    <button @click="handleUpdate" v-if="goal.completed === false" class="complete">Mark Complete</button>
+    <button @click="handleDelete" class="delete">Delete</button>
+    <!-- <EditGoal :goal="goal" :onEdit="handleEdit"/> -->
   </li>
 </template>
 
@@ -59,17 +58,27 @@ export default {
 
 <style scoped>
 li {
-  border: 1px solid red;
+  margin-top: 5px;
+  padding: 3px 0px 8px 0px;
+}
+li:hover {
+  outline: 1px dashed cyan;
 }
 p {
   margin: 0;
   font-weight: 100;
 }
-p.overdue {
+p.in-progress {
   color: red;
 }
 p.completed {
   font-style: italic;
+  color: green;
+}
+button.delete:hover {
+  color: purple;
+}
+button.complete:hover {
   color: green;
 }
 </style>
