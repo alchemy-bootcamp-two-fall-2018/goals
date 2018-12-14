@@ -20,7 +20,6 @@ export default {
   },
   methods: {
     onUpdate() {
-      this.goal.endDate = new Date();
       this.goal.completed = true;
       this.onEdit(this.goal);
     }
