@@ -14,20 +14,39 @@ router
       });
   })
 
+  .get('/summary', (req, res) => {
+    client.query(`
+    SELECT 
+      COUNT(id), 
+      ROUND(AVG(end_date - start_date)) as "averageTime",
+      MIN(end_date - start_date) as "minimumTime",
+      MAX(end_date - start_date) as "maximumTime"
+    FROM goal 
+    WHERE profile_id = $1
+    GROUP BY completed, profile_id
+    HAVING completed;
+    `,
+    [req.userId])
+      .then(result => {
+        res.json(result.rows);
+      });
+  })
+
   .post('/', (req, res) => {
     const body = req.body;
-
     client.query(`
-      INSERT INTO goal (title, type, profile_id, start_date, end_date)
-      VALUES($1, $2, $3, $4, $5)
+      INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
+      VALUES($1, $2, $3, $4, $5, $6)
       RETURNING 
+        id,
         title,
         type, 
         profile_id as "profileId", 
         start_date as "startDate", 
-        end_date as "endDate";
+        end_date as "endDate",
+        completed;
     `,
-    [body.title, body.type, req.userId, body.startDate, body.endDate])
+    [body.title, body.type, req.userId, body.startDate, body.endDate, body.completed])
       .then(result => {
         res.json(result.rows[0]);
       });
@@ -35,13 +54,19 @@ router
 
   .put('/:id', (req, res) => {
     const completed = req.body.completed;
-    console.log('\n\n\nthis is completed', completed);
     client.query(`
       UPDATE goal
       SET completed = $1
       WHERE id = $2
       AND profile_id = $3
-      RETURNING *;
+      RETURNING
+        id,
+        title,
+        type, 
+        profile_id as "profileId", 
+        start_date as "startDate", 
+        end_date as "endDate",
+        completed;
     `,
     [completed, req.params.id, req.userId])
       .then(result => {

@@ -48,9 +48,14 @@ export default {
         .then(updated => {
           const index = this.goals.findIndex((goal) => goal.id === updated.id);
           this.goals.splice(index, 1, updated);
-        // .then(updated => this.goal = updated);
         });
     }
   }
 };
 </script>
+
+<style lang="postcss">
+h3 {
+  font-style: italic;
+}
+</style>

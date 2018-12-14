@@ -5,25 +5,20 @@ const getOptions = (method, data) => {
     method,
     headers: {}
   };
-
   if(data) {
     options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
   }
-
   if(token) {
     options.headers.Authorization = token;
   }
-
   return options;
 };
 
 export default {
-
   setToken(t) {
     token = t;
   },
-
   signUp(profile) {
     return fetch('/api/auth/signup', getOptions('POST', profile))
       .then(response => {
@@ -37,7 +32,6 @@ export default {
           });
       });
   },
-
   signIn(credentials) {
     return fetch('/api/auth/signin', getOptions('POST', credentials))
       .then(response => {
@@ -51,32 +45,31 @@ export default {
           });
       });
   },
-
   getGoals() {
     return fetch('/api/goals', getOptions('GET'))
       .then(response => response.json());
   },
-
+  getGoalStats() {
+    return fetch('/api/goals/summary', getOptions('GET'))
+      .then(response => response.json());
+  },
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
   },
-
   updateGoal(goal) {
     return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
       .then(response => response.json());
   },
-
   deleteGoal(id) {
     console.log(id);
     return fetch(`/api/goals/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'application/json',
+        'Authorization': token,
       },
     })
       .then(response => response.json());
   }
-
 };
