@@ -6,15 +6,15 @@
     <p>
       <strong>Type:</strong> {{goal.type}}
     </p>
-    <div v-if="goal.completed === false">
-      <span><strong>Start:</strong></span>
-      <DateDisplay :date="goal.startDate"/>
+    <div>
+      <span><strong>Start:</strong>{{goal.startDate}}</span>
+      <!-- <DateDisplay :date="goal.startDate"/> -->
       <br>
-      <span><strong>End:</strong></span>
-      <DateDisplay :date="goal.endDate"/>
+      <span><strong>End:</strong>{{goal.endDate}}</span>
+      <!-- <DateDisplay :date="goal.endDate"/> -->
     </div>
     <p v-if="goal.completed === true" class="completed">Completed</p>
-    <p v-else class="overdue">Overdue</p>
+    <p v-else class="overdue">In Progress</p>
     <button @click="handleUpdate" v-if="goal.completed === false">Mark Complete</button>
 
     <!-- <EditGoal :onEdit="handleEdit" :goal="goal"/> -->
@@ -24,7 +24,7 @@
 
 <script>
 // import api from '../../services/api';
-import DateDisplay from '../shared/DateDisplay';
+// import DateDisplay from '../shared/DateDisplay';
 // import EditGoal from './EditGoal';
 
 export default {
@@ -34,7 +34,7 @@ export default {
     onEdit: Function
   },
   components: {
-    DateDisplay,
+    // DateDisplay,
     // EditGoal
   },
   methods: {

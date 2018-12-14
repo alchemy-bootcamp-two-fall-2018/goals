@@ -4,11 +4,6 @@
     <p>
       <RouterLink to="/goals">View Goals</RouterLink>
     </p>
-    <p>
-      TODO: show the user stats about their completed goals:
-      Count, Shortest time to completion, Longest time to completion,
-      Average time to completion
-    </p>
     <table v-if="goals">
       <thead>
         <tr>
@@ -23,10 +18,8 @@
           :key="goal.goalId">
           <td>{{goal.count}}</td>
           <td>{{goal.averageTime}}</td>
-          <td>I'm a td in a tr</td>
-          <td>I'm a td in a tr</td>
-          <!--<td>{{goal.minimumTime}}</td>
-          <td>{{goal.maximumTime}}</td>-->
+          <td>{{goal.minimumTime}}</td>
+          <td>{{goal.maximumTime}}</td>
         </tr>
       </tbody>
     </table>

@@ -13,15 +13,13 @@ router
         res.json(result.rows);
       });
   })
-// TODO: add a new route to return the summary goal data
-// implicit WHERE user_id = $1 where $1 is req.userId
-// HINT: You don't need to use a GROUP BY for this one
-// HINT: See DATEDIFF in pqsql docs!
   .get('/summary', (req, res) => {
     client.query(`
     SELECT 
       COUNT(id), 
-      ROUND(AVG(end_date - start_date)) as "averageTime"
+      ROUND(AVG(end_date - start_date)) as "averageTime",
+      MIN(end_date - start_date) as "minimumTime",
+      MAX(end_date - start_date) as "maximumTime"
     FROM goal 
     WHERE profile_id = $1
     GROUP BY completed, profile_id
@@ -40,6 +38,7 @@ router
       INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
       VALUES($1, $2, $3, $4, $5, $6)
       RETURNING 
+        id,
         title,
         type, 
         profile_id as "profileId", 
@@ -55,13 +54,19 @@ router
 
   .put('/:id', (req, res) => {
     const completed = req.body.completed;
-    console.log('\n\n\nthis is completed', completed);
     client.query(`
       UPDATE goal
       SET completed = $1
       WHERE id = $2
       AND profile_id = $3
-      RETURNING *;
+      RETURNING
+        id,
+        title,
+        type, 
+        profile_id as "profileId", 
+        start_date as "startDate", 
+        end_date as "endDate",
+        completed;
     `,
     [completed, req.params.id, req.userId])
       .then(result => {

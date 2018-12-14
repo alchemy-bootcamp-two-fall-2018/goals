@@ -5,9 +5,9 @@
       <label>Type:</label>
       <input v-model="goal.type" required>
       <label>Start date:</label>
-      <input type="date" v-model="goal.startDate" required>
+      <input v-model="goal.startDate" required maxlength="10" placeholder="YYYY/MM/DD">
       <label>End date:</label>
-      <input type="date" v-model="goal.endDate" required>
+      <input v-model="goal.endDate" required maxlength="10" placeholder="YYYY/MM/DD">
       <label>
         Completed?
           Yes:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="true" required>
@@ -62,7 +62,6 @@ export default {
       this.onAdd(this.goal)
         .then(() => {
           this.goal = initGoal();
-          // this.$router.go();
         });
     }
   }
