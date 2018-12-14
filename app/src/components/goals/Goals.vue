@@ -1,9 +1,9 @@
 <template>
   <section class="home">
-    <h2 class="look">Your Goals:</h2>
-    <GoalList v-if="goals && goals.length > 0" :goals="goals"/>
+    <h2 class="your-goals">Your Goals:</h2>
+    <GoalList :onEdit="handleEdit" v-if="goals && goals.length > 0" :goals="goals"/>
     <p v-else>Add a goal!</p>
-    <AddGoal :onAdd="handleAdd"/>
+    <AddGoal v-bind:onAdd="handleAdd"/>
   </section>
 </template>
 
@@ -37,14 +37,23 @@ export default {
         .then(saved => {
           this.goals.push(saved);
         });
+    },
+    handleEdit(goal) {
+      return api.updateGoal(goal)
+        .then(updated => {
+          console.log('updated is', updated);
+          const index = this.goals.findIndex((goal) => goal.id === updated.id);
+          this.goals.splice(index, 1, updated);
+        });
     }
   }
-  
 };
 </script>
 
 <style>
-
+  .your-goals {
+    padding: 20px;
+}
 
 </style>
 

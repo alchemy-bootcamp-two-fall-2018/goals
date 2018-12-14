@@ -1,17 +1,18 @@
 const client = require('../lib/db-client');
+const bcrypt = require('bcryptjs');
 
 const goals = [
-  { title: 'Finish Coding', startdate: '01/01/2018', enddate:'12/31/2018', completed: false },
-  { title: 'Xmas shopping done', startdate: '01/01/2018', enddate:'12/20/2018', completed: false },
-  { title: 'Halloween Costume', startdate: '01/01/2018', enddate:'10/20/2018', completed: false }
+  { title: 'Finish Coding', startdate: 20180101, enddate: 20190101, completed: false },
+  { title: 'Xmas shopping done', startdate: 20180101, enddate: 20180630, completed: false },
+  { title: 'Halloween Costume', startdate: 20180101, enddate: 20180201, completed: false }
 ];
 
 client.query(`
-  INSERT INTO profiles (username, password, firstname, lastname)
+  INSERT INTO profiles (username, hash, firstname, lastname)
   VALUES ($1, $2, $3, $4)
   RETURNING id;
 `,
-['hans', 'abc123', 'Hans', 'Janowitz']
+['hans', bcrypt.hashSync('abc123', 8), 'Hans', 'Janowitz']
 )
   .then(result => {
     const profile = result.rows[0];
