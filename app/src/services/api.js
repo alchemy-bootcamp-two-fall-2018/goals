@@ -58,8 +58,8 @@ export default {
     updateGoal(goal) {
         return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
             .then(response => {   
-                console.log('something', response.json());  
                 if(response.ok) {
+                    console.log('something from api', response.json());  
                     return response.json();
                 }
                 // if it fails return an error in json format
@@ -69,6 +69,11 @@ export default {
                     });
 
             });
+    },
+
+    getStats() {
+        return fetch('/api/goals/stats', getOptions('GET'))
+            .then(response => response.json());
     },
 
     getGoals() {

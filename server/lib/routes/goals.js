@@ -10,7 +10,7 @@ router
         client.query(`
         UPDATE goals 
         SET
-            date_end  = $1, 
+            date_end = $1, 
             date_start = $2,
             goal = $3 
         WHERE id = $4
@@ -20,16 +20,32 @@ router
             id,
             goal, 
             date_start as "dateStart",
-            date_end as "dateEnd"
+            date_end as "dateEnd",
+            profile_id
         `, 
         [body.dateEnd, body.dateStart, body.goal, body.id, req.userId])
             .then(result => {
                 res.json(result.rows[0]);
             });
-
-
-
     })
+
+    .get('/stats', (req, res) => {
+        console.log('backend req', req.userId);
+        client.query(`
+        SELECT 
+            count(goals.id),
+            avg(date_end - date_start) as "maxdiff"
+
+        FROM goals
+        WHERE goals.profile_id = $1
+        `, 
+        [req.userId]
+        )
+            .then(result => {
+                res.json(result.rows);
+            });
+    })
+
     .get('/', (req, res) => {
         client.query(`
     SELECT id, goal, date_start as "dateStart", date_end as "dateEnd"

@@ -15,6 +15,12 @@ client.query(`
         date_end DATE, 
         profile_id INTEGER NOT NULL REFERENCES profile(id)
     );
+    CREATE TABLE IF NOT EXISTS stats (
+        id SERIAL PRIMARY KEY, 
+        max_date INTEGER, 
+        min_date INTEGER,
+        goal_id INTEGER NOT NULL REFERENCES goals(id)
+    );
 `)
     .then (
         () => console.log('create tables script ran'), 
