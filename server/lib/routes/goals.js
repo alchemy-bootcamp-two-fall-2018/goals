@@ -20,11 +20,11 @@ router
     const body = req.body;
 
     client.query(`
-            INSERT INTO goal (name, type, profile_id, start_date, end_date)
-            VALUES($1, $2, $3, $4, $5)
-            RETURNING name, type, profile_id, start_date as "startDate", end_date as "endDate";
+            INSERT INTO goal (name, type, profile_id, start_date, end_date, completed)
+            VALUES($1, $2, $3, $4, $5, $6)
+            RETURNING name, type, profile_id, start_date as "startDate", end_date as "endDate, completed";
         `,
-    [body.name, body.type, req.userId, body.startDate, body.endDate])
+    [body.name, body.type, req.userId, body.startDate, body.endDate, body.completed])
       .then(result => {
         console.log(result);
         res.json(result.rows[0]);
