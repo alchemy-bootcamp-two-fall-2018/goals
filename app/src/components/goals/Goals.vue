@@ -42,7 +42,7 @@ export default {
                     console.log(goal);
 
                 });
-        }
+        }, 
     }
 
 

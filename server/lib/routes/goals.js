@@ -34,8 +34,9 @@ router
         client.query(`
         SELECT 
             count(goals.id),
-            avg(date_end - date_start) as "maxdiff"
-
+            avg(date_end - date_start) as "avg",
+            max(date_end - date_start) as "max", 
+            min(date_end - date_start) as "min"
         FROM goals
         WHERE goals.profile_id = $1
         `, 
