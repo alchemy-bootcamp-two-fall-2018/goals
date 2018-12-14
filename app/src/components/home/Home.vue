@@ -16,10 +16,10 @@
       <tbody>
         <tr v-for="goal in goals"
           :key="goal.goalId">
-          <td>{{goal.count}}</td>
-          <td>{{goal.averageTime}}</td>
-          <td>{{goal.minimumTime}}</td>
-          <td>{{goal.maximumTime}}</td>
+          <td>{{goal.count}} total</td>
+          <td>{{goal.averageTime}} day(s)</td>
+          <td>{{goal.minimumTime}} day(s)</td>
+          <td>{{goal.maximumTime}} day(s)</td>
         </tr>
       </tbody>
     </table>

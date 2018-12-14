@@ -5,9 +5,9 @@
       <label>Type:</label>
       <input v-model="goal.type" required>
       <label>Start date:</label>
-      <input v-model="goal.startDate" required maxlength="10" placeholder="YYYY/MM/DD">
+      <input v-model="goal.startDate" required type="date">
       <label>End date:</label>
-      <input v-model="goal.endDate" required maxlength="10" placeholder="YYYY/MM/DD">
+      <input v-model="goal.endDate" required type="date">
       <label>
         Completed?
           Yes:<input type="radio" name="poly" v-model="goal.completed" v-bind:value="true" required>

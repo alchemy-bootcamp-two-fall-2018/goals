@@ -6,14 +6,14 @@ const goals = [
     title: 'Finish Goals Lab', 
     type: 'school', 
     startDate: '2019-01-12T08:00:00.000Z',
-    endDate: '2019-02-19T08:00:00.000Z',
+    endDate: 20190201,
     completed: false
   },
   { 
     title: 'Do Laundry',
     type: 'home',
     startDate: '2019-01-08T08:00:00.000Z',
-    endDate: '2019-02-10T08:00:00.000Z',
+    endDate: 20190202,
     completed: false
   }
 ];
@@ -36,22 +36,6 @@ client.query(`
         `,
         [goal.title, goal.type, profile.id, goal.startDate, goal.endDate, goal.completed])
           .then(result => result.rows[0].id);
-      })
-    );
-  })
-  .then(goalIds => {
-    return Promise.all(
-      goalIds.map(id => {
-        const count = 6;
-        return Promise.all(
-          new Array(count).fill(null).map(() => {
-            return client.query(`
-              INSERT INTO complete (time, goal_id)
-              VALUES ($1, $2);
-            `, 
-            [5, id]);
-          })
-        );
       })
     );
   })

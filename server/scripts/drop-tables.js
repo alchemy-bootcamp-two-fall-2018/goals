@@ -1,7 +1,6 @@
 const client = require('../lib/db-client');
 
 client.query(`
-  DROP TABLE IF EXISTS complete;
   DROP TABLE IF EXISTS goal;
   DROP TABLE IF EXISTS profile;
 `)

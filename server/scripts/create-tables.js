@@ -18,11 +18,6 @@ client.query(`
     end_date DATE NOT NULL,
     completed BOOLEAN
   );
-  CREATE TABLE IF NOT EXISTS complete (
-    id SERIAL PRIMARY KEY,
-    time INTEGER NOT NULL,
-    goal_id INTEGER NOT NULL REFERENCES goal(id)
-  );
 `)
   .then(
     () => console.log('create tables complete'),

@@ -13,6 +13,7 @@ router
         res.json(result.rows);
       });
   })
+
   .get('/summary', (req, res) => {
     client.query(`
     SELECT 
@@ -33,7 +34,6 @@ router
 
   .post('/', (req, res) => {
     const body = req.body;
-
     client.query(`
       INSERT INTO goal (title, type, profile_id, start_date, end_date, completed)
       VALUES($1, $2, $3, $4, $5, $6)
@@ -72,16 +72,16 @@ router
       .then(result => {
         res.json(result.rows[0]);
       });
-  });
+  })
 
-// .delete('/:id', (req, res) => {
-//   client.query(`
-//     DELETE FROM goal WHERE id = $1;
-// `,
-//   [req.params.id])
-//     .then(result => {
-//       res.json({ removed: result.rowCount === 1 });
-//     });
-// });
+  .delete('/:id', (req, res) => {
+    client.query(`
+      DELETE FROM goal WHERE id = $1;
+  `,
+    [req.params.id])
+      .then(result => {
+        res.json({ removed: result.rowCount === 1 });
+      });
+  });
 
 module.exports = router;
