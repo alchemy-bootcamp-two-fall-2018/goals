@@ -11,8 +11,8 @@ client.query(`
         name VARCHAR(256) NOT NULL,
         type VARCHAR(32) NOT NULL,
         profile_id INTEGER NOT NULL REFERENCES profile(id),
-        start_date DATE,
-        end_date DATE,
+        start_date DATE NOT NULL,
+        end_date DATE NOT NULL,
         completed BOOLEAN
     );
     
