@@ -12,25 +12,27 @@
 
 <script>
 import DateDisplay from '../DateDisplay';
-import api from '../../services/api';
+// import api from '../../services/api';
 export default {
     props: {
-        goal: null 
+        goal: null, 
+        onUpdate: Function
     }, 
     components: {
         DateDisplay
-    }, 
+    },
     methods: {
         handleComplete() {
-            console.log('goal has been completed');
             this.goal.dateEnd = new Date().toLocaleDateString();
-            api.updateGoal(this.goal)
-                .then(goal => {
-                    this.goal = goal;
-                });
+            this.onUpdate(this.goal);
+            // api.updateGoal(this.goal)
+            //     .then(goal => {
+            //         this.goal = goal;
+            //     });
         }
     }
 };
+
 </script>
 
 <style>

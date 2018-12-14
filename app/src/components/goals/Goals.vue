@@ -4,7 +4,8 @@
         <h3>add new goal</h3>
         <AddGoal :onAdd="handleAdd"/>
         <GoalList v-if="goals && goals.length > 0"
-            :goals="goals"/>
+            :goals="goals"
+            :onUpdate="handleUpdate"/>
         <p v-else>ADD A NEW GOAL YOU LAZY SOAB</p>
   </section>
 </template>
@@ -40,11 +41,23 @@ export default {
                 .then(saved => {
                     this.goals.push(saved);
                     console.log(goal);
-
                 });
         }, 
+        handleComplete() {
+            console.log('goal has been completed');
+            this.goal.dateEnd = new Date().toLocaleDateString();
+            api.updateGoal(this.goal)
+                .then(goal => {
+                    this.goal = goal;
+                });
+        }, 
+        handleUpdate(goal) {
+            api.updateGoal(goal)
+                .then(updated => {
+                    this.goal = updated;
+                });
+        } 
     }
-
 
 };
 </script>

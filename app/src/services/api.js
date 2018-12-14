@@ -59,7 +59,6 @@ export default {
         return fetch(`/api/goals/${goal.id}`, getOptions('PUT', goal))
             .then(response => {   
                 if(response.ok) {
-                    console.log('something from api', response.json());  
                     return response.json();
                 }
                 // if it fails return an error in json format
