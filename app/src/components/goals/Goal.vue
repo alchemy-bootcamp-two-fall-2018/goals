@@ -1,10 +1,20 @@
 <template>
+<!-- @click="handleComplete" -->
     <li> 
-        Goal: {{goal.title}}
-        <!-- Start Date: {{goal.startDate}} -->
-        <!-- End Date: {{goal.endDate}} -->
-        <DateDisplay :date="
-        goal.startDate"/>
+      <div>
+         Goal: {{goal.title}}
+      </div>
+       <div>
+        Start  
+          <DateDisplay 
+            :date="goal.startDate"/>
+       </div>
+        <div>
+         End
+           <DateDisplay v-if="false" 
+              :date="goal.endDate"/>
+       </div>
+      <button>Finish</button>
     </li>
 </template>
 
@@ -13,11 +23,18 @@ import DateDisplay from '../shared/DateDisplay';
 
 export default {
   props: {
-    goal: null
+    goal: null,
   },
   components: {
     DateDisplay
   }
+  // created: {
+    //api update
+  // },
+  // methods: {
+    //handleComplete
+    //pass from parent
+  // }
 };
 </script>
 

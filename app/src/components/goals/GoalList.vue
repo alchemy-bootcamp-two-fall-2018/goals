@@ -27,8 +27,12 @@ div {
   border: 2px solid green;
 }
 ul {
-  list-style: none;
   display: grid;
-
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
 }
+
 </style>

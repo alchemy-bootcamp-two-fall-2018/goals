@@ -51,7 +51,10 @@ export default {
   },
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
-      .then(response => response.json());
-      
+      .then(response => response.json());  
   }
+  // completeGoal(goal) {
+  //   return fetch('/api/:id', getOptions('UPDATE', goal))
+  //     .then(response => response.json());
+  // }
 };
