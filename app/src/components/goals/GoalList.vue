@@ -1,8 +1,9 @@
 <template>
   <ul v-if="goals">
     <Goal v-for="goal in goals"
-      :key="goal.id"
-      :goal="goal"/>
+      v-bind:key="goal.id"
+      v-bind:goal="goal"
+      v-bind:onEdit="onEdit"/>
   </ul>
 
 
@@ -13,7 +14,8 @@ import Goal from './Goal';
 
 export default {
   props: {
-    goals: null
+    goals: null,
+    onEdit: Function
   },
   components: {
     Goal
@@ -22,5 +24,9 @@ export default {
 </script>
 
 <style scoped>
-
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>

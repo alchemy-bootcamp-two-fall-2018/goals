@@ -1,16 +1,36 @@
 <template>
   <li>
     <p>Goal: {{goal.title}}</p>
-    <p>Start Date: {{goal.startDate}}</p>
-    <p>End Date: {{goal.endDate}}</p>
+    <DateDisplay v-bind:date="goal.startDate"/>
+    
+    <div v-if="goal.endDate">
+      Completed Date:
+      <DateDisplay v-bind:date="goal.endDate"/>
+    </div>
+    <div v-else>
+      NOT COMPLETED
+    </div>
+
+    <button @click="handleUpdate">Update</button>
 
   </li>
 </template>
 
 <script>
+import DateDisplay from '../shared/DateDisplay';
 export default {
   props: {
-    goal: null
+    goal: null,
+    onEdit: Function
+  },
+  components: {
+    DateDisplay
+  },
+  methods: {
+    handleCompleted() {
+      this.goal.endDate = new Date().toLocaleDateString();
+      this.onEdit(this.goal);
+    }
   }
 };
 </script>
@@ -18,6 +38,9 @@ export default {
 <style scoped>
   li{
     padding: 10px 0;
-    /* list-style: none; */
+    list-style-type: none;
+    border: 2px solid black;
+    margin: 10px 10px;
+    width: 350px;
   }
 </style>

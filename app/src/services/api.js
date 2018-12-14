@@ -1,5 +1,4 @@
 let token = '';
-
 const getOptions = (method, data) => {
   const options = {
     method,
@@ -17,6 +16,7 @@ const getOptions = (method, data) => {
 
   return options;
 };
+
 
 export default {
   
@@ -57,9 +57,26 @@ export default {
       .then(response => response.json());      
   },
 
+  
   addGoal(goal) {
     return fetch('/api/goals', getOptions('POST', goal))
       .then(response => response.json());
-  }
+  },
+  
+  updateGoal(goal) {
+    return fetch(`/api/goals/${goal.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify(goal)
+    })
+      .then(response => response.json());
+  },
+  getGoalStats() {
+    return fetch('/api/goals/stats', getOptions('GET'))
+      .then(response => response.json());
+  },
 
 };
