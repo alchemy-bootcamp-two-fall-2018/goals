@@ -1,15 +1,24 @@
 <template>
     <section>
-        <form v-if="method === 'signin'" @submit.prevent="this.onSignIn">
-            <label>
-                USERNAME:
-                <input v-model="username" required>
-            </label>
-            <label>
-                PASSWORD:
-                <input type="password" v-model="username" required>
-            </label>
-        </form>
+        <div v-if="method === 'signin'">
+            <h2>SIGN IN</h2>
+            <form @submit.prevent="this.onSignIn">
+                <label>
+                    USERNAME:
+                    <input v-model="profile.username" required>
+                </label>
+                <label>
+                    PASSWORD:
+                    <input type="password" v-model="profile.password" required>
+                </label>
+                <label>
+                    <button>SIGN IN</button>
+                </label>
+            </form>
+        </div>
+        <div v-else>
+            Sign up comming soon
+        </div>
     </section>
 </template>
 
@@ -21,8 +30,12 @@ export default {
   },
   data() {
     return {
-      method: 'signin'   
-    };  
+      method: 'signin', 
+      profile: {
+        username: '',
+        password: ''   
+      } 
+    };
   }
 };
 </script>
