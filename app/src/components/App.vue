@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-      <nav>
+      <nav v-if="user">
         <RouterLink to="/">HOME</RouterLink>
         <RouterLink to="/goals">GOALS</RouterLink>
       </nav>
