@@ -17,6 +17,7 @@ router
     //verify with postman via POST |localhost:3000/api/auth/signup
     //should get 404
     res.json({ result: 'You are now logged in' });
+    
     // username needs to not exist already
     client.query(`
       SELECT id
