@@ -27,7 +27,7 @@ export default {
       user:null
     };
   },
-  compoents: {
+  components: {
     Auth
   },
   methods: {

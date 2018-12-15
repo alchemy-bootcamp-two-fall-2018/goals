@@ -47,6 +47,7 @@ router
           });
       });
   })
+  console.log('new user profile created');
   //SIGN IN
   .post('/signin', (req, res) => {
     const body = req.body;
