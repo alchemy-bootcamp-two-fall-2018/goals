@@ -9,6 +9,7 @@
                 PASSWORD:
                 <input type="password" v-model="username" required>
             </label>
+        </form>
     </section>
 </template>
 
