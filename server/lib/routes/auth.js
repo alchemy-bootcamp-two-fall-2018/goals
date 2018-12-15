@@ -13,6 +13,8 @@ router
       res.status(400).json({ error: 'username and password required' });
       return;
     }
+    //verify with postman via POST |localhost:3000/api/auth/signup
+    //should get 404
 
     // username needs to not exist already
     client.query(`
