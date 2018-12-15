@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import api from '../services/api';
 import Auth from './auth/Auth';
 
 export default {
@@ -31,11 +32,16 @@ export default {
   },
   methods: {
     handleSignUp(profile) {
-
-
+      return api.signUp(profile)
+        .then(user => {
+          this.setUser(user);
+        });
     },
     handleSignIn(credentials) {
-
+      return api.signIn(credentials)
+        .then(user => {
+          this.setUser(user);
+        });
     }
   }
 
