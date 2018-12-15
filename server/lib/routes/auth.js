@@ -2,6 +2,7 @@ const router = require('express').Router();
 const client = require('../db-client');
 
 router
+//SIGN UP
   .post('/signup', (req, res) => {
 
     const body = req.body;
@@ -45,12 +46,11 @@ router
           });
       });
   })
-  
+  //SIGN IN
   .post('/signin', (req, res) => {
     const body = req.body;
     const username = body.username;
     const password = body.password;
-
     // username and password needs to exist
     if(!username || !password) {
       res.status(400).json({ error: 'username and password required' });
