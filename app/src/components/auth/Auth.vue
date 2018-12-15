@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="signin">
         <div v-if="method === 'signin'">
             <h2>SIGN IN</h2>
             <p>NEED TO REGISTER?
@@ -78,5 +78,7 @@ export default {
 </script>
 
 <style>
-
+.signin{
+    display:inline-block;
+}
 </style>

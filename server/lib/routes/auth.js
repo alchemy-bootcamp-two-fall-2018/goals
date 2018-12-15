@@ -16,7 +16,7 @@ router
     }
     //verify with postman via POST |localhost:3000/api/auth/signup
     //should get 404
-    res.json({ result: 'You are now logged in' });
+    // res.json({ result: 'You are now logged in' });
     
     // username needs to not exist already
     client.query(`
@@ -46,8 +46,9 @@ router
             res.json(result.rows[0]);
           });
       });
+    // console.log('new user profile created');
   })
-  console.log('new user profile created');
+  
   //SIGN IN
   .post('/signin', (req, res) => {
     const body = req.body;
