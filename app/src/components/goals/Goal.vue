@@ -4,17 +4,19 @@
       <div>
          Goal: {{goal.title}}
       </div>
-       <div>
+      <div>
         Start  
-          <DateDisplay 
-            :date="goal.startDate"/>
-       </div>
-        <div>
-         End
-           <DateDisplay v-if="false" 
-              :date="goal.endDate"/>
-       </div>
-      <button>Finish</button>
+        <DateDisplay 
+          :date="goal.startDate"/>
+      </div>
+      <div v-if="false">
+         Completed on:
+        <DateDisplay 
+          :date="goal.endDate"/>
+      </div >
+      <div>
+        <button>Finish</button>
+      </div>
     </li>
 </template>
 
@@ -29,11 +31,11 @@ export default {
     DateDisplay
   }
   // created: {
-    //api update
+  //api update
   // },
   // methods: {
-    //handleComplete
-    //pass from parent
+  //handleComplete
+  //pass from parent
   // }
 };
 </script>
