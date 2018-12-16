@@ -1,8 +1,8 @@
 <template>
   <section>
-    <h2>Goals</h2>
+    <h2>GOALS</h2>
     <p>
-      <RouterLink to="/goals">view goals</RouterLink>
+      <RouterLink to="/goals">VIEW GOALS</RouterLink>
     </p>
   </section>
 </template>
