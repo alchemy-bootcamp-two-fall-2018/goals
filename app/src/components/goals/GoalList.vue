@@ -20,4 +20,7 @@ export default {
 </script>
 
 <style>
+ul{
+    list-style-type: none;
+}
 </style>
