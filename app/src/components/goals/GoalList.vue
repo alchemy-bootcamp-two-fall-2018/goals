@@ -1,9 +1,12 @@
 <template>
-  <ul v-if="goals">
-    <Goal v-for="goal in goals" 
-      :key="goal.id"
-      :goal="goal"/>
-  </ul>
+  <table v-if="goals">
+     <tr>
+      <th>NAME: START DATE: END DATE: DESCRIPTION:</th>
+    </tr>
+    <tr>
+        <Goal v-for="goal in goals" :key="goal.id" :goal="goal"/>
+    </tr>
+  </table>
 
 </template>
 
@@ -20,7 +23,19 @@ export default {
 </script>
 
 <style>
-ul{
-    list-style-type: none;
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 </style>

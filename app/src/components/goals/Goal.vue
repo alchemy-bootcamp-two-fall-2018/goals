@@ -1,10 +1,13 @@
 <template>
-    <li>
-        <div>{{goal.name}}</div>
-        <div><DateDisplay :date="goal.startDate" /></div>
-        <div><DateDisplay :date="goal.endDate" /></div>
-        <div>{{goal.description}}</div>
-    </li>
+
+  <tr>
+    <td> {{goal.name}} </td>
+    <td> <DateDisplay :date="goal.startDate" /> </td>
+    <td> <DateDisplay :date="goal.endDate" /> </td> 
+    <td> {{goal.description}} </td>
+    
+  </tr>
+ 
 </template>
 
 <script>
@@ -22,5 +25,8 @@ export default {
 </script>
 
 <style>
-
+/* .column {
+  float: left;
+  width: 25%;
+} */
 </style>
