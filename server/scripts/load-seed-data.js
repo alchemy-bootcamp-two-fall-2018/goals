@@ -9,11 +9,11 @@ const goals = [
 ];
 
 client.query(`
-  INSERT INTO profile (username, password)
-  VALUES ($1, $2)
+  INSERT INTO profile (username, password, first, last, email)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING id;
 `,
-['mike', '33233323']
+['pickuppatterns', '33233323', 'mike', 'elliott', 'pickup.patterns']
 )
   .then(result => {
     const profile = result.rows[0];
