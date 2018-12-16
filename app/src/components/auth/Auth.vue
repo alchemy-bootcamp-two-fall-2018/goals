@@ -27,7 +27,7 @@
                     </p>
                 <form @submit.prevent="handleSignUpSubmit(profile)">
                     <label>
-                        USERNAME:
+                        USERNAME:<pre v-if="error">{{error}}</pre>
                         <input v-model="profile.username" required>
                     </label>
                     <label>
@@ -39,7 +39,6 @@
                     </label>
                 </form>
             </div>
-        <pre v-if="error">{{error}}</pre>
     </section>
 </template>
 
