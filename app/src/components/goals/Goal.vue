@@ -13,7 +13,7 @@ export default {
   props: {
     goal: null
   },
-  componets: {
+  components: {
     DateDisplay
   }
 };
