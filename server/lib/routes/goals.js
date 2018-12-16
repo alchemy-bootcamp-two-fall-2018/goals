@@ -6,7 +6,7 @@ const router = Router(); //eslint-disable-line new-cap
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, name, start_date as "startDate", end_date as "endDate"
+      SELECT id, name, start_date as "startDate", end_date as "endDate", description
       FROM goal
       WHERE profile_id = $1;
     `,
