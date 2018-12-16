@@ -1,7 +1,8 @@
 <template>
     <li>
         <div>{{goal.name}}</div>
-        <div><DateDisplay :date="goal.date" /></div>
+        <div><DateDisplay :date="goal.startDate" /></div>
+        <div><DateDisplay :date="goal.endDate" /></div>
         <div>{{goal.description}}</div>
     </li>
 </template>

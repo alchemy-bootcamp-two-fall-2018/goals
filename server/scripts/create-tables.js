@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS profile (
 CREATE TABLE IF NOT EXISTS goal (
     id SERIAL PRIMARY KEY, 
     name VARCHAR(256) NOT NULL,
-    date INTEGER,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
     description VARCHAR(256),
     profile_id INTEGER NOT NULL REFERENCES profile(id)
     );
