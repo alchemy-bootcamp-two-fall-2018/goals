@@ -25,8 +25,5 @@ export default {
 </script>
 
 <style>
-/* .column {
-  float: left;
-  width: 25%;
-} */
+
 </style>

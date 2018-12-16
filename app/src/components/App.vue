@@ -5,7 +5,7 @@
       <nav v-if="user">
         <RouterLink to="/">HOME</RouterLink>
         <RouterLink to="/goals">GOALS</RouterLink>
-        <a href="#" @click="handleLogout">Logout</a>
+        <a href="#" @click="handleLogout">LOGOUT</a>
       </nav>
     </header>
     <main>

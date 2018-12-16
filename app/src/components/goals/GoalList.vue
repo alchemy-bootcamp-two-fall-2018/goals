@@ -33,6 +33,8 @@ td, th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  font-size: 15px;
+   text-align: left
 }
 
 tr:nth-child(even) {
