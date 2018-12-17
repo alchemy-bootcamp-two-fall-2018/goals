@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header>
+      <h2><strong>GOAL FOR IT</strong></h2>
       <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
       <nav v-if="user">
         <RouterLink to="/">HOME</RouterLink>
@@ -71,6 +72,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
 header{
   height: 75px;
   background: #3cae69;
@@ -78,6 +81,20 @@ header{
   align-items: center;
   justify-content: space-between;
 }
+header {
+  text-align: center;
+  }
+h2 {
+  font-family: 'Varela Round', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      color: #615e5e;
+      font-size: 30px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+      margin-left:60px;
+  }
 nav a {
   text-decoration: none;
   color: black;

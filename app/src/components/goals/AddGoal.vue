@@ -3,11 +3,11 @@
     <label>NAME:</label>
     <input v-focus v-model="goal.name" require>
     <label>START DATE:</label>
-    <input v-focus v-model="goal.startDate" require>
+    <input  v-model="goal.startDate" require>
     <label>END DATE:</label>
-    <input v-focus v-model="goal.endDate" require>
+    <input  v-model="goal.endDate" require>
     <label>DESCRIPTION:</label>
-    <input v-focus v-model="goal.description" require>
+    <input  v-model="goal.description" require>
     <button>Add</button>
   </form>
 </template>
@@ -45,13 +45,13 @@ export default {
 <style>
 input {
    display: block;
-   padding: 10px;
+   padding: 5px;
    width:250px;
    background-color: #e8eeef;
    color: black;
    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-   margin: 5px 0 10px 0;
-   font-size: 15px;
+   margin: 2px 0 5px 0;
+   font-size: 10px;
    text-align: left;
   }
   input:focus {

@@ -1,12 +1,20 @@
 <template>
-  <table v-if="goals">
-     <tr>
-      <th>NAME: START DATE: END DATE: DESCRIPTION:</th>
-    </tr>
-    <tr>
-        <Goal v-for="goal in goals" :key="goal.id" :goal="goal"/>
-    </tr>
-  </table>
+  <ul v-if="goals" class="main">
+  <li class= "goals-list">
+    <ul class="goal-queue">
+      <li>
+        <div id="name">
+          <Goal v-for="goal in goals" :key="goal.id" :goal="goal"/>
+        </div>
+      </li>
+    </ul>  
+  </li>
+</ul>
+  
+      
+    
+        
+ 
 
 </template>
 
@@ -23,21 +31,15 @@ export default {
 </script>
 
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  font-size: 15px;
-   text-align: left
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+.goals-list {
+  margin:0 auto;
+  width:750px;
+  }  
+ul {list-style-type: none;}
+.start-time {color:green;}
+.goal-queue li:nth-child(odd) { background: #ffffff;  }
+.goal-queue li:nth-child(even) { background: #bdbdbd;  }
+.goal-queue li:hover:nth-child(odd) { background: rgba(232, 131, 166, 0.3); }
+.goal-queue li:hover:nth-child(even) { background: #e87fa3; }
+.clip {width:20%}
 </style>

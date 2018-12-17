@@ -1,16 +1,15 @@
 <template>
   <section class="goals">
-    <h2>THESE ARE MY GOALS, THERE ARE MANY LIKE IT BUT THESE ONES ARE MINE...</h2>
     <div class="row">
       <div class="column">
-        <h3>ADD A GOAL</h3>
-        <AddGoal :onAdd="handleAdd"/>
+        <h3>CURRENT QUEUE </h3>
+        <GoalList v-if="goals && goals.length > 0" 
+        :goals="goals"/>
+        <p v-else >ADD A GOAL %amp; GET STARTED</p>
         </div>
         <div class="column">
-          <h3>CURRENT QUEUE</h3>
-          <GoalList v-if="goals && goals.length > 0" 
-        :goals="goals"/>
-        <p v-else >ADD A GOAL & GET STARTED</p>
+          <h3>ADD A GOAL</h3>
+          <AddGoal :onAdd="handleAdd" />
         </div>
       </div> 
   </section>
@@ -51,9 +50,17 @@ export default {
 };
 </script>
 <style>
- .column {
+.banner{
+  margin: 0 auto;
+  width:100%;
+  background-color:rgb(104, 195, 120);
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+}
+ /* .column {
   float: left;
   width: 50%;
-} 
+}  */
 </style>
 
