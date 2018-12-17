@@ -28,18 +28,6 @@ router
         res.json(result.rows);
       });
   })
-  .get('/stats', (req, res) => {
-    client.query(`
-      SELECT 
-        DATE_PART('year', end_date::date) - 
-        DATE_PART('year', start_date::date)
-      FROM goal
-      WHERE id = $1;
-    `, [req.params.id])
-      .then(result => {
-        res.json(result.rows);
-      });
-  })
   .post('/', (req, res) => {
     const body = req.body;
     client.query(`
@@ -76,6 +64,23 @@ router
     [body.title, body.startDate, body.endDate, req.params.id])
       .then(result => {
         res.json(result.rows[0]);
+      });
+  })
+  .get('/stats', (req, res) => {
+    client.query(`
+    SELECT 
+      id,
+      COUNT(goal.id) as count,
+      MIN(end_date - start_date) as mindiff,
+      MAX(end_date - start_date) as maxdiff,
+      ROUND(AVG(end_date - start_date), 0) as average
+    FROM goal
+    WHERE id = $1;
+    `,
+    [req.userId]
+    )
+      .then(result => {
+        res.json(result.rows);
       });
   });
 
