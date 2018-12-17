@@ -4,13 +4,14 @@ client.query(`
     CREATE TABLE IF NOT EXISTS profile (
         id SERIAL PRIMARY KEY,
         username VARCHAR(256) NOT NULL,
-        password VARCHAR(256) NOT NULL
+        hash VARCHAR(256) NOT NULL
     );
     CREATE TABLE IF NOT EXISTS goal (
         id SERIAL PRIMARY KEY,
         title VARCHAR(256) NOT NULL,
         start_date DATE NOT NULL,
         end_date DATE,
+        completed BOOLEAN,
         profile_id INTEGER NOT NULL REFERENCES profile(id)
     );
 `).then(
