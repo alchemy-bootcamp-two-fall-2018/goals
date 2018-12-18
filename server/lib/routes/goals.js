@@ -6,7 +6,7 @@ const router = Router();
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, title, startdate, enddate
+      // SELECT id, title, startdate, enddate
       FROM goal
       WHERE profile_id = $1;
     `,

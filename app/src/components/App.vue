@@ -7,7 +7,7 @@
       </span>
       <nav v-if="user">
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink t="/auth">Sign Up/Sign In</RouterLink>
+        <RouterLink to="/auth">Sign Up/Sign In</RouterLink>
         <RouterLink to="/goals">Goals</RouterLink>
         <a href="#" @click="handleLogout">Logout</a>
       </nav>
@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import api from '../services.api';
+import api from '../services/api';
 import Auth from './auth/Auth';
 
 export default {
   data() {
-    return{
+    return {
       user: null
     };
   },
@@ -58,7 +58,7 @@ export default {
     setUser(user) {
       this.user = user;
       if(user) {
-        api.setToken(user.id)
+        api.setToken(user.id);
         window.localStorage.setItem('profile', JSON.stringify(user));       
       }
       else {
