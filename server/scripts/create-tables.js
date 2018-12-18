@@ -7,7 +7,7 @@ client.query (`
         first_name VARCHAR(256),
         last_name VARCHAR(256),
         email VARCHAR(256),
-        password VARCHAR(256) NOT NULL
+        hash VARCHAR(256) NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS goal (

@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const auth = require('./routes/auth');
 const goals = require('./routes/goals');
 const jwt = require('./jwt');
+const APP_SECRET = 'CHANGEMENOW'
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -16,7 +17,7 @@ function checkAuth(req, res, next) {
   }
   let payload = null;
   try {
-    payload = jwt.verify(token);
+    payload = jwt.verify(token, APP_SECRET);
   }
   catch (err) {
     res.status(401).json({ error: 'invalid token ' });

@@ -2,12 +2,13 @@ const router = require('express').Router();
 const client = require('../db-client');
 const bcrypt = require('bcryptjs');
 const jwt = require('../jwt');
+const APP_SECRET = 'CHANGEMENOW';
 
 function getProfileWithToken(profile) {
   return {
     id: profile.id,
     username: profile.username,
-    token: jwt.sign({ id: profile.id })
+    token: jwt.sign({ id: profile.id }, APP_SECRET)
   };
 }
 router
@@ -65,7 +66,7 @@ router
       return;
     }
     client.query(`
-        SELECT id, username, password
+        SELECT id, username, hash
         FROM profile
         WHERE username = $1
     `, 
