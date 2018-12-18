@@ -12,7 +12,7 @@ client.query(`
     VALUES ($1, $2, $3, $4, $5)
     RETURNING id;
 `,
-['teonnapdx', 'Teonna', 'Zaragoza', 'teonna.zaragoza@gmail.com', bcrypt.hashSync('abc123, 8)')]
+['teonnapdx', 'Teonna', 'Zaragoza', 'teonna.zaragoza@gmail.com', bcrypt.hashSync('abc123', 8)]
 )
   .then(result => {
     const profile = result.rows[0];
