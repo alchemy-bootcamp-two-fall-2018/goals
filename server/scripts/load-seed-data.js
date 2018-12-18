@@ -1,5 +1,5 @@
 const client = require('../lib/db-client'); 
-
+const bcrypt = require('bcryptjs');
 const goals = [
 
   { name: 'Buy Cool Things', startDate: 20181213, endDate: 20181213, description:'You should buy all the cool things' },
@@ -9,23 +9,23 @@ const goals = [
 ];
 
 client.query(`
-  INSERT INTO profile (username, password, first, last, email)
+  INSERT INTO profile (username, hash, first, last, email)
   VALUES ($1, $2, $3, $4, $5)
   RETURNING id;
 `,
-['pickuppatterns', '33233323', 'mike', 'elliott', 'pickup.patterns']
+['pickuppatterns', bcrypt.hashSync('33233323', 8), 'mike', 'elliott', 'pickup.patterns']
 )
   .then(result => {
     const profile = result.rows[0];
 
-    return Promise.all (
+    return Promise.all(
       goals.map(goal => {
         return client.query(`
-          INSERT INTO goal (name, start_date, end_date, description, profile_id)
-          VALUES ($1, $2, $3, $4, $5)
-      `,
+        INSERT INTO goal (name, start_date, end_date, description, profile_id)
+        VALUES ($1, $2, $3, $4, $5);
+        `,
         [goal.name, goal.startDate, goal.endDate, goal.description, profile.id]);
-      }) 
+      })
     );
   })
   .then(
