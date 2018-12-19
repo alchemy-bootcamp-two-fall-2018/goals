@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS goal (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     description VARCHAR(256),
-    profile_id INTEGER NOT NULL REFERENCES profile(id)
+    profile_id INTEGER NOT NULL REFERENCES profile(id),
+    complete BOOLEAN
     );
   `)
   .then(

@@ -6,7 +6,7 @@ const router = Router(); //eslint-disable-line new-cap
 router
   .get('/', (req, res) => {
     client.query(`
-      SELECT id, name, start_date as "startDate", end_date as "endDate", description
+      SELECT id, name, start_date as "startDate", end_date as "endDate", description, complete
       FROM goal
       WHERE profile_id = $1;
     `,
@@ -20,29 +20,26 @@ router
     const body = req.body;
 
     client.query(`
-      INSERT INTO goal (name, start_date, end_date, description, profile_id)
-      VALUES($1, $2, $3, $4, $5)
+      INSERT INTO goal (name, start_date, end_date, description, profile_id, complete)
+      VALUES($1, $2, $3, $4, $5, $6)
       RETURNING *;
     `,
-    [body.name, body.startDate, body.endDate, body.description, req.userId])
+    [body.name, body.startDate, body.endDate, body.description, req.userId, body.complete])
       .then(result => {
         res.json(result.rows[0]);
       });
   })
-  
-  // pseudo example for goals
-  // okay to have "virtual" sub-resource
-  .put('/:id/completed', (req, res) => {
-    const completed = req.body.completed;
+  .put('/:id/complete', (req, res) => {
+    const complete = req.body.complete;
 
     client.query(`
       UPDATE goal
-      SET completed = $1
+      SET complete = $1
       WHERE id = $2
       AND profile_id = $3
       RETURNING *;
     `,
-    [completed, req.params.id, req.userId]
+    [complete, req.params.id, req.userId]
     )
       .then(result => {
         res.json(result.rows[0]);

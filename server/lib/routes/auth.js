@@ -17,6 +17,9 @@ router
     const body = req.body;
     const username = body.username;
     const password = body.password;
+    const first = body.first;
+    const last = body.last;
+    const email = body.email;
     
     // username and password needs to exist
     if(!username || !password) {
@@ -44,11 +47,11 @@ router
 
         // insert into profile the new user
         client.query(`
-          INSERT into profile (username, password)
-          VALUES ($1, $2)
-          RETURNING id, username;
+          INSERT into profile (username, hash, first, last, email)
+          VALUES ($1, $2, $3, $4, $5)
+          RETURNING *;
         `,
-        [username, bcrypt.hashSync(password, 8)]
+        [username, bcrypt.hashSync(password, 8), first, last, email]
         )
           .then(result => {
             const profile = result.rows[0];
