@@ -5,7 +5,7 @@
         <h3>CURRENT QUEUE </h3>
         <GoalList v-if="goals && goals.length > 0" 
         :goals="goals"/>
-        <p v-else >ADD A GOAL %amp; GET STARTED</p>
+        <p v-else >ADD A GOAL &amp; GET STARTED</p>
         </div>
         <div class="column">
           <h3>ADD A GOAL</h3>

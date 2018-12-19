@@ -8,17 +8,26 @@
     <input  v-model="goal.endDate" require>
     <label>DESCRIPTION:</label>
     <input  v-model="goal.description" require>
+    <label>IS THIS COMPLETE:</label>
+    <div class="complete">
+     YES:<input type="radio" v-model="goal.complete" v-bind:value="true" required>
+          NO:<input type="radio" v-model="goal.complete" v-bind:value="false">
+          </div>
+   
     <button>Add</button>
   </form>
-</template>
+</template> 
 
 <script>
+import api from '../../services/api';
+
 function initgoal() {
   return {
     name: '',
     startDate: '',
     endDate: '',
-    description: ''
+    description: '',
+    complete: ''
   };
 }
 export default {
@@ -58,5 +67,9 @@ input {
     background-color: #f7ffe0;
     border-radius: 5px;
     outline:none;
+  }
+  .complete{
+    display:flex;
+    
   }
 </style>
