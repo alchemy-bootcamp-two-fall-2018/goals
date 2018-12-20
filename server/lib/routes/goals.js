@@ -29,7 +29,7 @@ router
         res.json(result.rows[0]);
       });
   })
-  .put('/:id/complete', (req, res) => {
+  .put('/:id', (req, res) => {
     const complete = req.body.complete;
 
     client.query(`
