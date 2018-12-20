@@ -3,9 +3,9 @@
     <label>NAME:</label>
     <input v-focus v-model="goal.name" require>
     <label>START DATE:</label>
-    <input  v-model="goal.startDate" require>
+    <input type="date"  v-model="goal.startDate" require>
     <label>END DATE:</label>
-    <input  v-model="goal.endDate" require>
+    <input type="date"  v-model="goal.endDate" require>
     <label>DESCRIPTION:</label>
     <input  v-model="goal.description" require>
     <label>IS THIS COMPLETE:</label>
@@ -19,8 +19,6 @@
 </template> 
 
 <script>
-import api from '../../services/api';
-
 function initgoal() {
   return {
     name: '',

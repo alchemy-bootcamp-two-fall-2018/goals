@@ -4,6 +4,7 @@
     <span class="start-date"><DateDisplay :date="goal.startDate" /></span>
     <span class="end-date"><DateDisplay :date="goal.endDate" /></span>
     <span class="description">{{goal.description}}</span>
+    <span class="complete">Is this completed? {{goal.complete}}</span>
   </li>
 </template>
 
